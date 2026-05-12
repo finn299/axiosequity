@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Classes — AXIOS EQUITY</title>
+    <meta name="description" content="Energy, real estate, mining, equities, fixed income, and digital assets — the six markets AXIOS EQUITY operates as one integrated platform.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,200;9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,200;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .asset-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+        .asset-section:first-of-type { border-top: 0; padding-top: 32px; }
+        .asset-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 56px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .asset-header { grid-template-columns: 1fr; gap: 24px; }
+        }
+        .asset-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(194, 161, 87, 0.10);
+            color: var(--accent-dark);
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .asset-body p { margin-bottom: 16px; color: var(--text-muted); }
+        .asset-body strong { color: var(--text); }
+        .asset-positions {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: rgba(13,15,18,0.025);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+        .asset-positions ul { list-style: none; padding-left: 0; }
+        .asset-positions li {
+            padding: 4px 0;
+            color: var(--text-muted);
+        }
+        .asset-positions li::before {
+            content: '→ ';
+            color: var(--accent-dark);
+            font-weight: 500;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo">
+            <img src="AxiosEquity.png" alt="AXIOS EQUITY" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="about.html">Firm</a></li>
+            <li><a href="platform.html">Platform</a></li>
+            <li><a href="assets.html">Strategies</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Asset classes</p>
+        <h1 class="display-xl">Six markets. <em>One</em> integrated portfolio.</h1>
+        <p class="lede">
+            We operate across asset classes that traditional firms separate into discrete fund vehicles. Each is run by specialists with deep sector experience, integrated under a single capital allocation framework.
+        </p>
+    </div>
+</section>
+
+<section class="section" style="padding-top: 0;">
+    <div class="container">
+
+        <!-- ENERGY -->
+        <div class="asset-section" id="energy">
+            <div class="asset-header">
+                <div>
+                    <span class="asset-tag">01 · Energy</span>
+                    <h2 class="display-md">Energy &amp; Commodities</h2>
+                </div>
+                <div class="asset-body">
+                    <p>
+                        <strong>Active positions across the physical and financial energy stack.</strong>
+                        We trade oil, refined products, and natural gas across global benchmarks. Positions span physical cargo flows, term contracts, and derivative exposures held against fundamental supply-demand views.
+                    </p>
+                    <p>
+                        Storage capacity, blending capabilities, and selective midstream interests provide structural advantages — we participate in the physical market, not merely the screen-traded one.
+                    </p>
+                    <div class="asset-positions">
+                        <strong style="color: var(--text); display: block; margin-bottom: 8px;">Activity profile</strong>
+                        <ul>
+                            <li>Crude and refined product trading across Atlantic and Asian basins</li>
+                            <li>Natural gas and LNG term positions</li>
+                            <li>Storage capacity and blending optionality</li>
+                            <li>Selective midstream infrastructure interests</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REAL ESTATE -->
+        <div class="asset-section" id="realestate">
+            <div class="asset-header">
+                <div>
+                    <span class="asset-tag">02 · Real Estate</span>
+                    <h2 class="display-md">Real Estate</h2>
+                </div>
+                <div class="asset-body">
+                    <p>
+                        <strong>Direct ownership and structured equity in income-producing real assets.</strong>
+                        Focused on properties with durable cash flow, strong sponsor alignment, and pricing dislocation. We participate as principal across logistics, residential, hospitality, and selective commercial assets.
+                    </p>
+                    <p>
+                        Joint ventures with established regional operators give us local expertise without rebuilding it internally. Capital structure flexibility lets us provide equity, preferred equity, or hybrid capital depending on the situation.
+                    </p>
+                    <div class="asset-positions">
+                        <strong style="color: var(--text); display: block; margin-bottom: 8px;">Activity profile</strong>
+                        <ul>
+                            <li>Logistics and industrial assets in primary corridors</li>
+                            <li>Multi-family residential with operating-partner JVs</li>
+                            <li>Hospitality (selective, brand-affiliated)</li>
+                            <li>Preferred equity and structured credit on real assets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINING -->
+        <div class="asset-section" id="mining">
+            <div class="asset-header">
+                <div>
+                    <span class="asset-tag">03 · Mining</span>
+                    <h2 class="display-md">Mining &amp; Minerals</h2>
+                </div>
+                <div class="asset-body">
+                    <p>
+                        <strong>Equity, royalty, and streaming interests in producing and near-producing mines.</strong>
+                        Precious metals, base metals, and critical minerals tied to the energy transition. We work directly with operating teams and structure investments that give us exposure to production economics without operational responsibility.
+                    </p>
+                    <p>
+                        Royalty and streaming positions provide commodity exposure with capped downside. Direct equity is taken selectively, in projects where management quality and asset economics support concentrated positions.
+                    </p>
+                    <div class="asset-positions">
+                        <strong style="color: var(--text); display: block; margin-bottom: 8px;">Activity profile</strong>
+                        <ul>
+                            <li>Gold and silver royalty positions across producers and developers</li>
+                            <li>Critical minerals (lithium, copper, nickel) — equity and streams</li>
+                            <li>Selective direct equity in operating mines</li>
+                            <li>Strategic stakes in mineral exploration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EQUITIES -->
+        <div class="asset-section" id="equities">
+            <div class="asset-header">
+                <div>
+                    <span class="asset-tag">04 · Equities</span>
+                    <h2 class="display-md">Public Equities</h2>
+                </div>
+                <div class="asset-body">
+                    <p>
+                        <strong>Concentrated long-only and event-driven positions.</strong>
+                        We hold public equities sized to high conviction, with positions informed by the firm's broader macro and sector views. Special situations and event-driven strategies — spin-offs, restructurings, capital structure arbitrage — are pursued selectively.
+                    </p>
+                    <p>
+                        Public market exposure is integrated with the private and real asset book — when we are exposed to a sector via real assets, our public market position complements rather than duplicates that exposure.
+                    </p>
+                    <div class="asset-positions">
+                        <strong style="color: var(--text); display: block; margin-bottom: 8px;">Activity profile</strong>
+                        <ul>
+                            <li>Concentrated long-only equity positions</li>
+                            <li>Event-driven and special-situations strategies</li>
+                            <li>Sector-linked hedges integrated with private book</li>
+                            <li>Selective IPO and secondary participation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIXED INCOME -->
+        <div class="asset-section" id="fixedincome">
+            <div class="asset-header">
+                <div>
+                    <span class="asset-tag">05 · Fixed Income</span>
+                    <h2 class="display-md">Fixed Income</h2>
+                </div>
+                <div class="asset-body">
+                    <p>
+                        <strong>Sovereign, investment-grade credit, and selective high-yield positions.</strong>
+                        Fixed income serves as a portfolio anchor and a vehicle for expressing macro views. We hold treasury and sovereign positions for duration and reserve purposes, and selectively pursue corporate credit where structural protections and yield justify it.
+                    </p>
+                    <p>
+                        Position sizing is set against the platform's macro framework — credit risk is acceptable where macro context supports it, and avoided when the rate or growth backdrop is unfavorable.
+                    </p>
+                    <div class="asset-positions">
+                        <strong style="color: var(--text); display: block; margin-bottom: 8px;">Activity profile</strong>
+                        <ul>
+                            <li>Sovereign and treasury positions across major markets</li>
+                            <li>Investment-grade corporate credit, selective high-yield</li>
+                            <li>Private credit on real assets</li>
+                            <li>Selective distressed and structured credit opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIGITAL -->
+        <div class="asset-section" id="digital">
+            <div class="asset-header">
+                <div>
+                    <span class="asset-tag">06 · Digital</span>
+                    <h2 class="display-md">Digital Assets</h2>
+                </div>
+                <div class="asset-body">
+                    <p>
+                        <strong>Core blockchain holdings and curated tokenized exposures.</strong>
+                        We treat digital assets as a distinct asset class, not a speculation. Core positions in Bitcoin, Ethereum, and select infrastructure tokens are sized against the integrated portfolio and custodied institutionally.
+                    </p>
+                    <p>
+                        Tokenized real-world assets, on-chain credit, and selective venture-stage protocol investments are pursued where the regulatory and operational stack supports institutional participation. Stablecoin treasury operations contribute to liquidity management.
+                    </p>
+                    <div class="asset-positions">
+                        <strong style="color: var(--text); display: block; margin-bottom: 8px;">Activity profile</strong>
+                        <ul>
+                            <li>Core BTC and ETH allocations, custodied institutionally</li>
+                            <li>Selective infrastructure and Layer-1 tokens</li>
+                            <li>Tokenized real-world assets and on-chain credit</li>
+                            <li>Stablecoin treasury and liquidity operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section section-dark" style="padding: 80px 0;">
+    <div class="container-narrow" style="text-align: center;">
+        <h2 class="display-md">Allocation follows <em>conviction</em>.</h2>
+        <p class="lede" style="margin: 0 auto 40px;">
+            Capital does not sit in a static allocation. The platform shifts exposure between asset classes as relative opportunity changes — and as risk-adjusted return signals warrant.
+        </p>
+        <a class="btn btn-primary" style="background: #ffffff; color: var(--bg-dark);" href="contact.html">Speak with our team →</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                    <img src="WhiteLOGO.png" alt="AXIOS EQUITY" class="logo-img">
+                </a>
+                <p class="lede">A multi-asset investment platform operating with institutional discipline across energy, real assets, equities, fixed income, and digital markets.</p>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 16px;">
+                    AXIOS EQUITY LLC<br>
+                    1209 Mountain Road PL NE, STE R<br>
+                    Albuquerque, NM 87110<br>
+                    <a href="tel:+19174097083">+1 (917) 409-7083</a> · <a href="mailto:info@axiosequity.com">info@axiosequity.com</a>
+                </p>
+            </div>
+            <div class="footer-col"><h4>Firm</h4><ul><li><a href="about.html">About</a></li><li><a href="leadership.html">Leadership</a></li><li><a href="careers.html">Careers</a></li><li><a href="press.html">Press</a></li></ul></div>
+            <div class="footer-col"><h4>Platform</h4><ul><li><a href="platform.html">Approach</a></li><li><a href="assets.html">Strategies</a></li><li><a href="risk.html">Risk &amp; Liquidity</a></li><li><a href="partnerships.html">Partnerships</a></li></ul></div>
+            <div class="footer-col"><h4>Markets</h4><ul><li><a href="markets.html">Market Intelligence</a></li><li><a href="commodities.html">Commodities</a></li><li><a href="macro.html">Macro Outlook</a></li><li><a href="research.html">Research</a></li></ul></div>
+            <div class="footer-col"><h4>Engage</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="insights.html">Insights</a></li><li><a href="disclosures.html">Disclosures</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><div>&copy; 2026 AXIOS EQUITY LLC. All rights reserved.</div><div>Multi-asset investment platform · Albuquerque, New Mexico</div></div>
+    </div>
+</footer>
+
+</body>
+</html>

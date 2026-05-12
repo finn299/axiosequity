@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — AXIOS EQUITY</title>
+    <meta name="description" content="Contact AXIOS EQUITY — multi-asset investment platform. For institutional inquiries, partnerships, and operator introductions.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,200;9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,200;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 64px;
+            margin-top: 56px;
+        }
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+        .contact-block {
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+        }
+        .contact-block:first-child { padding-top: 0; border-top: 0; }
+        .contact-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        .contact-value {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .contact-meta { font-size: 14px; color: var(--text-muted); }
+        .form-field {
+            margin-bottom: 24px;
+        }
+        .form-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-family: var(--sans);
+            font-size: 15px;
+            color: var(--text);
+            background: var(--bg-card);
+            border: 1px solid var(--border-strong);
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus { border-color: var(--text); }
+        .form-field textarea { resize: vertical; min-height: 140px; }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo">
+            <img src="AxiosEquity.png" alt="AXIOS EQUITY" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="about.html">Firm</a></li>
+            <li><a href="platform.html">Platform</a></li>
+            <li><a href="assets.html">Strategies</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="contact.html" class="nav-cta">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-eyebrow">Contact</p>
+        <h1 class="display-xl">Speak with the <em>investment team</em>.</h1>
+        <p class="lede">
+            For institutional inquiries, partnership conversations, operator introductions, or media requests, our team is available. Use the form below or contact the relevant function directly.
+        </p>
+
+        <div class="contact-grid">
+            <form>
+                <div class="form-field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-field">
+                    <label for="firm">Firm / Organization</label>
+                    <input type="text" id="firm" name="firm" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-field">
+                    <label for="topic">Topic</label>
+                    <select id="topic" name="topic">
+                        <option>Institutional inquiry</option>
+                        <option>Partnership / co-investment</option>
+                        <option>Operator introduction</option>
+                        <option>Press / media</option>
+                        <option>Careers</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Briefly describe the nature of the engagement."></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="alert('Form is illustrative — connect to a real submission backend before launch.');return false;">Send message →</button>
+            </form>
+
+            <aside>
+                <div class="contact-block">
+                    <div class="contact-label">General inquiries</div>
+                    <div class="contact-value"><a href="mailto:info@axiosequity.com">info@axiosequity.com</a></div>
+                    <p class="contact-meta">All inquiries — institutional, partnership, press — are routed to the appropriate team within one business day.</p>
+                </div>
+                <div class="contact-block">
+                    <div class="contact-label">Telephone</div>
+                    <div class="contact-value"><a href="tel:+19174097083">+1 (917) 409-7083</a></div>
+                    <p class="contact-meta">Auto-attendant. Voice messages reviewed within one business day.</p>
+                </div>
+                <div class="contact-block">
+                    <div class="contact-label">Office</div>
+                    <div class="contact-value" style="font-size: 17px; line-height: 1.5;">
+                        1209 Mountain Road PL NE, STE R<br>
+                        Albuquerque, NM 87110<br>
+                        United States
+                    </div>
+                    <p class="contact-meta" style="margin-top: 10px;">Correspondence and physical mail.</p>
+                </div>
+                <div class="contact-block">
+                    <div class="contact-label">Entity</div>
+                    <div class="contact-value" style="font-size: 15px; line-height: 1.5; font-family: var(--sans); font-weight: 500;">
+                        AXIOS EQUITY LLC<br>
+                        <span style="font-size: 13px; color: var(--text-muted); font-weight: 400;">New Mexico Domestic LLC</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo" style="margin-bottom: 24px;">
+                    <img src="WhiteLOGO.png" alt="AXIOS EQUITY" class="logo-img">
+                </a>
+                <p class="lede">A multi-asset investment platform operating with institutional discipline across energy, real assets, equities, fixed income, and digital markets.</p>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 16px;">
+                    AXIOS EQUITY LLC<br>
+                    1209 Mountain Road PL NE, STE R<br>
+                    Albuquerque, NM 87110<br>
+                    <a href="tel:+19174097083">+1 (917) 409-7083</a> · <a href="mailto:info@axiosequity.com">info@axiosequity.com</a>
+                </p>
+            </div>
+            <div class="footer-col"><h4>Firm</h4><ul><li><a href="about.html">About</a></li><li><a href="leadership.html">Leadership</a></li><li><a href="careers.html">Careers</a></li><li><a href="press.html">Press</a></li></ul></div>
+            <div class="footer-col"><h4>Platform</h4><ul><li><a href="platform.html">Approach</a></li><li><a href="assets.html">Strategies</a></li><li><a href="risk.html">Risk &amp; Liquidity</a></li><li><a href="partnerships.html">Partnerships</a></li></ul></div>
+            <div class="footer-col"><h4>Markets</h4><ul><li><a href="markets.html">Market Intelligence</a></li><li><a href="commodities.html">Commodities</a></li><li><a href="macro.html">Macro Outlook</a></li><li><a href="research.html">Research</a></li></ul></div>
+            <div class="footer-col"><h4>Engage</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="insights.html">Insights</a></li><li><a href="disclosures.html">Disclosures</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><div>&copy; 2026 AXIOS EQUITY LLC. All rights reserved.</div><div>Multi-asset investment platform · Albuquerque, New Mexico</div></div>
+    </div>
+</footer>
+
+</body>
+</html>
