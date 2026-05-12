@@ -1,11 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-    <rect width="100" height="100" fill="#0e0e10"/>
-    <rect x="0" y="86" width="100" height="6" fill="#a1391e"/>
+    <rect width="100" height="100" rx="22" fill="#0a0a0d"/>
     <text x="50" y="62"
         font-family="'Inter Tight', 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif"
         font-weight="700"
-        font-size="40"
-        letter-spacing="2"
+        font-size="38"
+        letter-spacing="-1"
         text-anchor="middle"
-        fill="#faf8f5">AE</text>
+        fill="#4ad6e6">AE</text>
 </svg>
