@@ -95,7 +95,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="insights.html">Insights</a></li>
     </ul>
-    <button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span class="bar"></span></button><button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
 </div></nav>
 
 <section class="page-hero">
@@ -108,39 +108,86 @@
 
 <section class="fine">
     <div class="section-inner">
-        <h2>General</h2>
-        <p>This website is owned and operated by AXIOS EQUITY LLC ("AXIOS EQUITY" or "the firm"), a Delaware-organised limited liability company with its principal office at 1209 Mountain Road PL NE, STE R, Albuquerque, NM 87110, United States. The information contained on this website is provided for general informational purposes only and is not intended as investment, legal, tax, or other advice.</p>
-        <p>Nothing on this website constitutes an offer to sell, or a solicitation of an offer to buy, any security, financial product, or service in any jurisdiction. Any such offer or solicitation, if and when made, will be made only by means of formal offering documents to qualified investors in compliance with applicable law.</p>
+        <h2 id="general">General</h2>
+        <p>This website ("Site") is owned and operated by AXIOS EQUITY LLC ("AXIOS EQUITY" or the "firm"), a privately held limited liability company organised in New Mexico, with its principal office at 1209 Mountain Road PL NE, STE R, Albuquerque, NM 87110, United States. The information contained on this Site is provided for general informational purposes only and is not intended as investment, legal, tax, or other professional advice.</p>
+        <p>Nothing on this Site constitutes an offer to sell, or a solicitation of an offer to buy, any security, financial product, or service in any jurisdiction. Any such offer or solicitation, if and when made, will be made only by means of formal offering documents to qualified investors in compliance with applicable law.</p>
 
-        <h2>No investment advice</h2>
-        <p>Investment advice is provided by AXIOS EQUITY to clients only pursuant to a written agreement that defines the scope, terms, fees, conflicts, and authority of the advisory relationship. No content on this website should be construed as creating an advisory relationship, nor as a recommendation to enter into any transaction.</p>
+        <h2 id="not-a-bank">Not a bank</h2>
+        <p>AXIOS EQUITY is not a bank, trust company, or insured depository institution. The firm does not accept deposits, does not extend balance-sheet credit, and is not licensed or chartered to engage in banking activities. References on the Site to "investment banking" and "merchant banking" describe historical industry service categories — including advisory, principal investing, and capital structure work — and are not representations that AXIOS EQUITY operates a bank or is licensed as one.</p>
 
-        <h2>Risk warning</h2>
-        <p>All investing involves risk, including the possible loss of principal. Past performance is not indicative of future results. Diversification does not guarantee a profit or eliminate the risk of loss. Investments in private markets, real assets, and alternatives can be illiquid, complex, and unsuitable for many investors.</p>
+        <h2 id="registrations">Regulatory status &amp; registrations</h2>
+        <p>AXIOS EQUITY is in the process of completing applicable U.S. registrations. Investment advisory and asset management services described on this Site are or will be offered only in jurisdictions where the firm and its representatives are duly registered, notice-filed, or operating under a valid exemption.</p>
 
-        <h2 id="privacy">Privacy policy</h2>
-        <p>AXIOS EQUITY collects only the information necessary to respond to enquiries, deliver services to clients, comply with legal and regulatory obligations, and operate the website. We do not sell personal information. Where information is collected, it is stored and processed under appropriate technical, organisational, and contractual safeguards.</p>
-        <p>For details on the personal information we collect, the purposes for which we process it, and the rights you may have under applicable law (including under the California Consumer Privacy Act and applicable European data protection rules where relevant), please contact privacy@axiosequity.com.</p>
+        <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:24px 0 10px;font-weight:500;">Investment adviser registration</h3>
+        <p>AXIOS EQUITY LLC, as the operating entity, pursues firm-level registration with the New Mexico Securities Division as a state-registered investment adviser. Each individual at the firm who provides investment advice for compensation is registered as an Investment Adviser Representative ("IAR") under New Mexico law (and notice-filed in other states as required), having passed the applicable qualifying examinations (Series 65, or Series 66 in combination with Series 7). Personnel who do not provide investment advice — including operations, technology, finance, and administrative staff — are not required to be IAR-registered and are not held out as such.</p>
+
+        <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:24px 0 10px;font-weight:500;">M&amp;A advisory</h3>
+        <p>Where AXIOS EQUITY provides mergers and acquisitions advisory services to <strong>privately held operating companies</strong>, the firm intends to operate consistent with the M&amp;A broker exemption codified at Section 15(b)(13) of the Securities Exchange Act of 1934, as amended, and applicable SEC no-action guidance. Engagements under this exemption are limited to transactions in which a buyer acquires control (typically 25% or more of voting securities, or operational control) of a privately held operating company that is not a shell company. AXIOS EQUITY does not take possession of client funds or securities in these transactions, does not engage in public solicitation, and does not facilitate offerings of unregistered securities in violation of applicable law. Where a transaction falls outside the exemption — for example, an underwritten public offering, a sale of an investment fund interest, or a transaction involving a shell company — the engagement is conducted exclusively through, or in partnership with, separately registered broker-dealers who hold the required licences.</p>
+
+        <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:24px 0 10px;font-weight:500;">Debt advisory, equity advisory &amp; capital raising</h3>
+        <p>AXIOS EQUITY's compensation for debt advisory, equity advisory, and structuring mandates is structured as <strong>fixed retainer, project, and hourly fees</strong>, not as transaction-based or success-contingent commissions tied to the placement of securities. Where a mandate requires the actual <em>placement</em> of securities — including private placement to qualified investors, syndication of debt to institutional lenders, or marketing of equity to capital providers — AXIOS EQUITY conducts such activity exclusively in partnership with separately registered broker-dealers (FINRA member firms) or qualified financial counterparties holding the relevant licences. Any transaction-based compensation in such mandates is paid to, and disclosed by, the licensed partner. AXIOS EQUITY does not itself accept transaction-based compensation in connection with the placement of securities other than where it is duly licensed to do so.</p>
+
+        <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:24px 0 10px;font-weight:500;">Network of licensed partners</h3>
+        <p>The firm maintains long-standing working relationships with a network of separately licensed broker-dealers, registered investment advisers, qualified custodians, transfer agents, trust companies, money-transmission licensees, export-control counsel, and other regulated counterparties. Where an engagement, mandate, or transaction calls for activities the firm itself is not registered or licensed to undertake, AXIOS EQUITY engages or co-engages the appropriate licensed counterparty, and the regulated activity is conducted by that counterparty under its own authorisations. AXIOS EQUITY's role in such engagements is that of advisor, coordinator, and (where applicable) structurer; the regulated activity itself is performed by the licensed partner.</p>
+
+        <p><strong>State registrations.</strong> AXIOS EQUITY pursues, where applicable, firm and IAR registration with the New Mexico Securities Division and notice filings in other U.S. states in which the firm conducts business. Status updates are available on request.</p>
+
+        <h2 id="eligibility">Eligibility &amp; jurisdictional notice</h2>
+        <p>The Site is principally directed at residents of the United States who are accredited investors, qualified purchasers, qualified clients, or institutional investors as those terms are defined under U.S. federal securities laws. Information on the Site is general in nature and is not directed at the public.</p>
+        <p>Persons accessing the Site from outside the United States do so on their own initiative and are responsible for compliance with applicable laws of their jurisdiction. The Site is not directed at, nor intended for, any person in any jurisdiction where its publication or availability would be contrary to applicable law. Information on this Site is not an offer or solicitation in any jurisdiction in which such offer or solicitation would be unlawful or in which the person making the offer or solicitation is not qualified to do so.</p>
+        <p>Non-U.S. visitors should treat AXIOS EQUITY information as <em>information only</em> and consult their own legal and financial advisors before contacting the firm. Visitors who confirm non-U.S. status during contact will be routed through additional eligibility procedures consistent with the laws of their jurisdiction.</p>
+
+        <h2 id="no-advice">No investment advice; no fiduciary relationship</h2>
+        <p>Investment advice is provided by AXIOS EQUITY to clients only pursuant to a written agreement that defines the scope, terms, fees, conflicts, and authority of the advisory relationship. No content on this Site, no correspondence prior to a written engagement, and no oral discussion creates an advisory or fiduciary relationship between AXIOS EQUITY and any visitor.</p>
+
+        <h2 id="risk">Risk warning</h2>
+        <p>All investing involves risk, including the possible loss of principal. Past performance is not indicative of future results. Diversification does not guarantee a profit or eliminate the risk of loss. Investments in private markets, real assets, and alternatives can be illiquid, complex, and unsuitable for many investors. Investments involving digital assets carry additional risks including regulatory uncertainty, custody risk, and technology risk.</p>
+
+        <h2 id="forward-looking">Forward-looking statements</h2>
+        <p>Statements on this Site that describe the firm's intentions, plans, or expectations — including with respect to registrations, services, sector coverage, and future activities — are forward-looking and are not guarantees of future performance or results.</p>
+
+        <h2 id="defence">Export controls &amp; defence-related coverage</h2>
+        <p>Where AXIOS EQUITY advises or invests in defence, dual-use, or national-resilience industrials, activity that involves controlled defence articles, services, or technical data under the U.S. International Traffic in Arms Regulations (ITAR), the Export Administration Regulations (EAR), or analogous foreign export controls is conducted only in partnership with separately licensed advisors, export-control counsel, and where required, prime contractors holding the appropriate authorisations. AXIOS EQUITY does not itself register as an ITAR manufacturer, exporter, or broker.</p>
+
+        <h2 id="fara">Foreign government engagements</h2>
+        <p>AXIOS EQUITY advises sovereign and sovereign-related clients exclusively on commercial, financial, and transaction-related matters. The firm does not represent foreign governments or foreign political parties before U.S. government officials or U.S. media for purposes of influencing U.S. policy or public opinion, and does not undertake activities that would require registration under the U.S. Foreign Agents Registration Act (FARA) or the Lobbying Disclosure Act (LDA).</p>
+
+        <h2 id="digital">Digital assets</h2>
+        <p>AXIOS EQUITY does not custody, exchange, or transmit digital assets for clients; does not operate as a money services business, money transmitter, broker-dealer, or alternative trading system in digital assets; and does not offer digital-asset securities to the public. Where the firm or its affiliates take exposure to the digital-asset sector, such exposure is structured through separately registered or licensed counterparties and is conducted in compliance with applicable U.S. federal and state laws and analogous foreign regimes.</p>
+
+        <h2 id="esg">ESG &amp; sustainability claims</h2>
+        <p>AXIOS EQUITY considers environmental, social, and governance factors only where, in the judgement of the relevant investment team, they are financially material to risk-adjusted returns. The firm does not represent that any of its strategies is "ESG", "sustainable", "green", "responsible", or "impact" unless that descriptor is supported by formal investment-policy documentation and applicable regulatory authorisations.</p>
+
+        <h2 id="privacy">Privacy notice</h2>
+        <p>AXIOS EQUITY collects only the information necessary to respond to enquiries, to deliver services to clients, to comply with legal and regulatory obligations, and to operate the Site. We do not sell personal information. Where information is collected, it is stored and processed under appropriate technical, organisational, and contractual safeguards.</p>
+        <p>For details on the personal information we collect, the purposes for which we process it, and the rights you may have under applicable law (including under the California Consumer Privacy Act, the EU and UK General Data Protection Regulations, the New Mexico data privacy framework where applicable, and analogous regimes), please contact <a href="mailto:privacy@axiosequity.com">privacy@axiosequity.com</a>.</p>
 
         <h2 id="terms">Terms of use</h2>
-        <p>By accessing this website you agree to use it for lawful purposes only and in a manner that does not infringe the rights of any third party. The content of this website is the property of AXIOS EQUITY LLC and is protected by applicable intellectual property laws. No portion of this website may be reproduced, framed, or otherwise commercially exploited without the firm's prior written consent.</p>
-        <p>This website may contain hyperlinks to third-party websites. AXIOS EQUITY does not endorse, control, or accept responsibility for the content of any third-party site. You access such sites at your own risk.</p>
+        <p>By accessing this Site you agree to use it for lawful purposes only and in a manner that does not infringe the rights of any third party. The content of this Site is the property of AXIOS EQUITY LLC and is protected by applicable intellectual property laws. No portion of this Site may be reproduced, framed, or otherwise commercially exploited without the firm's prior written consent. This Site may contain hyperlinks to third-party websites; AXIOS EQUITY does not endorse, control, or accept responsibility for the content of any third-party site.</p>
 
         <h2 id="cookies">Cookies</h2>
-        <p>This website may use cookies and similar technologies for the limited purpose of operating the site, measuring traffic, and improving usability. We do not use third-party advertising cookies. By continuing to use the site you consent to such use; you may disable cookies in your browser settings.</p>
+        <p>This Site may use cookies and similar technologies for the limited purpose of operating the Site, measuring traffic, and improving usability. We do not use third-party advertising cookies. By continuing to use the Site you consent to such use; you may disable cookies in your browser settings.</p>
 
-        <h2>Jurisdictional notice</h2>
-        <p>The information on this website is not directed at, nor intended for, any person in any jurisdiction where its publication or availability would be contrary to applicable law. Persons in restricted jurisdictions should not rely upon the information on this website. AXIOS EQUITY makes no representation that any information, product, or service is appropriate or available for use in any jurisdiction.</p>
+        <h2 id="testimonials">Quotations &amp; illustrative content</h2>
+        <p>Where the Site contains quotations attributed to "the Founding Partners" or other generic descriptors, those quotations represent the firm's institutional voice and should not be treated as statements of any specific named individual. Photographs and other imagery used on the Site are illustrative.</p>
 
-        <h2>Regulatory status</h2>
-        <p>AXIOS EQUITY's regulated activities, where applicable, are conducted by the relevant licensed entity within the firm's group. Detail on the regulatory status of specific products, services, or entities is available on request.</p>
+        <h2 id="contact">Contact</h2>
+        <p>For questions on this notice, please contact <a href="mailto:legal@axiosequity.com">legal@axiosequity.com</a>.</p>
 
-        <h2>Contact</h2>
-        <p>For questions on this notice, please contact legal@axiosequity.com.</p>
-
-        <p style="margin-top:36px;font-size:12px;color:var(--ink-400);">Last updated: 2026</p>
+        <p style="margin-top:36px;font-size:12px;color:var(--ink-400);">Last updated: 12 May 2026 · AXIOS EQUITY LLC</p>
     </div>
 </section>
+
+<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
+    <strong>Important notice.</strong> AXIOS EQUITY LLC is a privately held investment platform.
+    The firm is not a bank and does not accept deposits or extend balance-sheet credit.
+    The firm is in the process of completing applicable U.S. registrations; certain advisory and
+    asset management services are or will be offered only in jurisdictions where the firm and its
+    representatives are duly registered or exempt. Information on this website is general in nature,
+    is for accredited and institutional audiences, and does not constitute an offer, solicitation,
+    or recommendation. Please review our <a href="disclosures.html">disclosures</a> and
+    <a href="disclosures.html#eligibility">eligibility</a> notice.
+</div></div>
 
 <footer class="footer"><div class="footer-inner">
     <div class="footer-top">
@@ -152,6 +199,95 @@
     </div>
     <div class="footer-bottom"><div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div><div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a><a href="disclosures.html#terms">Terms</a><a href="disclosures.html#cookies">Cookies</a></div></div>
 </div></footer>
+
+<!-- ===== Eligibility Modal ===== -->
+<div class="elig-overlay" id="eligModal" aria-modal="true" role="dialog">
+    <div class="elig-card">
+        <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px;">Important — Please read</div>
+        <h2>Before you proceed.</h2>
+        <p>This website is principally directed at residents of the <strong>United States</strong> who are accredited investors, qualified purchasers, qualified clients, or institutional investors as defined under U.S. federal securities laws. The information on this site is general in nature, is not directed at the public, and is not an offer or solicitation in any jurisdiction in which such offer or solicitation would be unlawful.</p>
+        <p>AXIOS EQUITY LLC is a privately held investment partnership; it is not a bank, does not accept deposits, and does not extend balance-sheet credit. The firm is in the process of completing applicable U.S. registrations. Please review the firm's <a href="disclosures.html">disclosures</a> for further detail.</p>
+
+        <div class="choice" id="eligGate-us">
+            <label>
+                <input type="radio" name="eligRegion" value="us" id="elig-us">
+                <span><strong>I am a U.S. resident.</strong> I confirm I am accessing this site in the United States and (where relevant) qualify as an accredited investor, qualified purchaser, qualified client, or institutional investor.</span>
+            </label>
+        </div>
+        <div class="choice">
+            <label>
+                <input type="radio" name="eligRegion" value="nonus" id="elig-nonus">
+                <span><strong>I am accessing from outside the United States.</strong> I acknowledge I am responsible for compliance with the laws of my jurisdiction. I understand the information on this site is informational only and that any services or investments will be offered only where permitted and to persons who are qualified under applicable law. I will identify my jurisdiction when contacting the firm.</span>
+            </label>
+        </div>
+        <div class="choice">
+            <label>
+                <input type="checkbox" id="elig-ack" required>
+                <span>I have read and agree to the above and to the firm's <a href="disclosures.html">disclosures</a>, <a href="disclosures.html#privacy">privacy notice</a>, and <a href="disclosures.html#terms">terms of use</a>.</span>
+            </label>
+        </div>
+
+        <div class="elig-actions">
+            <button class="btn btn-primary" id="eligAccept" type="button">Proceed to site</button>
+            <a class="btn btn-outline" href="https://www.google.com">Decline &amp; leave</a>
+        </div>
+        <p class="small">This page is informational. Your selection is stored locally on your device only.</p>
+    </div>
+</div>
+<script>
+(function(){
+    var KEY = 'axiosEligAccepted_v1';
+    function showModal(){ document.getElementById('eligModal').classList.add('is-open'); document.body.style.overflow='hidden'; }
+    function hideModal(){ document.getElementById('eligModal').classList.remove('is-open'); document.body.style.overflow=''; }
+    document.addEventListener('DOMContentLoaded', function(){
+        try { if(localStorage.getItem(KEY) === 'yes'){ return; } } catch(e){}
+        showModal();
+        document.getElementById('eligAccept').addEventListener('click', function(){
+            var region = document.querySelector('input[name="eligRegion"]:checked');
+            var ack = document.getElementById('elig-ack').checked;
+            if(!region){ alert('Please select your access region (U.S. or non-U.S.).'); return; }
+            if(!ack){ alert('Please acknowledge the disclosures, privacy notice, and terms of use to proceed.'); return; }
+            try { localStorage.setItem(KEY, 'yes'); localStorage.setItem('axiosEligRegion', region.value); } catch(e){}
+            hideModal();
+        });
+    });
+})();
+</script>
+
+<script>
+(function(){
+    document.addEventListener('DOMContentLoaded', function(){
+        var toggle = document.querySelector('.nav-toggle');
+        var menu = document.querySelector('.nav-menu');
+        if(!toggle || !menu){ return; }
+        if(!menu.id){ menu.id = 'mainNav'; }
+        toggle.addEventListener('click', function(){
+            var open = menu.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.classList.toggle('nav-open', open);
+        });
+        document.querySelectorAll('.nav-menu > li.has-mega > a').forEach(function(a){
+            a.addEventListener('click', function(e){
+                if(window.matchMedia('(max-width: 760px)').matches){
+                    e.preventDefault();
+                    var li = a.parentElement;
+                    Array.from(li.parentElement.children).forEach(function(sib){
+                        if(sib !== li){ sib.classList.remove('is-open'); }
+                    });
+                    li.classList.toggle('is-open');
+                }
+            });
+        });
+        document.querySelectorAll('.nav-menu .mega-col ul a, .nav-menu > li:not(.has-mega) > a').forEach(function(a){
+            a.addEventListener('click', function(){
+                menu.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-open');
+            });
+        });
+    });
+})();
+</script>
 
 </body>
 </html>

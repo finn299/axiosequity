@@ -95,7 +95,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="insights.html">Insights</a></li>
     </ul>
-    <button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span class="bar"></span></button><button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
 </div></nav>
 
 <section class="page-hero">
@@ -150,6 +150,17 @@
 
 <section class="cta-band"><div class="cta-band-inner"><h2>Introduce yourself.</h2><p>If you believe the firm is a fit for the next stage of your career, we welcome an introduction. All conversations are held in confidence.</p><div class="cta-band-actions"><a href="contact.html" class="btn btn-light">Apply or introduce</a></div></div></section>
 
+<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
+    <strong>Important notice.</strong> AXIOS EQUITY LLC is a privately held investment platform.
+    The firm is not a bank and does not accept deposits or extend balance-sheet credit.
+    The firm is in the process of completing applicable U.S. registrations; certain advisory and
+    asset management services are or will be offered only in jurisdictions where the firm and its
+    representatives are duly registered or exempt. Information on this website is general in nature,
+    is for accredited and institutional audiences, and does not constitute an offer, solicitation,
+    or recommendation. Please review our <a href="disclosures.html">disclosures</a> and
+    <a href="disclosures.html#eligibility">eligibility</a> notice.
+</div></div>
+
 <footer class="footer"><div class="footer-inner">
     <div class="footer-top">
         <div class="footer-brand"><img src="wordmark-light.svg" alt="AXIOS EQUITY"><p>A private investment firm offering wealth, asset management, advisory, and merchant banking under a single partnership.</p></div>
@@ -160,6 +171,95 @@
     </div>
     <div class="footer-bottom"><div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div><div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a><a href="disclosures.html#terms">Terms</a><a href="disclosures.html#cookies">Cookies</a></div></div>
 </div></footer>
+
+<!-- ===== Eligibility Modal ===== -->
+<div class="elig-overlay" id="eligModal" aria-modal="true" role="dialog">
+    <div class="elig-card">
+        <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px;">Important — Please read</div>
+        <h2>Before you proceed.</h2>
+        <p>This website is principally directed at residents of the <strong>United States</strong> who are accredited investors, qualified purchasers, qualified clients, or institutional investors as defined under U.S. federal securities laws. The information on this site is general in nature, is not directed at the public, and is not an offer or solicitation in any jurisdiction in which such offer or solicitation would be unlawful.</p>
+        <p>AXIOS EQUITY LLC is a privately held investment partnership; it is not a bank, does not accept deposits, and does not extend balance-sheet credit. The firm is in the process of completing applicable U.S. registrations. Please review the firm's <a href="disclosures.html">disclosures</a> for further detail.</p>
+
+        <div class="choice" id="eligGate-us">
+            <label>
+                <input type="radio" name="eligRegion" value="us" id="elig-us">
+                <span><strong>I am a U.S. resident.</strong> I confirm I am accessing this site in the United States and (where relevant) qualify as an accredited investor, qualified purchaser, qualified client, or institutional investor.</span>
+            </label>
+        </div>
+        <div class="choice">
+            <label>
+                <input type="radio" name="eligRegion" value="nonus" id="elig-nonus">
+                <span><strong>I am accessing from outside the United States.</strong> I acknowledge I am responsible for compliance with the laws of my jurisdiction. I understand the information on this site is informational only and that any services or investments will be offered only where permitted and to persons who are qualified under applicable law. I will identify my jurisdiction when contacting the firm.</span>
+            </label>
+        </div>
+        <div class="choice">
+            <label>
+                <input type="checkbox" id="elig-ack" required>
+                <span>I have read and agree to the above and to the firm's <a href="disclosures.html">disclosures</a>, <a href="disclosures.html#privacy">privacy notice</a>, and <a href="disclosures.html#terms">terms of use</a>.</span>
+            </label>
+        </div>
+
+        <div class="elig-actions">
+            <button class="btn btn-primary" id="eligAccept" type="button">Proceed to site</button>
+            <a class="btn btn-outline" href="https://www.google.com">Decline &amp; leave</a>
+        </div>
+        <p class="small">This page is informational. Your selection is stored locally on your device only.</p>
+    </div>
+</div>
+<script>
+(function(){
+    var KEY = 'axiosEligAccepted_v1';
+    function showModal(){ document.getElementById('eligModal').classList.add('is-open'); document.body.style.overflow='hidden'; }
+    function hideModal(){ document.getElementById('eligModal').classList.remove('is-open'); document.body.style.overflow=''; }
+    document.addEventListener('DOMContentLoaded', function(){
+        try { if(localStorage.getItem(KEY) === 'yes'){ return; } } catch(e){}
+        showModal();
+        document.getElementById('eligAccept').addEventListener('click', function(){
+            var region = document.querySelector('input[name="eligRegion"]:checked');
+            var ack = document.getElementById('elig-ack').checked;
+            if(!region){ alert('Please select your access region (U.S. or non-U.S.).'); return; }
+            if(!ack){ alert('Please acknowledge the disclosures, privacy notice, and terms of use to proceed.'); return; }
+            try { localStorage.setItem(KEY, 'yes'); localStorage.setItem('axiosEligRegion', region.value); } catch(e){}
+            hideModal();
+        });
+    });
+})();
+</script>
+
+<script>
+(function(){
+    document.addEventListener('DOMContentLoaded', function(){
+        var toggle = document.querySelector('.nav-toggle');
+        var menu = document.querySelector('.nav-menu');
+        if(!toggle || !menu){ return; }
+        if(!menu.id){ menu.id = 'mainNav'; }
+        toggle.addEventListener('click', function(){
+            var open = menu.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.classList.toggle('nav-open', open);
+        });
+        document.querySelectorAll('.nav-menu > li.has-mega > a').forEach(function(a){
+            a.addEventListener('click', function(e){
+                if(window.matchMedia('(max-width: 760px)').matches){
+                    e.preventDefault();
+                    var li = a.parentElement;
+                    Array.from(li.parentElement.children).forEach(function(sib){
+                        if(sib !== li){ sib.classList.remove('is-open'); }
+                    });
+                    li.classList.toggle('is-open');
+                }
+            });
+        });
+        document.querySelectorAll('.nav-menu .mega-col ul a, .nav-menu > li:not(.has-mega) > a').forEach(function(a){
+            a.addEventListener('click', function(){
+                menu.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-open');
+            });
+        });
+    });
+})();
+</script>
 
 </body>
 </html>

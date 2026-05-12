@@ -95,7 +95,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="insights.html">Insights</a></li>
     </ul>
-    <button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span class="bar"></span></button><button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
 </div></nav>
 
 <section class="page-hero">
@@ -231,6 +231,41 @@
             if(!ack){ alert('Please acknowledge the disclosures, privacy notice, and terms of use to proceed.'); return; }
             try { localStorage.setItem(KEY, 'yes'); localStorage.setItem('axiosEligRegion', region.value); } catch(e){}
             hideModal();
+        });
+    });
+})();
+</script>
+
+<script>
+(function(){
+    document.addEventListener('DOMContentLoaded', function(){
+        var toggle = document.querySelector('.nav-toggle');
+        var menu = document.querySelector('.nav-menu');
+        if(!toggle || !menu){ return; }
+        if(!menu.id){ menu.id = 'mainNav'; }
+        toggle.addEventListener('click', function(){
+            var open = menu.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.classList.toggle('nav-open', open);
+        });
+        document.querySelectorAll('.nav-menu > li.has-mega > a').forEach(function(a){
+            a.addEventListener('click', function(e){
+                if(window.matchMedia('(max-width: 760px)').matches){
+                    e.preventDefault();
+                    var li = a.parentElement;
+                    Array.from(li.parentElement.children).forEach(function(sib){
+                        if(sib !== li){ sib.classList.remove('is-open'); }
+                    });
+                    li.classList.toggle('is-open');
+                }
+            });
+        });
+        document.querySelectorAll('.nav-menu .mega-col ul a, .nav-menu > li:not(.has-mega) > a').forEach(function(a){
+            a.addEventListener('click', function(){
+                menu.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-open');
+            });
         });
     });
 })();
