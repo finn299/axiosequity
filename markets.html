@@ -4,353 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markets — AXIOS EQUITY</title>
-    <meta name="description" content="AXIOS EQUITY's cross-asset market intelligence — commodities, equities, rates, FX, and digital assets viewed through one integrated framework.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="nav">
-    <div class="container nav-inner">
-        <a href="index.html" class="logo">
-            <img src="axios-wordmark-dark.svg" alt="AXIOS EQUITY" class="logo-img">
-        </a>
-        <ul class="nav-links">
-            <li><a href="about.html">Firm</a></li>
-            <li><a href="platform.html">Platform</a></li>
-            <li><a href="assets.html">Strategies</a></li>
-            <li><a href="markets.html" class="is-active">Markets</a></li>
-            <li><a href="insights.html">Insights</a></li>
-            <li><a href="contact.html" class="nav-cta">Contact</a></li>
-        </ul>
-    </div>
-</nav>
+<nav class="nav"><div class="container nav-inner"><a href="index.html" class="logo"><img src="wordmark-light.svg" alt="AXIOS EQUITY" class="logo-img"></a><ul class="nav-links"><li><a href="about.html">Firm</a></li><li><a href="platform.html">Platform</a></li><li><a href="assets.html">Strategies</a></li><li><a href="markets.html" class="is-active">Markets</a></li><li><a href="insights.html">Insights</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul></div></nav>
 
 <section class="hero">
     <div class="container">
-        <p class="hero-eyebrow">Markets · Cross-asset view</p>
-        <h1 class="display-xl">Markets through an <em>integrated</em> lens.</h1>
-        <p class="lede">
-            Our view of global markets — commodities, equities, rates, FX, and digital assets — synthesized from the same framework that governs the firm's capital allocation. Indicative levels, regime view, and sector commentary, refreshed monthly.
-        </p>
+        <span class="tag">Markets · Cross-asset view</span>
+        <h1 class="display-xl">Markets through an<br><em>integrated</em> lens.</h1>
+        <p class="lede">Our view of global markets — commodities, equities, rates, FX, and digital assets — synthesized from the same framework that governs the firm's capital allocation. Indicative levels, regime view, and sector commentary, refreshed monthly.</p>
     </div>
 </section>
 
-<!-- ===== CROSS-ASSET DASHBOARD ===== -->
 <section class="section" style="padding-top: 0;">
     <div class="container">
-        <span class="section-label">Cross-Asset Dashboard</span>
-        <h2 class="display-md" style="margin-top: 12px;">Key benchmarks, regimes, and positioning signals.</h2>
+        <span class="tag">Cross-Asset Dashboard</span>
+        <h2 class="display-md">Key benchmarks, regimes, and positioning signals.</h2>
         <p class="lede-sm" style="max-width: 720px;">Indicative levels across the asset classes we operate. Values are illustrative and reflect period-end internal reference levels; not for trading purposes.</p>
 
         <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Benchmark</th>
-                    <th>Asset class</th>
-                    <th class="num">Last</th>
-                    <th class="num">QTD</th>
-                    <th class="num">YTD</th>
-                    <th>Regime</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Benchmark</th><th>Asset class</th><th class="num">Last</th><th class="num">QTD</th><th class="num">YTD</th><th>Regime</th></tr></thead>
             <tbody>
-                <tr>
-                    <td><strong>Brent crude</strong><span class="label-sm">USD / bbl</span></td>
-                    <td>Energy</td>
-                    <td class="num">84.20</td>
-                    <td class="num dir-up">+4.8%</td>
-                    <td class="num dir-up">+12.1%</td>
-                    <td>Tightening supply</td>
-                </tr>
-                <tr>
-                    <td><strong>WTI crude</strong><span class="label-sm">USD / bbl</span></td>
-                    <td>Energy</td>
-                    <td class="num">79.65</td>
-                    <td class="num dir-up">+5.1%</td>
-                    <td class="num dir-up">+10.4%</td>
-                    <td>Tightening supply</td>
-                </tr>
-                <tr>
-                    <td><strong>Henry Hub gas</strong><span class="label-sm">USD / MMBtu</span></td>
-                    <td>Energy</td>
-                    <td class="num">3.12</td>
-                    <td class="num dir-up">+8.7%</td>
-                    <td class="num dir-down">-3.2%</td>
-                    <td>Seasonal demand</td>
-                </tr>
-                <tr>
-                    <td><strong>Gold</strong><span class="label-sm">USD / oz</span></td>
-                    <td>Precious metals</td>
-                    <td class="num">2,358</td>
-                    <td class="num dir-up">+6.2%</td>
-                    <td class="num dir-up">+18.4%</td>
-                    <td>Real rates declining</td>
-                </tr>
-                <tr>
-                    <td><strong>Copper</strong><span class="label-sm">USD / lb</span></td>
-                    <td>Industrial metals</td>
-                    <td class="num">4.42</td>
-                    <td class="num dir-up">+3.4%</td>
-                    <td class="num dir-up">+9.6%</td>
-                    <td>Supply-led tightness</td>
-                </tr>
-                <tr>
-                    <td><strong>S&amp;P 500</strong><span class="label-sm">Index</span></td>
-                    <td>US equities</td>
-                    <td class="num">5,612</td>
-                    <td class="num dir-up">+2.1%</td>
-                    <td class="num dir-up">+7.8%</td>
-                    <td>Late-cycle</td>
-                </tr>
-                <tr>
-                    <td><strong>EuroStoxx 600</strong><span class="label-sm">Index</span></td>
-                    <td>European equities</td>
-                    <td class="num">528</td>
-                    <td class="num dir-flat">+0.4%</td>
-                    <td class="num dir-up">+3.1%</td>
-                    <td>Mixed</td>
-                </tr>
-                <tr>
-                    <td><strong>US 10Y</strong><span class="label-sm">Yield, %</span></td>
-                    <td>Rates</td>
-                    <td class="num">4.18</td>
-                    <td class="num dir-down">-22 bps</td>
-                    <td class="num dir-down">-46 bps</td>
-                    <td>Disinflation priced</td>
-                </tr>
-                <tr>
-                    <td><strong>USD index (DXY)</strong><span class="label-sm">Index</span></td>
-                    <td>FX</td>
-                    <td class="num">102.4</td>
-                    <td class="num dir-down">-1.6%</td>
-                    <td class="num dir-down">-0.8%</td>
-                    <td>Range-bound</td>
-                </tr>
-                <tr>
-                    <td><strong>Bitcoin</strong><span class="label-sm">USD</span></td>
-                    <td>Digital assets</td>
-                    <td class="num">68,420</td>
-                    <td class="num dir-up">+11.2%</td>
-                    <td class="num dir-up">+34.6%</td>
-                    <td>Cycle-leading</td>
-                </tr>
-                <tr>
-                    <td><strong>Ethereum</strong><span class="label-sm">USD</span></td>
-                    <td>Digital assets</td>
-                    <td class="num">3,940</td>
-                    <td class="num dir-up">+8.4%</td>
-                    <td class="num dir-up">+27.1%</td>
-                    <td>Cycle-leading</td>
-                </tr>
+                <tr><td><strong>Brent crude</strong><span class="label-sm">USD / bbl</span></td><td>Energy</td><td class="num">84.20</td><td class="num dir-up">+4.8%</td><td class="num dir-up">+12.1%</td><td>Tightening supply</td></tr>
+                <tr><td><strong>WTI crude</strong><span class="label-sm">USD / bbl</span></td><td>Energy</td><td class="num">79.65</td><td class="num dir-up">+5.1%</td><td class="num dir-up">+10.4%</td><td>Tightening supply</td></tr>
+                <tr><td><strong>Henry Hub gas</strong><span class="label-sm">USD / MMBtu</span></td><td>Energy</td><td class="num">3.12</td><td class="num dir-up">+8.7%</td><td class="num dir-down">-3.2%</td><td>Seasonal demand</td></tr>
+                <tr><td><strong>Gold</strong><span class="label-sm">USD / oz</span></td><td>Precious metals</td><td class="num">2,358</td><td class="num dir-up">+6.2%</td><td class="num dir-up">+18.4%</td><td>Real rates declining</td></tr>
+                <tr><td><strong>Copper</strong><span class="label-sm">USD / lb</span></td><td>Industrial metals</td><td class="num">4.42</td><td class="num dir-up">+3.4%</td><td class="num dir-up">+9.6%</td><td>Supply-led tightness</td></tr>
+                <tr><td><strong>S&amp;P 500</strong><span class="label-sm">Index</span></td><td>US equities</td><td class="num">5,612</td><td class="num dir-up">+2.1%</td><td class="num dir-up">+7.8%</td><td>Late-cycle</td></tr>
+                <tr><td><strong>EuroStoxx 600</strong><span class="label-sm">Index</span></td><td>European equities</td><td class="num">528</td><td class="num dir-flat">+0.4%</td><td class="num dir-up">+3.1%</td><td>Mixed</td></tr>
+                <tr><td><strong>US 10Y</strong><span class="label-sm">Yield, %</span></td><td>Rates</td><td class="num">4.18</td><td class="num dir-down">-22 bps</td><td class="num dir-down">-46 bps</td><td>Disinflation priced</td></tr>
+                <tr><td><strong>USD index (DXY)</strong><span class="label-sm">Index</span></td><td>FX</td><td class="num">102.4</td><td class="num dir-down">-1.6%</td><td class="num dir-down">-0.8%</td><td>Range-bound</td></tr>
+                <tr><td><strong>Bitcoin</strong><span class="label-sm">USD</span></td><td>Digital assets</td><td class="num">68,420</td><td class="num dir-up">+11.2%</td><td class="num dir-up">+34.6%</td><td>Cycle-leading</td></tr>
+                <tr><td><strong>Ethereum</strong><span class="label-sm">USD</span></td><td>Digital assets</td><td class="num">3,940</td><td class="num dir-up">+8.4%</td><td class="num dir-up">+27.1%</td><td>Cycle-leading</td></tr>
             </tbody>
         </table>
-
-        <p class="fine" style="margin-top: 18px;">Source: internal reference levels. Illustrative as of period-end. For institutional context only — not investment advice.</p>
+        <p class="fine" style="margin-top: 20px;">Source: internal reference levels. Illustrative as of period-end. For institutional context only — not investment advice.</p>
     </div>
 </section>
 
-<!-- ===== POSITIONING ===== -->
-<section class="section section-dark">
+<section class="section light-section">
     <div class="container">
-        <span class="section-label">Current Positioning</span>
-        <div class="split-aside">
-            <div>
-                <h2 class="display-lg">Stance across <em>six markets</em>.</h2>
-            </div>
-            <div>
-                <p class="lede">
-                    Allocation reflects integrated view across macro, fundamental, and relative-value frameworks. Stance is dynamic — we shift exposure between asset classes as cycle position and relative valuation evolve.
-                </p>
-            </div>
+        <div class="editorial-split">
+            <div><span class="tag">Positioning</span><h2 class="display-lg">Stance across <em>six</em> markets.</h2></div>
+            <div><p class="lede">Allocation reflects integrated view across macro, fundamental, and relative-value frameworks. Stance is dynamic — we shift exposure between asset classes as cycle position and relative valuation evolve.</p></div>
         </div>
 
-        <div class="matrix" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.10);">
-            <div class="matrix-row">
-                <div class="matrix-cell head">Asset class</div>
-                <div class="matrix-cell head">Stance</div>
-                <div class="matrix-cell head">Cycle position</div>
-                <div class="matrix-cell head">Conviction</div>
-            </div>
-            <div class="matrix-row">
-                <div class="matrix-cell first" style="color: #fff;">Energy &amp; Commodities</div>
-                <div class="matrix-cell"><span class="matrix-stance" style="color: #fff;"><span class="dot dot--over"></span>Overweight</span></div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Mid-cycle</div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">High</div>
-            </div>
-            <div class="matrix-row">
-                <div class="matrix-cell first" style="color: #fff;">Real Estate</div>
-                <div class="matrix-cell"><span class="matrix-stance" style="color: #fff;"><span class="dot dot--neutral"></span>Selective</span></div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Late-cycle repricing</div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Medium</div>
-            </div>
-            <div class="matrix-row">
-                <div class="matrix-cell first" style="color: #fff;">Mining &amp; Minerals</div>
-                <div class="matrix-cell"><span class="matrix-stance" style="color: #fff;"><span class="dot dot--over"></span>Overweight</span></div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Early-cycle</div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">High</div>
-            </div>
-            <div class="matrix-row">
-                <div class="matrix-cell first" style="color: #fff;">Public Equities</div>
-                <div class="matrix-cell"><span class="matrix-stance" style="color: #fff;"><span class="dot dot--neutral"></span>Neutral</span></div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Late-cycle</div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Medium</div>
-            </div>
-            <div class="matrix-row">
-                <div class="matrix-cell first" style="color: #fff;">Fixed Income</div>
-                <div class="matrix-cell"><span class="matrix-stance" style="color: #fff;"><span class="dot dot--under"></span>Underweight credit</span></div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Late-cycle</div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">High</div>
-            </div>
-            <div class="matrix-row">
-                <div class="matrix-cell first" style="color: #fff;">Digital Assets</div>
-                <div class="matrix-cell"><span class="matrix-stance" style="color: #fff;"><span class="dot dot--over"></span>Core long</span></div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Cycle-leading</div>
-                <div class="matrix-cell" style="color: rgba(255,255,255,0.7);">Medium-high</div>
-            </div>
+        <div class="stance">
+            <div class="stance-row head"><div class="stance-cell">Asset class</div><div class="stance-cell head">Stance</div><div class="stance-cell head">Cycle position</div><div class="stance-cell head">Conviction</div></div>
+            <div class="stance-row"><div class="stance-cell">Energy &amp; Commodities</div><div class="stance-cell"><span class="dot dot--over"></span>Overweight</div><div class="stance-cell">Mid-cycle</div><div class="stance-cell">High</div></div>
+            <div class="stance-row"><div class="stance-cell">Real Estate</div><div class="stance-cell"><span class="dot dot--neutral"></span>Selective</div><div class="stance-cell">Late-cycle repricing</div><div class="stance-cell">Medium</div></div>
+            <div class="stance-row"><div class="stance-cell">Mining &amp; Minerals</div><div class="stance-cell"><span class="dot dot--over"></span>Overweight</div><div class="stance-cell">Early-cycle</div><div class="stance-cell">High</div></div>
+            <div class="stance-row"><div class="stance-cell">Public Equities</div><div class="stance-cell"><span class="dot dot--neutral"></span>Neutral</div><div class="stance-cell">Late-cycle</div><div class="stance-cell">Medium</div></div>
+            <div class="stance-row"><div class="stance-cell">Fixed Income</div><div class="stance-cell"><span class="dot dot--under"></span>Underweight credit</div><div class="stance-cell">Late-cycle</div><div class="stance-cell">High</div></div>
+            <div class="stance-row"><div class="stance-cell">Digital Assets</div><div class="stance-cell"><span class="dot dot--over"></span>Core long</div><div class="stance-cell">Cycle-leading</div><div class="stance-cell">Medium-high</div></div>
         </div>
     </div>
 </section>
 
-<!-- ===== SECTOR COMMENTARY ===== -->
 <section class="section">
     <div class="container">
-        <span class="section-label">Sector Commentary</span>
+        <span class="tag">Sector Commentary</span>
         <h2 class="display-md">What we are watching, by market.</h2>
 
-        <div class="pillars" style="margin-top: 64px;">
-            <div>
-                <div class="pillar-num">Energy</div>
-                <h3 class="pillar-title">Tightening physical balances</h3>
-                <p class="pillar-body">OPEC+ production discipline, slower US shale capex growth, and structural demand from emerging markets sustain a constructive crude backdrop. Natural gas remains a story of seasonal demand and storage geometry. We hold exposure across crude, gas, and refined products.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Real assets</div>
-                <h3 class="pillar-title">Cap rate stabilization, sponsor stress</h3>
-                <p class="pillar-body">Commercial real estate has substantially repriced. We are selective — preferred equity and structured credit on cash-flowing assets with experienced sponsors. Logistics and Class A residential remain the most defensible exposures.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Mining</div>
-                <h3 class="pillar-title">Critical minerals as a multi-year theme</h3>
-                <p class="pillar-body">Energy transition demand for copper, lithium, and nickel continues to outrun supply response. Selective in lithium pricing risk; structural conviction on copper and uranium. Royalty and streaming structures dominate position sizing.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Equities</div>
-                <h3 class="pillar-title">Concentration and event-driven</h3>
-                <p class="pillar-body">Index-level valuation leaves little margin. We hold concentrated long positions and selectively pursue event-driven situations — spin-offs, restructurings, capital-return inflections — where business quality justifies sizing through the cycle.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Rates &amp; Credit</div>
-                <h3 class="pillar-title">Quality over yield</h3>
-                <p class="pillar-body">Spread compression in credit leaves limited downside protection. We hold duration in sovereigns and high-grade corporates, with underweight stance on high-yield. Private credit selectively, with strong covenants and recovery rights.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Digital</div>
-                <h3 class="pillar-title">Cycle leadership, institutional flows</h3>
-                <p class="pillar-body">Bitcoin's macro role as a digital reserve continues to develop. Ethereum's institutional adoption and stablecoin economics provide a more anchored thesis. Selective infrastructure positions; venture-stage exposure limited and structured carefully.</p>
-            </div>
+        <div class="principles" style="margin-top: 64px;">
+            <div class="principle"><div class="principle-roman">Energy</div><h3 class="principle-title">Tightening physical balances</h3><p class="principle-body">OPEC+ production discipline, slower US shale capex growth, and structural demand from emerging markets sustain a constructive crude backdrop. Natural gas remains a story of seasonal demand and storage geometry.</p></div>
+            <div class="principle"><div class="principle-roman">Real assets</div><h3 class="principle-title">Cap rate stabilization, sponsor stress</h3><p class="principle-body">Commercial real estate has substantially repriced. We are selective — preferred equity and structured credit on cash-flowing assets with experienced sponsors. Logistics and Class A residential remain the most defensible exposures.</p></div>
+            <div class="principle"><div class="principle-roman">Mining</div><h3 class="principle-title">Critical minerals as multi-year theme</h3><p class="principle-body">Energy transition demand for copper, lithium, and nickel continues to outrun supply response. Selective in lithium pricing risk; structural conviction on copper and uranium. Royalty and streaming structures dominate.</p></div>
         </div>
+
+        <div class="principles">
+            <div class="principle"><div class="principle-roman">Equities</div><h3 class="principle-title">Concentration and event-driven</h3><p class="principle-body">Index-level valuation leaves little margin. We hold concentrated long positions and selectively pursue event-driven situations — spin-offs, restructurings, capital-return inflections — where business quality justifies sizing through the cycle.</p></div>
+            <div class="principle"><div class="principle-roman">Credit</div><h3 class="principle-title">Quality over yield</h3><p class="principle-body">Spread compression in credit leaves limited downside protection. We hold duration in sovereigns and high-grade corporates, with underweight stance on high-yield. Private credit selectively, with strong covenants and recovery rights.</p></div>
+            <div class="principle"><div class="principle-roman">Digital</div><h3 class="principle-title">Cycle leadership, institutional flows</h3><p class="principle-body">Bitcoin's macro role as a digital reserve continues to develop. Ethereum's institutional adoption and stablecoin economics provide a more anchored thesis. Selective infrastructure positions; venture-stage exposure limited and structured carefully.</p></div>
+        </div>
+
+        <div style="margin-top: 80px;"><a class="link-arrow" href="macro.html">Full macro outlook →</a></div>
     </div>
 </section>
 
-<!-- ===== MACRO ANCHOR ===== -->
-<section class="section" style="background: var(--bg-soft);">
-    <div class="container">
-        <span class="section-label">Macro Anchor</span>
-        <div class="split-aside">
-            <div>
-                <h2 class="display-lg">The framework <em>beneath</em> the view.</h2>
-            </div>
-            <div>
-                <p class="lede">
-                    All sector views sit within an integrated macro framework — growth, inflation, real rates, and policy. The framework anchors position sizing across the platform.
-                </p>
-                <a class="btn btn-secondary" href="macro.html" style="margin-top: 12px;">Full macro outlook →</a>
-            </div>
-        </div>
-
-        <div class="pillars">
-            <div>
-                <div class="pillar-num">Growth</div>
-                <h3 class="pillar-title">Decelerating but resilient</h3>
-                <p class="pillar-body">US growth slower than 2022-23 cycle peak but supported by services consumption and AI capex. Europe stable, China policy-led recovery uncertain.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Inflation</div>
-                <h3 class="pillar-title">Stalling above target</h3>
-                <p class="pillar-body">Goods deflation complete; services inflation sticky. Labor markets cooling. Path to 2% remains uneven; risk of policy patience extending into 2027.</p>
-            </div>
-            <div>
-                <div class="pillar-num">Policy</div>
-                <h3 class="pillar-title">Asynchronous easing</h3>
-                <p class="pillar-body">ECB and BoC ahead of Fed in cutting cycle. BoJ exiting accommodation. EM CBs constrained by FX. USD anchored but not strong.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo" style="margin-bottom: 24px;">
-                    <img src="axios-wordmark-light.svg" alt="AXIOS EQUITY" class="logo-img">
-                </a>
-                <p class="lede">A multi-asset investment platform operating with institutional discipline across energy, real assets, equities, fixed income, and digital markets.</p>
-                <p style="font-size: 13px; line-height: 1.7; margin-top: 16px;">
-                    AXIOS EQUITY LLC<br>
-                    1209 Mountain Road PL NE, STE R<br>
-                    Albuquerque, NM 87110<br>
-                    <a href="tel:+19174097083">+1 (917) 409-7083</a> · <a href="mailto:info@axiosequity.com">info@axiosequity.com</a>
-                </p>
-            </div>
-            <div class="footer-col">
-                <h4>Firm</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="leadership.html">Leadership</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="press.html">Press</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Platform</h4>
-                <ul>
-                    <li><a href="platform.html">Approach</a></li>
-                    <li><a href="assets.html">Strategies</a></li>
-                    <li><a href="risk.html">Risk &amp; Liquidity</a></li>
-                    <li><a href="partnerships.html">Partnerships</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Markets</h4>
-                <ul>
-                    <li><a href="markets.html">Market Intelligence</a></li>
-                    <li><a href="commodities.html">Commodities</a></li>
-                    <li><a href="macro.html">Macro Outlook</a></li>
-                    <li><a href="research.html">Research</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Engage</h4>
-                <ul>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="insights.html">Insights</a></li>
-                    <li><a href="disclosures.html">Disclosures</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>&copy; 2026 AXIOS EQUITY LLC. All rights reserved.</div>
-            <div>Multi-asset investment platform · Albuquerque, New Mexico</div>
-        </div>
-    </div>
-</footer>
+<footer class="footer"><div class="container"><div class="footer-grid">
+<div class="footer-brand"><a href="index.html" class="logo" style="margin-bottom: 36px; display: inline-block;"><img src="wordmark-light.svg" alt="AXIOS EQUITY" class="logo-img"></a><p class="lede">A private multi-asset investment platform operating with institutional discipline across energy, real assets, equities, fixed income, and digital markets.</p><p style="margin-top: 20px;">AXIOS EQUITY LLC<br>1209 Mountain Road PL NE, STE R<br>Albuquerque, NM 87110<br><a href="tel:+19174097083">+1 (917) 409-7083</a> · <a href="mailto:info@axiosequity.com">info@axiosequity.com</a></p></div>
+<div class="footer-col"><h4>Firm</h4><ul><li><a href="about.html">About</a></li><li><a href="leadership.html">Leadership</a></li><li><a href="careers.html">Careers</a></li><li><a href="press.html">Press</a></li></ul></div>
+<div class="footer-col"><h4>Platform</h4><ul><li><a href="platform.html">Approach</a></li><li><a href="assets.html">Strategies</a></li><li><a href="risk.html">Risk &amp; Liquidity</a></li><li><a href="partnerships.html">Partnerships</a></li></ul></div>
+<div class="footer-col"><h4>Markets</h4><ul><li><a href="markets.html">Market Intelligence</a></li><li><a href="commodities.html">Commodities</a></li><li><a href="macro.html">Macro Outlook</a></li><li><a href="research.html">Research</a></li></ul></div>
+<div class="footer-col"><h4>Engage</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="insights.html">Insights</a></li><li><a href="disclosures.html">Disclosures</a></li></ul></div>
+</div><div class="footer-bottom"><div>&copy; 2026 AXIOS EQUITY LLC</div><div>Private multi-asset investment platform</div></div></div></footer>
 
 </body>
 </html>
