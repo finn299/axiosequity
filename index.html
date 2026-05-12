@@ -1,346 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXIOS EQUITY — Multi-asset investment platform</title>
-    <meta name="description" content="AXIOS EQUITY is a private investment platform deploying long-duration capital across energy, real assets, mining, equities, fixed income, and digital markets.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIOS EQUITY — Long-duration capital across markets</title>
+<meta name="description" content="AXIOS EQUITY is a private investment firm offering wealth advisory, asset management, investment banking, and merchant banking to families, institutions, and operating partners.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="app">
-
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar">
-        <a href="index.html" class="sidebar-logo">
-            <img src="wordmark-light.svg" alt="AXIOS EQUITY" class="sidebar-logo-img">
-        </a>
-
-        <div class="sidebar-section">
-            <div class="sidebar-section-title">Firm</div>
-            <ul class="sidebar-nav">
-                <li><a href="index.html" class="is-active">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7L8 2L14 7V14H2V7Z"/></svg></span>
-                    Overview
-                </a></li>
-                <li><a href="about.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="6" r="2.5"/><path d="M3 14C3 11.5 5 10 8 10C11 10 13 11.5 13 14"/></svg></span>
-                    About
-                </a></li>
-                <li><a href="leadership.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="6" r="2"/><circle cx="11" cy="6" r="2"/><path d="M2 13C2 11 3.5 10 5 10C6.5 10 8 11 8 13M8 13C8 11 9.5 10 11 10C12.5 10 14 11 14 13"/></svg></span>
-                    Leadership
-                </a></li>
-                <li><a href="careers.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="12" height="9" rx="1"/><path d="M6 5V3.5C6 3 6.4 2.5 7 2.5H9C9.6 2.5 10 3 10 3.5V5"/></svg></span>
-                    Careers
-                </a></li>
-            </ul>
+<!-- ===== Topbar ===== -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <div class="topbar-links">
+            <a href="about.html">About</a>
+            <a href="insights.html">Insights</a>
+            <a href="press.html">Press</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html">Contact</a>
         </div>
-
-        <div class="sidebar-section">
-            <div class="sidebar-section-title">Platform</div>
-            <ul class="sidebar-nav">
-                <li><a href="platform.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5"/><rect x="9" y="2" width="5" height="5"/><rect x="2" y="9" width="5" height="5"/><rect x="9" y="9" width="5" height="5"/></svg></span>
-                    Approach
-                </a></li>
-                <li><a href="assets.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 14L6 8L9 11L14 4"/><circle cx="14" cy="4" r="1"/></svg></span>
-                    Strategies
-                </a></li>
-                <li><a href="risk.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1L14 4V8C14 11 11.5 13.5 8 15C4.5 13.5 2 11 2 8V4L8 1Z"/></svg></span>
-                    Risk &amp; Liquidity
-                </a></li>
-                <li><a href="partnerships.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8H7M9 8H13M5 5V11M11 5V11"/></svg></span>
-                    Partnerships
-                </a></li>
-            </ul>
+        <div class="topbar-right">
+            <span class="topbar-locale"><strong>United States</strong> · English</span>
+            <a href="client-login.html" class="topbar-client">Client Login</a>
         </div>
-
-        <div class="sidebar-section">
-            <div class="sidebar-section-title">Markets</div>
-            <ul class="sidebar-nav">
-                <li><a href="markets.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 14L2 3M2 14L14 14M5 11L7 8L9 10L13 5"/></svg></span>
-                    Intelligence
-                </a></li>
-                <li><a href="commodities.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12L6 6L9 9L14 3M3 12L13 12"/></svg></span>
-                    Commodities
-                </a></li>
-                <li><a href="macro.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M2 8L14 8M8 2C10 4 11 6 11 8C11 10 10 12 8 14C6 12 5 10 5 8C5 6 6 4 8 2Z"/></svg></span>
-                    Macro
-                </a></li>
-                <li><a href="research.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4"/><path d="M10 10L14 14"/></svg></span>
-                    Research
-                </a></li>
-                <li><a href="insights.html">
-                    <span class="sidebar-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3H13V11H8L5 14V11H3V3Z"/></svg></span>
-                    Insights
-                </a></li>
-            </ul>
-        </div>
-
-        <div class="sidebar-footer">
-            <a class="btn btn-accent" href="contact.html">Contact Us →</a>
-            <div class="sidebar-meta">v 1.0 · Q2 2026</div>
-        </div>
-    </aside>
-
-    <!-- ===== MAIN ===== -->
-    <main class="main">
-
-        <div class="topbar">
-            <div class="topbar-crumb">
-                <span class="accent-dot"></span>
-                <span>Overview</span>
-                <span style="color: var(--text-faint);">/</span>
-                <span style="color: var(--text-faint);">Platform</span>
-            </div>
-            <div class="topbar-actions">
-                <span class="topbar-search">
-                    <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4"/><path d="M10 10L14 14"/></svg>
-                    Search
-                    <kbd>⌘ K</kbd>
-                </span>
-                <a class="btn btn-ghost btn-sm" href="contact.html">Get in touch</a>
-            </div>
-        </div>
-
-        <div class="page">
-
-            <!-- HERO -->
-            <section style="margin-bottom: 24px;">
-                <span class="tag">Multi-asset · Long-duration · Private</span>
-                <h1 class="display-xxl">
-                    Capital, deployed<br>
-                    across <em>every</em> market.
-                </h1>
-                <p class="lede">
-                    AXIOS EQUITY is a private investment platform deploying long-duration capital across energy, real assets, mining, public markets, credit, and digital assets — under one balance sheet, one risk framework, and one operating culture.
-                </p>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a class="btn btn-accent" href="platform.html">Explore platform</a>
-                    <a class="btn btn-ghost" href="markets.html">Market intelligence</a>
-                </div>
-            </section>
-
-            <!-- BENTO GRID — stats + featured -->
-            <div class="bento">
-                <div class="bento-card stat">
-                    <div class="bento-num">6</div>
-                    <div class="bento-label">Asset classes</div>
-                </div>
-                <div class="bento-card stat">
-                    <div class="bento-num">14</div>
-                    <div class="bento-label">Jurisdictions</div>
-                </div>
-                <div class="bento-card stat">
-                    <div class="bento-num">25<em style="-webkit-text-fill-color: var(--accent); background: none;">+</em></div>
-                    <div class="bento-label">Years avg. tenure</div>
-                </div>
-            </div>
-
-            <div class="bento">
-                <div class="bento-card hero">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="5" height="5"/><rect x="9" y="2" width="5" height="5"/><rect x="2" y="9" width="5" height="5"/><rect x="9" y="9" width="5" height="5"/></svg>
-                    </div>
-                    <h2 class="bento-title" style="font-size: 32px;">One balance sheet. <em>Six markets.</em></h2>
-                    <p class="bento-body" style="font-size: 16px; max-width: 560px;">Most multi-asset firms run separate teams with separate P&amp;L and separate views. AXIOS EQUITY runs one integrated book — specialists across energy, real estate, mining, equities, credit, and digital work under the same macro framework, the same risk limits, and the same capital pool.</p>
-                    <a class="bento-arrow" href="platform.html">Operating model →</a>
-                </div>
-                <div class="bento-card tall">
-                    <div class="bento-icon" style="background: rgba(139, 92, 246, 0.18); color: var(--accent-2);">
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3H13V11H8L5 14V11H3V3Z"/></svg>
-                    </div>
-                    <div class="bento-label" style="margin-bottom: 12px;">Q2 · 2026 · Cross-asset</div>
-                    <h3 class="bento-title" style="font-size: 22px;">When commodity volatility outruns equity volatility</h3>
-                    <p class="bento-body">A look at periods when commodity markets price macro shifts before equities do, and how integrated portfolios position for the gap before it closes.</p>
-                    <a class="bento-arrow" href="insights.html">Read note →</a>
-                </div>
-            </div>
-
-            <!-- ASSET CLASSES — Bento grid of 6 -->
-            <section class="section">
-                <div class="section-head">
-                    <div class="section-head-text">
-                        <span class="eyebrow">Strategies</span>
-                        <h2 class="display-lg">Six markets. <em>One</em> portfolio.</h2>
-                    </div>
-                    <a class="link-arrow" href="assets.html">All strategies →</a>
-                </div>
-
-                <div class="card-grid-3">
-                    <a class="feature-card" href="assets.html#energy">
-                        <div class="bento-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2V10M5 7L8 10L11 7M3 13H13"/></svg></div>
-                        <h3 class="display-sm">Energy &amp; Commodities</h3>
-                        <p class="bento-body">Crude, refined products, natural gas, and selective midstream — physical and financial positions across global benchmarks.</p>
-                        <a class="bento-arrow">Strategy →</a>
-                    </a>
-                    <a class="feature-card" href="assets.html#realestate">
-                        <div class="bento-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8L8 3L14 8M3 7V14H13V7M6 14V10H10V14"/></svg></div>
-                        <h3 class="display-sm">Real Estate</h3>
-                        <p class="bento-body">Direct ownership and structured equity in logistics, residential, and selective commercial — with regional operating partners.</p>
-                        <a class="bento-arrow">Strategy →</a>
-                    </a>
-                    <a class="feature-card" href="assets.html#mining">
-                        <div class="bento-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 13L5 7L8 10L11 5L14 13"/></svg></div>
-                        <h3 class="display-sm">Mining &amp; Minerals</h3>
-                        <p class="bento-body">Precious metals, critical minerals, and royalty interests — equity, streams, and selective direct equity.</p>
-                        <a class="bento-arrow">Strategy →</a>
-                    </a>
-                    <a class="feature-card" href="assets.html#equities">
-                        <div class="bento-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12L6 8L9 11L14 5M10 5L14 5L14 9"/></svg></div>
-                        <h3 class="display-sm">Public Equities</h3>
-                        <p class="bento-body">Concentrated long-only and event-driven positions, sized to high conviction and integrated with macro views.</p>
-                        <a class="bento-arrow">Strategy →</a>
-                    </a>
-                    <a class="feature-card" href="assets.html#fixedincome">
-                        <div class="bento-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 7H14M5 10H8"/></svg></div>
-                        <h3 class="display-sm">Fixed Income</h3>
-                        <p class="bento-body">Sovereign, investment-grade credit, and selective high-yield — sized against macro framework as duration anchor.</p>
-                        <a class="bento-arrow">Strategy →</a>
-                    </a>
-                    <a class="feature-card" href="assets.html#digital">
-                        <div class="bento-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6"/><path d="M6 5V11M6 5H9C10 5 10.5 5.5 10.5 6.5C10.5 7.5 10 8 9 8H6M6 8H9.5C10.5 8 11 8.5 11 9.5C11 10.5 10.5 11 9.5 11H6"/></svg></div>
-                        <h3 class="display-sm">Digital Assets</h3>
-                        <p class="bento-body">Core blockchain holdings, infrastructure tokens, on-chain credit — custodied institutionally and integrated with broader risk.</p>
-                        <a class="bento-arrow">Strategy →</a>
-                    </a>
-                </div>
-            </section>
-
-            <!-- POSITIONING — stance pills -->
-            <section class="section">
-                <div class="section-head">
-                    <div class="section-head-text">
-                        <span class="eyebrow">Positioning</span>
-                        <h2 class="display-lg">Stance this <em>quarter.</em></h2>
-                    </div>
-                    <a class="link-arrow" href="markets.html">Full intelligence →</a>
-                </div>
-
-                <div class="stance-list">
-                    <div class="stance-pill">
-                        <div class="stance-pill-head">
-                            <span class="stance-pill-asset">Energy &amp; Commodities</span>
-                            <span class="stance-pill-tag up">● Overweight</span>
-                        </div>
-                        <div class="stance-pill-meta"><span>Mid-cycle</span><strong>High conviction</strong></div>
-                    </div>
-                    <div class="stance-pill">
-                        <div class="stance-pill-head">
-                            <span class="stance-pill-asset">Real Estate</span>
-                            <span class="stance-pill-tag neutral">● Selective</span>
-                        </div>
-                        <div class="stance-pill-meta"><span>Late-cycle repricing</span><strong>Medium</strong></div>
-                    </div>
-                    <div class="stance-pill">
-                        <div class="stance-pill-head">
-                            <span class="stance-pill-asset">Mining &amp; Minerals</span>
-                            <span class="stance-pill-tag up">● Overweight</span>
-                        </div>
-                        <div class="stance-pill-meta"><span>Early-cycle</span><strong>High</strong></div>
-                    </div>
-                    <div class="stance-pill">
-                        <div class="stance-pill-head">
-                            <span class="stance-pill-asset">Public Equities</span>
-                            <span class="stance-pill-tag neutral">● Neutral</span>
-                        </div>
-                        <div class="stance-pill-meta"><span>Late-cycle</span><strong>Medium</strong></div>
-                    </div>
-                    <div class="stance-pill">
-                        <div class="stance-pill-head">
-                            <span class="stance-pill-asset">Fixed Income</span>
-                            <span class="stance-pill-tag down">● Underweight credit</span>
-                        </div>
-                        <div class="stance-pill-meta"><span>Late-cycle</span><strong>High</strong></div>
-                    </div>
-                    <div class="stance-pill">
-                        <div class="stance-pill-head">
-                            <span class="stance-pill-asset">Digital Assets</span>
-                            <span class="stance-pill-tag up">● Core long</span>
-                        </div>
-                        <div class="stance-pill-meta"><span>Cycle-leading</span><strong>Medium-high</strong></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- INSIGHTS -->
-            <section class="section">
-                <div class="section-head">
-                    <div class="section-head-text">
-                        <span class="eyebrow">Perspectives</span>
-                        <h2 class="display-lg">Notes from the integrated <em>vantage.</em></h2>
-                    </div>
-                    <a class="link-arrow" href="insights.html">All insights →</a>
-                </div>
-
-                <div class="insight-grid-3">
-                    <a class="insight-card-v7" href="#">
-                        <div class="insight-meta-v7"><span>Cross-asset</span><span>Q2 · 2026</span></div>
-                        <h3 class="insight-title-v7">When commodity volatility outruns equity volatility</h3>
-                        <p class="insight-body-v7">A look at periods when commodity markets price macro shifts before equities do, and how integrated portfolios position for the gap before it closes.</p>
-                    </a>
-                    <a class="insight-card-v7" href="#">
-                        <div class="insight-meta-v7"><span>Energy</span><span>Q1 · 2026</span></div>
-                        <h3 class="insight-title-v7">Storage as structural alpha</h3>
-                        <p class="insight-body-v7">Why owning physical storage and blending capability — not just screen-traded positions — provides a meaningful edge.</p>
-                    </a>
-                    <a class="insight-card-v7" href="#">
-                        <div class="insight-meta-v7"><span>Mining</span><span>2025</span></div>
-                        <h3 class="insight-title-v7">Royalty vs. operating equity in mining</h3>
-                        <p class="insight-body-v7">When royalty structures dominate the risk/reward, and when they leave too much economic upside on the table.</p>
-                    </a>
-                </div>
-            </section>
-
-            <!-- CTA -->
-            <section class="section">
-                <div class="cta-block">
-                    <div>
-                        <h2>Speak with the <em>investment team.</em></h2>
-                        <p class="lede" style="margin: 16px 0 0;">For institutional inquiries, partnership conversations, or operator introductions.</p>
-                    </div>
-                    <div class="cta-block-actions">
-                        <a class="btn btn-accent" href="contact.html">Contact us →</a>
-                        <a class="btn btn-ghost" href="about.html">About the firm</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- DISCLOSURE -->
-            <div class="disclosure-block">
-                <strong>Important notice.</strong>
-                AXIOS EQUITY is a private investment company. Nothing on this site constitutes an offer to sell, or a solicitation of an offer to buy, any security, fund interest, partnership interest, or other instrument. All references to historical performance, opportunities, and portfolio composition are illustrative and subject to change without notice. Past performance is not indicative of future results. Investing involves substantial risk, including the risk of loss of principal. Information presented is intended for institutional and professional investors only.
-            </div>
-
-        </div>
-
-        <!-- Slim footer -->
-        <footer class="footer">
-            <div>
-                AXIOS EQUITY LLC · 1209 Mountain Road PL NE, Albuquerque, NM 87110 · <a href="tel:+19174097083">+1 (917) 409-7083</a> · <a href="mailto:info@axiosequity.com">info@axiosequity.com</a>
-            </div>
-            <div>
-                <a href="disclosures.html">Disclosures</a> · &copy; 2026 AXIOS EQUITY LLC
-            </div>
-        </footer>
-
-    </main>
-
+    </div>
 </div>
+
+<!-- ===== Main Nav ===== -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <img src="wordmark-dark.svg" alt="AXIOS EQUITY">
+        </a>
+        <ul class="nav-menu">
+            <li class="has-mega">
+                <a href="#">Wealth &amp; Asset Management</a>
+                <div class="mega">
+                    <div class="mega-col">
+                        <h4>Wealth Management</h4>
+                        <p>Discretionary portfolio management, financial planning, and family office services for individuals, families, and entrepreneurs.</p>
+                        <ul>
+                            <li><a href="wealth-management.html">Private Wealth Advisory</a></li>
+                            <li><a href="wealth-management.html#families">Family Office Services</a></li>
+                            <li><a href="wealth-management.html#planning">Wealth &amp; Estate Planning</a></li>
+                            <li><a href="wealth-management.html#philanthropy">Philanthropic Advisory</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Asset Management</h4>
+                        <p>Institutional strategies across public and private markets, built on disciplined research and long-duration capital.</p>
+                        <ul>
+                            <li><a href="asset-management.html">Multi-Asset Strategies</a></li>
+                            <li><a href="asset-management.html#equities">Global Equities</a></li>
+                            <li><a href="asset-management.html#fixed-income">Fixed Income &amp; Credit</a></li>
+                            <li><a href="asset-management.html#alternatives">Alternative Investments</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="has-mega">
+                <a href="#">Investment Banking</a>
+                <div class="mega">
+                    <div class="mega-col">
+                        <h4>Global Advisory</h4>
+                        <p>Independent advice to corporations, governments, families, and institutions on their most consequential decisions.</p>
+                        <ul>
+                            <li><a href="investment-banking.html">Mergers &amp; Acquisitions</a></li>
+                            <li><a href="investment-banking.html#debt">Debt Advisory &amp; Restructuring</a></li>
+                            <li><a href="investment-banking.html#equity">Equity Advisory</a></li>
+                            <li><a href="investment-banking.html#sovereign">Sovereign Advisory</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Sector Focus</h4>
+                        <p>Specialist coverage across the sectors that define the next economic cycle.</p>
+                        <ul>
+                            <li><a href="assets.html">Energy &amp; Power</a></li>
+                            <li><a href="commodities.html">Mining &amp; Materials</a></li>
+                            <li><a href="platform.html">Technology &amp; Industrials</a></li>
+                            <li><a href="markets.html">Financial Services</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="has-mega">
+                <a href="#">Merchant Banking</a>
+                <div class="mega">
+                    <div class="mega-col">
+                        <h4>Private Capital</h4>
+                        <p>Long-duration equity and credit invested directly alongside our clients and operating partners.</p>
+                        <ul>
+                            <li><a href="merchant-banking.html">Corporate Private Equity</a></li>
+                            <li><a href="merchant-banking.html#real-assets">Real Assets &amp; Infrastructure</a></li>
+                            <li><a href="merchant-banking.html#credit">Private Credit</a></li>
+                            <li><a href="merchant-banking.html#secondaries">Secondaries &amp; Co-Investment</a></li>
+                        </ul>
+                    </div>
+                    <div class="mega-col">
+                        <h4>Operating Partnerships</h4>
+                        <p>We back management teams building durable, generational businesses across the real economy.</p>
+                        <ul>
+                            <li><a href="partnerships.html">Operating Partner Network</a></li>
+                            <li><a href="risk.html">Risk &amp; Governance</a></li>
+                            <li><a href="research.html">Research &amp; Diligence</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="insights.html">Insights</a></li>
+        </ul>
+        <button class="nav-search" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+    <div class="hero-inner">
+        <div>
+            <div class="hero-eyebrow">A Private Investment Firm · Est. 2026</div>
+            <h1 class="hero-title">Capital with <em>conviction.</em><br>Partnerships built to <em>endure.</em></h1>
+            <p class="hero-lede">AXIOS EQUITY serves families, institutions, and operating partners with disciplined wealth management, global advisory, and long-duration private capital. We invest where rigour meets relationships — and where the most important decisions deserve more than a transaction.</p>
+            <div class="hero-cta">
+                <a href="about.html" class="btn btn-light">Discover the firm</a>
+                <a href="client-login.html" class="btn btn-accent">Client login</a>
+            </div>
+        </div>
+        <aside class="hero-meta">
+            <div class="hero-meta-label">A snapshot</div>
+            <div class="hero-meta-stat">4</div>
+            <div class="hero-meta-sub">Practice areas — under one partnership.</div>
+            <div class="hero-meta-stat">200+</div>
+            <div class="hero-meta-sub">Years of cumulative principal experience across the partnership.</div>
+            <div class="hero-meta-stat">8</div>
+            <div class="hero-meta-sub">Sectors actively covered, from energy to digital infrastructure.</div>
+        </aside>
+    </div>
+</section>
+
+<!-- ===== Intro ===== -->
+<section class="section section-cream">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">The Firm</div>
+                <h2 class="section-title">A different kind of <em>investment house.</em></h2>
+            </div>
+            <p class="section-lede">AXIOS EQUITY was founded on the conviction that the next generation of capital allocators must combine the discretion of a private bank, the rigour of an asset manager, and the entrepreneurial conviction of a merchant banker. Across four integrated practices, we steward family, institutional, and partnership capital with a long view of time.</p>
+        </div>
+
+        <div class="split">
+            <div class="split-image">
+                <div class="split-image-cap">"We invest in businesses, sectors, and partnerships — not narratives."</div>
+            </div>
+            <div>
+                <h3 style="font-family:var(--serif);font-weight:500;font-size:34px;color:var(--navy-900);margin:0 0 22px;line-height:1.15;">An integrated platform, governed as a partnership.</h3>
+                <p style="color:var(--ink-500);font-size:16px;line-height:1.7;margin:0 0 16px;">Our partners advise families on the stewardship of generational wealth, manage institutional portfolios across public and private markets, advise corporations on transactions of consequence, and commit our own capital alongside operators building durable businesses.</p>
+                <p style="color:var(--ink-500);font-size:16px;line-height:1.7;margin:0 0 28px;">We are deliberately independent. No conflicts. No proprietary product agenda. Just aligned, long-duration capital — and the people who deploy it.</p>
+                <a href="about.html" class="service-link">Read our story</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Services (Rothschild-style 4 quadrants) ===== -->
+<section class="section section-white">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">What we do</div>
+                <h2 class="section-title">Four practices. <em>One partnership.</em></h2>
+            </div>
+            <p class="section-lede">Our work spans the full arc of capital — from a family's first conversation about its future to the structuring of a multi-billion-dollar transaction, and onward to the long-term ownership of operating businesses.</p>
+        </div>
+
+        <div class="services">
+            <article class="service">
+                <div class="service-num">01 / Wealth &amp; Asset Mgmt.</div>
+                <h3>Wealth Management</h3>
+                <p>Personalised, discretionary portfolio management and family office services for individuals, families, foundations, and endowments — built around the long view, not the next quarter.</p>
+                <ul>
+                    <li>Private Wealth Advisory<span></span></li>
+                    <li>Family Office Services<span></span></li>
+                    <li>Wealth &amp; Estate Planning<span></span></li>
+                    <li>Philanthropic Advisory<span></span></li>
+                </ul>
+                <a href="wealth-management.html" class="service-link">Explore Wealth Management</a>
+            </article>
+
+            <article class="service">
+                <div class="service-num">02 / Wealth &amp; Asset Mgmt.</div>
+                <h3>Asset Management</h3>
+                <p>Institutional investment strategies across public and private markets — managed by research-led teams, anchored in long-duration capital and disciplined risk management.</p>
+                <ul>
+                    <li>Multi-Asset Strategies<span></span></li>
+                    <li>Global Equities<span></span></li>
+                    <li>Fixed Income &amp; Credit<span></span></li>
+                    <li>Alternative Investments<span></span></li>
+                </ul>
+                <a href="asset-management.html" class="service-link">Explore Asset Management</a>
+            </article>
+
+            <article class="service">
+                <div class="service-num">03 / Advisory</div>
+                <h3>Investment Banking</h3>
+                <p>Independent strategic and financial advice to corporations, governments, family principals, and institutional clients on mergers, financings, restructurings, and capital decisions of consequence.</p>
+                <ul>
+                    <li>Mergers &amp; Acquisitions<span></span></li>
+                    <li>Debt Advisory &amp; Restructuring<span></span></li>
+                    <li>Equity Advisory<span></span></li>
+                    <li>Sovereign &amp; Sponsor Coverage<span></span></li>
+                </ul>
+                <a href="investment-banking.html" class="service-link">Explore Investment Banking</a>
+            </article>
+
+            <article class="service">
+                <div class="service-num">04 / Principal</div>
+                <h3>Merchant Banking</h3>
+                <p>Long-duration private capital invested directly — alongside our clients and operating partners — across corporate private equity, real assets, infrastructure, and private credit.</p>
+                <ul>
+                    <li>Corporate Private Equity<span></span></li>
+                    <li>Real Assets &amp; Infrastructure<span></span></li>
+                    <li>Private Credit<span></span></li>
+                    <li>Secondaries &amp; Co-Investment<span></span></li>
+                </ul>
+                <a href="merchant-banking.html" class="service-link">Explore Merchant Banking</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Stats band ===== -->
+<section class="section section-navy">
+    <div class="section-inner">
+        <div class="eyebrow">By the numbers</div>
+        <h2 class="section-title" style="max-width:24ch;">A platform measured in <em>relationships,</em> not just returns.</h2>
+
+        <div class="stats" style="margin-top:60px;">
+            <div class="stat">
+                <div class="stat-label">Practices</div>
+                <div class="stat-num">4</div>
+                <div class="stat-text">Wealth, Asset Management, Investment Banking, and Merchant Banking — under a single partnership.</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Sectors covered</div>
+                <div class="stat-num">8</div>
+                <div class="stat-text">Energy, mining, real assets, financial services, technology, industrials, consumer, and digital markets.</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Time horizon</div>
+                <div class="stat-num">20Y+</div>
+                <div class="stat-text">We underwrite to multi-decade investment horizons, not vintage-year fund cycles.</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Partnership</div>
+                <div class="stat-num">100%</div>
+                <div class="stat-text">Privately held, partner-aligned, with the firm's own capital invested in every strategy.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Approach / Quote ===== -->
+<section class="section section-cream">
+    <div class="section-inner-narrow">
+        <div class="quote">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">An axiom is a truth that needs no proof. We believe the same is true of certain businesses, certain sectors, and certain relationships — and we organise our capital around them.</p>
+            <div class="quote-attr">— The Founding Partners, AXIOS EQUITY</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Sectors ===== -->
+<section class="section section-white">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">Where we invest</div>
+                <h2 class="section-title">Sectors of <em>conviction.</em></h2>
+            </div>
+            <p class="section-lede">Our research and capital concentrate on sectors that, in our view, will define the next twenty-five years of the real economy and the markets that finance it. Specialist coverage, generalist judgement.</p>
+        </div>
+
+        <div class="sectors">
+            <div class="sector">
+                <div class="sector-num">A / Real Economy</div>
+                <h3>Energy &amp; Power</h3>
+                <p>Upstream, midstream, generation, and the long electrification cycle — from natural gas to grid-scale renewables.</p>
+                <div class="sector-tags"><span class="sector-tag">Oil &amp; Gas</span><span class="sector-tag">Power</span><span class="sector-tag">Transition</span></div>
+            </div>
+            <div class="sector">
+                <div class="sector-num">B / Real Economy</div>
+                <h3>Mining &amp; Materials</h3>
+                <p>Industrial metals, battery materials, and the supply chains that physically build the next decades of growth.</p>
+                <div class="sector-tags"><span class="sector-tag">Copper</span><span class="sector-tag">Lithium</span><span class="sector-tag">Rare Earths</span></div>
+            </div>
+            <div class="sector">
+                <div class="sector-num">C / Real Economy</div>
+                <h3>Real Assets &amp; Infrastructure</h3>
+                <p>Long-life infrastructure, regulated assets, real estate, and the physical platforms of the digital economy.</p>
+                <div class="sector-tags"><span class="sector-tag">Data Centres</span><span class="sector-tag">Logistics</span><span class="sector-tag">Utilities</span></div>
+            </div>
+            <div class="sector">
+                <div class="sector-num">D / Markets</div>
+                <h3>Financial Services</h3>
+                <p>Banks, insurers, asset managers, market infrastructure, and the next generation of regulated financial platforms.</p>
+                <div class="sector-tags"><span class="sector-tag">Banks</span><span class="sector-tag">Insurance</span><span class="sector-tag">Market Infra</span></div>
+            </div>
+            <div class="sector">
+                <div class="sector-num">E / Technology</div>
+                <h3>Technology &amp; Industrials</h3>
+                <p>Mission-critical software, industrial automation, defence systems, and the dual-use platforms of national resilience.</p>
+                <div class="sector-tags"><span class="sector-tag">Software</span><span class="sector-tag">Automation</span><span class="sector-tag">Defence</span></div>
+            </div>
+            <div class="sector">
+                <div class="sector-num">F / Digital Markets</div>
+                <h3>Digital Assets &amp; Markets</h3>
+                <p>Regulated exposures to digital assets, market infrastructure, and tokenised real-world capital — selective, institutional, governed.</p>
+                <div class="sector-tags"><span class="sector-tag">Digital Assets</span><span class="sector-tag">RWA</span><span class="sector-tag">Custody</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Insights ===== -->
+<section class="section section-cream">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">Insights</div>
+                <h2 class="section-title">Research &amp; <em>perspectives.</em></h2>
+            </div>
+            <p class="section-lede">Selected commentary from our investment, advisory, and research teams — on the markets, sectors, and structural shifts shaping the cycle.</p>
+        </div>
+
+        <div class="cards">
+            <article class="card">
+                <div class="card-img alt-1"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span>Macro</span><span>May 2026</span></div>
+                    <h3>The long return of real assets</h3>
+                    <p>Why we believe the next decade of investment returns will be earned in the physical economy — in energy, materials, and infrastructure — and what that means for portfolio construction.</p>
+                    <a href="insights.html" class="card-link">Read perspective</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img alt-2"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span>Commodities</span><span>Apr 2026</span></div>
+                    <h3>Copper, capital, and the cost of electrification</h3>
+                    <p>The physics of the energy transition demand a generational investment in industrial metals. We examine the supply gap and the routes capital can take to fill it.</p>
+                    <a href="insights.html" class="card-link">Read perspective</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img alt-3"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span>Wealth</span><span>Apr 2026</span></div>
+                    <h3>Stewardship across generations</h3>
+                    <p>A framework for families considering the formalisation of a family office — when to centralise, when to externalise, and how to align governance with values.</p>
+                    <a href="insights.html" class="card-link">Read perspective</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-band">
+    <div class="cta-band-inner">
+        <h2>A different conversation about capital.</h2>
+        <p>If you are a family, an institution, or an operating partner exploring a long-term relationship, our partners would welcome a confidential introduction.</p>
+        <div class="cta-band-actions">
+            <a href="contact.html" class="btn btn-light">Contact our partners</a>
+            <a href="client-login.html" class="btn btn-accent">Existing clients</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="wordmark-light.svg" alt="AXIOS EQUITY">
+                <p>A private investment firm offering wealth, asset management, advisory, and merchant banking under a single partnership.</p>
+            </div>
+            <div>
+                <h5>Wealth &amp; Asset</h5>
+                <ul>
+                    <li><a href="wealth-management.html">Wealth Management</a></li>
+                    <li><a href="asset-management.html">Asset Management</a></li>
+                    <li><a href="wealth-management.html#families">Family Office</a></li>
+                    <li><a href="asset-management.html#alternatives">Alternatives</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Investment Banking</h5>
+                <ul>
+                    <li><a href="investment-banking.html">M&amp;A Advisory</a></li>
+                    <li><a href="investment-banking.html#debt">Debt &amp; Restructuring</a></li>
+                    <li><a href="investment-banking.html#equity">Equity Advisory</a></li>
+                    <li><a href="investment-banking.html#sovereign">Sovereign Coverage</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Merchant Banking</h5>
+                <ul>
+                    <li><a href="merchant-banking.html">Private Equity</a></li>
+                    <li><a href="merchant-banking.html#real-assets">Real Assets</a></li>
+                    <li><a href="merchant-banking.html#credit">Private Credit</a></li>
+                    <li><a href="merchant-banking.html#secondaries">Secondaries</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>The Firm</h5>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="locations.html">Locations</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="sustainability.html">Sustainability</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
+            <div class="footer-legal">
+                <a href="disclosures.html">Disclosures</a>
+                <a href="disclosures.html#privacy">Privacy</a>
+                <a href="disclosures.html#terms">Terms</a>
+                <a href="disclosures.html#cookies">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
