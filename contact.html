@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact — AXIOS EQUITY</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact — AXIOS EQUITY</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
 <style>
 .contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; margin-top: 64px; }
 @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
 .contact-block { padding: 32px 0; border-top: 1px solid var(--line); }
 .contact-block:first-child { padding-top: 0; border-top: 0; }
-.contact-label { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.contact-label { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 1.8px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
 .contact-value { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 8px; letter-spacing: -0.012em; }
 .contact-meta { font-size: 14px; color: var(--text-muted); font-weight: 300; }
 .form-field { margin-bottom: 24px; }
 .form-field label { display: block; font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 1.8px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
-.form-field input, .form-field select, .form-field textarea { width: 100%; padding: 16px 18px; font-family: var(--sans); font-size: 15px; color: var(--text); background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 0; outline: none; transition: border-color 0.2s; }
-.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+.form-field input, .form-field select, .form-field textarea { width: 100%; padding: 16px 18px; font-family: var(--sans); font-size: 15px; color: var(--text); background: var(--bg-warm); border: 1px solid var(--line-strong); border-radius: 0; outline: none; transition: border-color 0.2s; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent); }
 .form-field textarea { resize: vertical; min-height: 140px; }
 </style>
 </head><body>
@@ -36,7 +36,7 @@
                 <option>Other</option>
             </select></div>
             <div class="form-field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Briefly describe the nature of the engagement."></textarea></div>
-            <button type="button" class="btn btn-gold" onclick="alert('Form is illustrative — connect to a real submission backend before launch.');return false;">Send message →</button>
+            <button type="button" class="btn btn-accent" onclick="alert('Form is illustrative — connect to a real submission backend before launch.');return false;">Send message →</button>
         </form>
 
         <aside>

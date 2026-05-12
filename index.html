@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
 <nav class="nav">
     <div class="container nav-inner">
         <a href="index.html" class="logo">
-            <img src="wordmark-light.svg" alt="AXIOS EQUITY" class="logo-img">
+            <img src="wordmark-dark.svg" alt="AXIOS EQUITY" class="logo-img">
         </a>
         <ul class="nav-links">
             <li><a href="about.html">Firm</a></li>
@@ -30,62 +30,52 @@
     </div>
 </nav>
 
-<!-- ===== HERO — Dark editorial ===== -->
 <section class="hero">
     <div class="container">
-        <span class="tag">Multi-asset · Long-duration · Private</span>
+        <div class="hero-meta">
+            <span><strong>Volume I</strong> · Issue 02 · Q2 2026</span>
+            <span>Multi-asset · Long-duration · Private</span>
+        </div>
+
         <h1 class="display-xxl">
-            Capital, deployed<br>
-            <em>across every market.</em>
+            Capital,<br>
+            deployed across <em>every</em> market.
         </h1>
         <p class="lede">
             AXIOS EQUITY is a private investment platform deploying long-duration capital across energy, real assets, mining, public markets, credit, and digital assets — under one balance sheet, one risk framework, and one operating culture.
         </p>
         <div class="hero-actions">
-            <a class="btn btn-gold" href="platform.html">The Platform →</a>
+            <a class="btn btn-accent" href="platform.html">The Platform →</a>
             <a class="btn btn-ghost" href="markets.html">Market Intelligence</a>
         </div>
 
         <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-num">6</div>
-                <div class="hero-stat-label">Asset classes</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-num">14</div>
-                <div class="hero-stat-label">Jurisdictions</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-num"><em>25+</em></div>
-                <div class="hero-stat-label">Years avg. tenure</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-num"><em>Long</em></div>
-                <div class="hero-stat-label">Duration mandate</div>
-            </div>
+            <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Asset classes</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">14</div><div class="hero-stat-label">Jurisdictions</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">25<em>+</em></div><div class="hero-stat-label">Years avg. tenure</div></div>
+            <div class="hero-stat"><div class="hero-stat-num"><em>Long</em></div><div class="hero-stat-label">Duration mandate</div></div>
         </div>
     </div>
 </section>
 
-<!-- ===== Platform overview ===== -->
 <section class="section">
     <div class="container">
         <div class="editorial-split">
             <div>
-                <span class="tag">The Platform</span>
-                <h2 class="display-lg">One balance sheet.<br><em>Six markets.</em></h2>
+                <span class="kicker">The Platform</span>
+                <h2 class="display-lg">One balance sheet.<br>Six markets.</h2>
             </div>
             <div>
                 <p class="lede">
                     Most multi-asset firms run separate teams with separate P&amp;L and separate views. AXIOS EQUITY runs one integrated book — specialists across energy, real estate, mining, equities, credit, and digital work under the same macro framework, the same risk limits, and the same capital pool.
                 </p>
                 <p>
-                    The structural advantage is straightforward: we act at the boundaries between markets — where credit reprices ahead of equity, where commodities lead the cycle, where digital assets decorrelate — because we are built to see the whole field, not a single sector.
+                    The structural advantage is straightforward: we act at the boundaries between markets — where credit reprices ahead of equity, where commodities lead the cycle, where digital assets decorrelate.
                 </p>
             </div>
         </div>
 
-        <!-- Feature card — single hero asset story -->
+        <!-- Featured story -->
         <div class="feature">
             <div class="feature-media"></div>
             <div class="feature-content">
@@ -125,7 +115,7 @@
             <a class="asset-card" href="assets.html#fixedincome">
                 <div class="asset-card-num">05 — Credit</div>
                 <h3 class="asset-card-title">Fixed Income &amp; Credit</h3>
-                <p class="asset-card-body">Sovereign, investment-grade credit, and selective high-yield — sized against macro framework and used as the portfolio's duration anchor.</p>
+                <p class="asset-card-body">Sovereign, investment-grade credit, and selective high-yield — sized against macro framework and used as duration anchor.</p>
                 <span class="asset-card-arrow">Strategy →</span>
             </a>
             <a class="asset-card" href="assets.html#digital">
@@ -138,166 +128,90 @@
     </div>
 </section>
 
-<!-- ===== Pull quote ===== -->
-<section style="background: var(--bg-2);">
+<!-- Pull quote -->
+<section style="background: var(--bg-warm);">
     <div class="container-narrow">
         <div class="pull-quote">
-            <span class="pull-quote-mark">"</span>
             <p class="pull-quote-text">
-                Capital allocation should follow <strong>analysis</strong>, not mandate. Conviction earned across markets — not constrained within one — is what compounds.
+                Capital allocation should follow <em>analysis</em>, not mandate. Conviction earned across markets — not constrained within one — is what compounds.
             </p>
             <p class="pull-quote-attr">— Operating principle · AXIOS EQUITY</p>
         </div>
     </div>
 </section>
 
-<!-- ===== Positioning matrix ===== -->
-<section class="section">
+<!-- Positioning matrix — DARK -->
+<section class="section section-dark">
     <div class="container">
         <div class="editorial-split">
+            <div><span class="kicker">Positioning</span><h2 class="display-lg">Where we stand<br>this quarter.</h2></div>
             <div>
-                <span class="tag">Positioning</span>
-                <h2 class="display-lg">Where we stand<br><em>this quarter.</em></h2>
-            </div>
-            <div>
-                <p class="lede">
-                    Capital allocation across the platform reflects an integrated view of the macro cycle, asset-level fundamentals, and relative valuation. Stance is dynamic — refreshed quarterly with monthly internal reviews.
-                </p>
+                <p class="lede">Capital allocation across the platform reflects an integrated view of the macro cycle, asset-level fundamentals, and relative valuation. Stance is dynamic — refreshed quarterly with monthly internal reviews.</p>
             </div>
         </div>
 
         <div class="stance">
-            <div class="stance-row head">
-                <div class="stance-cell">Asset class</div>
-                <div class="stance-cell head">Stance</div>
-                <div class="stance-cell head">Cycle position</div>
-                <div class="stance-cell head">Conviction</div>
-            </div>
-            <div class="stance-row">
-                <div class="stance-cell">Energy &amp; Commodities</div>
-                <div class="stance-cell"><span class="dot dot--over"></span>Overweight</div>
-                <div class="stance-cell">Mid-cycle</div>
-                <div class="stance-cell">High</div>
-            </div>
-            <div class="stance-row">
-                <div class="stance-cell">Real Estate</div>
-                <div class="stance-cell"><span class="dot dot--neutral"></span>Selective</div>
-                <div class="stance-cell">Late-cycle repricing</div>
-                <div class="stance-cell">Medium</div>
-            </div>
-            <div class="stance-row">
-                <div class="stance-cell">Mining &amp; Minerals</div>
-                <div class="stance-cell"><span class="dot dot--over"></span>Overweight</div>
-                <div class="stance-cell">Early-cycle</div>
-                <div class="stance-cell">High</div>
-            </div>
-            <div class="stance-row">
-                <div class="stance-cell">Public Equities</div>
-                <div class="stance-cell"><span class="dot dot--neutral"></span>Neutral</div>
-                <div class="stance-cell">Late-cycle</div>
-                <div class="stance-cell">Medium</div>
-            </div>
-            <div class="stance-row">
-                <div class="stance-cell">Fixed Income</div>
-                <div class="stance-cell"><span class="dot dot--under"></span>Underweight credit</div>
-                <div class="stance-cell">Late-cycle</div>
-                <div class="stance-cell">High</div>
-            </div>
-            <div class="stance-row">
-                <div class="stance-cell">Digital Assets</div>
-                <div class="stance-cell"><span class="dot dot--over"></span>Core long</div>
-                <div class="stance-cell">Cycle-leading</div>
-                <div class="stance-cell">Medium-high</div>
-            </div>
+            <div class="stance-row head"><div class="stance-cell">Asset class</div><div class="stance-cell head">Stance</div><div class="stance-cell head">Cycle position</div><div class="stance-cell head">Conviction</div></div>
+            <div class="stance-row"><div class="stance-cell">Energy &amp; Commodities</div><div class="stance-cell"><span class="dot dot--over"></span>Overweight</div><div class="stance-cell">Mid-cycle</div><div class="stance-cell">High</div></div>
+            <div class="stance-row"><div class="stance-cell">Real Estate</div><div class="stance-cell"><span class="dot dot--neutral"></span>Selective</div><div class="stance-cell">Late-cycle repricing</div><div class="stance-cell">Medium</div></div>
+            <div class="stance-row"><div class="stance-cell">Mining &amp; Minerals</div><div class="stance-cell"><span class="dot dot--over"></span>Overweight</div><div class="stance-cell">Early-cycle</div><div class="stance-cell">High</div></div>
+            <div class="stance-row"><div class="stance-cell">Public Equities</div><div class="stance-cell"><span class="dot dot--neutral"></span>Neutral</div><div class="stance-cell">Late-cycle</div><div class="stance-cell">Medium</div></div>
+            <div class="stance-row"><div class="stance-cell">Fixed Income</div><div class="stance-cell"><span class="dot dot--under"></span>Underweight credit</div><div class="stance-cell">Late-cycle</div><div class="stance-cell">High</div></div>
+            <div class="stance-row"><div class="stance-cell">Digital Assets</div><div class="stance-cell"><span class="dot dot--over"></span>Core long</div><div class="stance-cell">Cycle-leading</div><div class="stance-cell">Medium-high</div></div>
         </div>
 
-        <p class="fine" style="margin-top: 32px;">Illustrative positioning summary. Reflects qualitative integrated view across macro, fundamental, and relative-value frameworks. Subject to change without notice.</p>
-
-        <div style="margin-top: 64px;">
-            <a class="link-arrow" href="markets.html">Full market intelligence →</a>
-        </div>
+        <p class="fine" style="margin-top: 32px; color: rgba(250,248,245,0.45);">Illustrative positioning summary. Subject to change without notice.</p>
+        <div style="margin-top: 56px;"><a class="btn btn-ghost-dark" href="markets.html">Full market intelligence →</a></div>
     </div>
 </section>
 
-<!-- ===== Operating principles ===== -->
-<section class="section light-section">
+<!-- Principles -->
+<section class="section section-warm">
     <div class="container">
         <div class="editorial-split-narrow">
-            <div>
-                <span class="tag">Operating Principles</span>
-                <h2 class="display-lg">Three <em>commitments.</em></h2>
-            </div>
+            <div><span class="kicker">Operating Principles</span><h2 class="display-lg">Three commitments.</h2></div>
             <div></div>
         </div>
 
         <div class="principles">
-            <div class="principle">
-                <div class="principle-roman">i.</div>
-                <h3 class="principle-title">Cash flow before narrative</h3>
-                <p class="principle-body">Every position — real asset or public market — is sized against bottoms-up unit economics, counterparty quality, and structural protections. Thematic and narrative views are layered on top, not relied on alone.</p>
-            </div>
-            <div class="principle">
-                <div class="principle-roman">ii.</div>
-                <h3 class="principle-title">Specialist execution, integrated capital</h3>
-                <p class="principle-body">Each asset class is run by people who have operated it for decades. Their conviction must clear the platform's risk framework and earn its allocation against alternatives — none of the teams are ring-fenced.</p>
-            </div>
-            <div class="principle">
-                <div class="principle-roman">iii.</div>
-                <h3 class="principle-title">Hold through cycles</h3>
-                <p class="principle-body">Permanent and long-locked capital lets us take illiquidity premia other firms can't, and avoid forced selling at cyclical bottoms. Liquidity is laddered so we deploy when opportunities open.</p>
-            </div>
+            <div class="principle"><div class="principle-num">01 · Discipline</div><h3 class="principle-title">Cash flow before narrative</h3><p class="principle-body">Every position — real asset or public market — is sized against bottoms-up unit economics, counterparty quality, and structural protections. Thematic and narrative views are layered on top, not relied on alone.</p></div>
+            <div class="principle"><div class="principle-num">02 · Execution</div><h3 class="principle-title">Specialist execution, integrated capital</h3><p class="principle-body">Each asset class is run by people who have operated it for decades. Their conviction must clear the platform's risk framework and earn its allocation against alternatives — none of the teams are ring-fenced.</p></div>
+            <div class="principle"><div class="principle-num">03 · Patience</div><h3 class="principle-title">Hold through cycles</h3><p class="principle-body">Permanent and long-locked capital lets us take illiquidity premia other firms can't, and avoid forced selling at cyclical bottoms. Liquidity is laddered so we deploy when opportunities open.</p></div>
         </div>
     </div>
 </section>
 
-<!-- ===== Insights ===== -->
+<!-- Insights -->
 <section class="section">
     <div class="container">
         <div class="editorial-split">
+            <div><span class="kicker">Perspectives</span><h2 class="display-lg">Notes from the<br>integrated vantage.</h2></div>
             <div>
-                <span class="tag">Perspectives</span>
-                <h2 class="display-lg">Notes from the<br><em>integrated</em> vantage.</h2>
-            </div>
-            <div>
-                <p class="lede">
-                    Operating across asset classes gives us a view of how capital moves between them — when commodities lead the cycle, when credit reprices ahead of equity, when digital markets signal what's coming. Notes from that vantage.
-                </p>
+                <p class="lede">Operating across asset classes gives us a view of how capital moves between them — when commodities lead the cycle, when credit reprices ahead of equity, when digital markets signal what's coming. Notes from that vantage.</p>
                 <a class="link-arrow" href="insights.html">All insights →</a>
             </div>
         </div>
 
         <div class="insight-grid">
-            <a class="insight-card" href="#">
-                <div class="insight-meta"><span>Cross-asset</span><span>Q2 · 2026</span></div>
-                <h3 class="insight-title">When commodity volatility outruns equity volatility</h3>
-                <p class="insight-body">A look at periods when commodity markets price macro shifts before equities do, and how integrated portfolios position for the gap before it closes.</p>
-            </a>
-            <a class="insight-card" href="#">
-                <div class="insight-meta"><span>Energy</span><span>Q1 · 2026</span></div>
-                <h3 class="insight-title">Storage as structural alpha</h3>
-                <p class="insight-body">Why owning physical storage and blending capability — not just screen-traded positions — provides a meaningful edge in energy markets.</p>
-            </a>
-            <a class="insight-card" href="#">
-                <div class="insight-meta"><span>Mining</span><span>2025</span></div>
-                <h3 class="insight-title">Royalty vs. operating equity in mining</h3>
-                <p class="insight-body">When royalty structures dominate the risk/reward, and when they leave too much economic upside on the table.</p>
-            </a>
+            <a class="insight-card" href="#"><div class="insight-meta"><span>Cross-asset</span><span>Q2 · 2026</span></div><h3 class="insight-title">When commodity volatility outruns equity volatility</h3><p class="insight-body">A look at periods when commodity markets price macro shifts before equities do, and how integrated portfolios position for the gap before it closes.</p></a>
+            <a class="insight-card" href="#"><div class="insight-meta"><span>Energy</span><span>Q1 · 2026</span></div><h3 class="insight-title">Storage as structural alpha</h3><p class="insight-body">Why owning physical storage and blending capability — not just screen-traded positions — provides a meaningful edge in energy markets.</p></a>
+            <a class="insight-card" href="#"><div class="insight-meta"><span>Mining</span><span>2025</span></div><h3 class="insight-title">Royalty vs. operating equity in mining</h3><p class="insight-body">When royalty structures dominate the risk/reward, and when they leave too much economic upside on the table.</p></a>
         </div>
     </div>
 </section>
 
-<!-- ===== CTA Strip ===== -->
+<!-- CTA Strip -->
 <section class="cta-strip">
     <div class="container cta-strip-inner">
         <h2>Speak with the<br><em>investment team.</em></h2>
         <div class="cta-strip-actions">
-            <a class="btn btn-gold" href="contact.html">Contact us →</a>
-            <a class="btn btn-ghost" href="about.html">About the firm</a>
+            <a class="btn btn-accent" href="contact.html">Contact us →</a>
+            <a class="btn btn-ghost-dark" href="about.html">About the firm</a>
         </div>
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
@@ -318,10 +232,7 @@
             <div class="footer-col"><h4>Markets</h4><ul><li><a href="markets.html">Market Intelligence</a></li><li><a href="commodities.html">Commodities</a></li><li><a href="macro.html">Macro Outlook</a></li><li><a href="research.html">Research</a></li></ul></div>
             <div class="footer-col"><h4>Engage</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="insights.html">Insights</a></li><li><a href="disclosures.html">Disclosures</a></li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <div>&copy; 2026 AXIOS EQUITY LLC</div>
-            <div>Private multi-asset investment platform</div>
-        </div>
+        <div class="footer-bottom"><div>&copy; 2026 AXIOS EQUITY LLC</div><div>Private multi-asset investment platform</div></div>
     </div>
 </footer>
 
