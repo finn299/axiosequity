@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" width="380" height="80">
+    <!-- Monogram mark -->
+    <g transform="translate(8, 14)">
+        <!-- Circular frame -->
+        <circle cx="26" cy="26" r="25" fill="none" stroke="#0c0c10" stroke-width="1.2"/>
+        <!-- Inner detail — A monogram -->
+        <path d="M 16 39 L 26 12 L 36 39 M 20.5 31 L 31.5 31" stroke="#0c0c10" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Tiny serif tick -->
+        <circle cx="26" cy="26" r="1.4" fill="#a86b3c"/>
+    </g>
+
+    <!-- Wordmark -->
+    <g transform="translate(76, 0)">
+        <text x="0" y="38" font-family="'Cormorant Garamond', 'Times New Roman', serif"
+            font-weight="500" font-size="26" letter-spacing="3.8" fill="#0c0c10">AXIOS</text>
+        <text x="0" y="62" font-family="'Cormorant Garamond', 'Times New Roman', serif"
+            font-style="italic" font-weight="400" font-size="20" letter-spacing="1.6" fill="#0c0c10">Equity</text>
+        <!-- Hairline divider between AXIOS and Equity -->
+        <line x1="0" y1="44" x2="36" y2="44" stroke="#a86b3c" stroke-width="0.8"/>
+    </g>
+</svg>

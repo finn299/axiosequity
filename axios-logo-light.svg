@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" width="380" height="80">
+    <!-- Monogram mark -->
+    <g transform="translate(8, 14)">
+        <circle cx="26" cy="26" r="25" fill="none" stroke="#f5f1ea" stroke-width="1.2"/>
+        <path d="M 16 39 L 26 12 L 36 39 M 20.5 31 L 31.5 31" stroke="#f5f1ea" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="26" cy="26" r="1.4" fill="#c08652"/>
+    </g>
+
+    <!-- Wordmark -->
+    <g transform="translate(76, 0)">
+        <text x="0" y="38" font-family="'Cormorant Garamond', 'Times New Roman', serif"
+            font-weight="500" font-size="26" letter-spacing="3.8" fill="#f5f1ea">AXIOS</text>
+        <text x="0" y="62" font-family="'Cormorant Garamond', 'Times New Roman', serif"
+            font-style="italic" font-weight="400" font-size="20" letter-spacing="1.6" fill="#f5f1ea">Equity</text>
+        <line x1="0" y1="44" x2="36" y2="44" stroke="#c08652" stroke-width="0.8"/>
+    </g>
+</svg>
