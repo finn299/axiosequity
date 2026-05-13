@@ -1,107 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partner Portal — AXIOS EQUITY</title>
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="dataroom-config.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Portal — AXIOS EQUITY</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="dataroom-config.js"></script>
 </head>
 <body>
 
 <div class="topbar"><div class="topbar-inner">
     <div class="topbar-links"><a href="about.html">About</a><a href="insights.html">Insights</a><a href="press.html">Press</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
-    <div class="topbar-right"><span class="topbar-locale"><strong>United States</strong> · English</span><a href="partner-login.html" class="topbar-client">Sign out</a></div>
+    <div class="topbar-right"><span class="topbar-locale" id="companyLabel"><strong>Partner Portal</strong></span><a href="#" onclick="signOut();return false;" class="topbar-client">Sign out</a></div>
 </div></div>
 
 <nav class="nav"><div class="nav-inner">
     <a href="index.html" class="nav-logo"><img src="wordmark-dark.svg" alt="AXIOS EQUITY"></a>
     <ul class="nav-menu">
-        <li><a href="partner-login.html">← Sign out</a></li>
+        <li><a href="#" onclick="signOut();return false;">Sign out →</a></li>
     </ul>
 </div></nav>
 
-<section class="portal-dashboard">
-    <div class="container">
-        <div class="portal-header">
-            <p class="portal-greeting" id="greeting">Welcome to the AXIOS EQUITY Partner Portal</p>
-            <h1 class="display-md" style="font-family: var(--serif); font-weight: 500; font-size: 44px; letter-spacing: -0.02em; margin-bottom: 24px;">Partnership <em>resources</em>.</h1>
-            <p class="lede" style="max-width: 720px;">
-                Materials for active and prospective partnerships. Select a sector workstream to access architecture documents, capability briefs, and engagement protocols. All access is logged.
-            </p>
+<section class="page-hero" style="background-image:linear-gradient(180deg,rgba(11,29,51,0.72) 0%,rgba(11,29,51,0.88) 100%),url('imgs/partnerships.jpg');background-size:cover;background-position:center;padding:80px 32px 60px;">
+    <div class="page-hero-inner">
+        <div class="crumbs"><a href="client-login.html">Client Login</a><span>/</span>Partner Portal</div>
+        <h1 class="page-title" style="font-size:clamp(36px,4.5vw,56px);">Your active <em>data rooms.</em></h1>
+        <p class="page-lede" id="welcomeLine">Welcome. The workstreams available to your team are listed below.</p>
+    </div>
+</section>
 
-            <div class="portal-search">
-                <input type="text" id="projectSearch" placeholder="Search workstreams — e.g., materials, drone, energy, AI…" autocomplete="off">
+<section class="section section-cream" style="padding:50px 32px 40px;">
+    <div class="section-inner">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule);background:#fff;">
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Company</div>
+                <div id="statCompany" style="font-family:var(--serif);font-size:18px;color:var(--navy-900);">—</div>
             </div>
-        </div>
-
-        <div class="project-grid" id="projectGrid">
-            <!-- Cards rendered dynamically from dataroom-config.js -->
-        </div>
-
-        <p id="noMatch" style="margin-top: 56px; color: var(--text-muted); font-size: 14px; display: none;">No workstreams match your search. Try a broader term or contact <a href="mailto:info@axiosequity.com" style="color: var(--text);">info@axiosequity.com</a> for a custom workstream.</p>
-
-        <div style="margin-top: 96px; padding-top: 56px; border-top: 1px solid var(--border);">
-            <p class="portal-fine">
-                Your session is bound to the email and access code you logged in with. Closing the browser ends the session; on return you will be asked to log in again and re-acknowledge the confidentiality conditions.
-            </p>
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Workstreams</div>
+                <div id="statStreams" style="font-family:var(--serif);font-size:18px;color:var(--navy-900);">—</div>
+            </div>
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Session Started</div>
+                <div id="statSession" style="font-family:var(--serif);font-size:18px;color:var(--navy-900);">—</div>
+            </div>
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Disclaimer</div>
+                <div style="font-family:var(--serif);font-size:18px;color:var(--accent);">Acknowledged ✓</div>
+            </div>
         </div>
     </div>
 </section>
+
+<section class="section section-cream" style="padding:30px 32px 80px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">Partner Data Room</div>
+                <h2 class="section-title" style="font-size:42px;max-width:22ch;">Workstreams available to <em>your team.</em></h2>
+            </div>
+            <p class="section-lede">Click a card to open the secure data room. Materials are confidential and scoped to your engagement. Each workstream links to its own Drive-backed folder with subfolders organised by category.</p>
+        </div>
+
+        <div class="field" style="max-width:480px;margin:32px 0 8px;">
+            <label for="projectSearch">Search workstreams</label>
+            <input type="text" id="projectSearch" placeholder="e.g. ytong, iep…" autocomplete="off">
+        </div>
+
+        <div class="stream-grid" id="projectGrid">
+            <!-- Cards rendered by JS -->
+        </div>
+
+        <p id="noMatch" style="margin-top:48px;color:var(--ink-500);font-size:14px;display:none;">No workstreams match your search.</p>
+
+        <div id="emptyState" style="display:none;margin-top:48px;padding:48px 36px;border:1px solid var(--rule);background:#fff;text-align:center;">
+            <h3 style="font-family:var(--serif);font-size:24px;color:var(--navy-900);margin:0 0 10px;font-weight:500;">No workstreams available yet</h3>
+            <p style="color:var(--ink-500);font-size:14px;margin:0 0 18px;">Your access code is valid but no workstreams are currently assigned. Please contact your AXIOS EQUITY relationship partner.</p>
+            <a href="contact.html" class="btn btn-outline">Contact us</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-white" style="padding:80px 32px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">How the data room works</div>
+                <h2 class="section-title" style="font-size:36px;max-width:22ch;">A simple, secure <em>workspace.</em></h2>
+            </div>
+            <p class="section-lede">Materials are hosted on enterprise Google Drive, scoped to your access code, and viewed in-portal with no downloads required.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px;">
+            <div style="padding:32px 28px;background:var(--cream-50);border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">01 / Browse</div>
+                <h3 style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin:0 0 12px;font-weight:500;">Open a workstream</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">Click a workstream card to enter its data room. Subfolders are organised by category — company overview, financial reports, operations, projects.</p>
+            </div>
+            <div style="padding:32px 28px;background:var(--cream-50);border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">02 / Collaborate</div>
+                <h3 style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin:0 0 12px;font-weight:500;">Share materials securely</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">Documents open in a secure in-portal viewer. Your team and AXIOS EQUITY share a single workspace under written confidentiality terms.</p>
+            </div>
+            <div style="padding:32px 28px;background:var(--cream-50);border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">03 / Coordinate</div>
+                <h3 style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin:0 0 12px;font-weight:500;">Move the partnership forward</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">When ready, contact your AXIOS EQUITY relationship partner to schedule operational reviews or escalate issues for senior attention.</p>
+            </div>
+        </div>
+
+        <div style="margin-top:48px;padding:28px 32px;background:var(--navy-900);color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+            <div>
+                <div style="font-family:var(--serif);font-size:22px;margin-bottom:4px;">Need additional materials or access?</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:14px;">Our partners are available for confidential discussions about any workstream.</div>
+            </div>
+            <a href="contact.html" class="btn btn-accent">Contact our team</a>
+        </div>
+    </div>
+</section>
+
+<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
+    <strong>Restricted area.</strong> Workstream materials are confidential and intended solely for the authorised recipient. Distribution outside your team requires written consent.
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+    <div class="footer-bottom">
+        <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
+        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a><a href="disclosures.html#terms">Terms</a></div>
+    </div>
+</div></footer>
 
 <script>
 function signOut() {
     sessionStorage.removeItem('eqx_partner_auth');
     sessionStorage.removeItem('eqx_partner_email');
+    sessionStorage.removeItem('eqx_partner_company');
+    sessionStorage.removeItem('eqx_partner_workstreams');
     sessionStorage.removeItem('eqx_partner_disclaimer');
     window.location.href = 'partner-login.html';
 }
-
-function escapeHtml(s) {
-    return String(s || '').replace(/[&<>"']/g, function (c) {
-        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+function escapeHtml(s){
+    return String(s || '').replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
 }
-
-function getAllowedWorkstreams() {
-    var raw = sessionStorage.getItem('eqx_partner_workstreams');
-    if (!raw) return [];
-    try { return JSON.parse(raw) || []; } catch (e) { return []; }
-}
-
-function renderWorkstreamCards() {
-    var grid = document.getElementById('projectGrid');
-    var streams = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.workstreams) ? window.AXIOS_CONFIG.workstreams : {};
-
-    var allowed = getAllowedWorkstreams();
-    var seesAll = allowed.indexOf('*') !== -1;
-
-    var html = '';
-    var visibleCount = 0;
-    Object.keys(streams).forEach(function (key) {
-        if (!seesAll && allowed.indexOf(key) === -1) return;
-        var p = streams[key];
-        html += '<a class="project-card" href="partner-dataroom.html?stream=' + encodeURIComponent(key) + '"'
-              + ' data-keywords="' + escapeHtml(p.keywords || '') + '">'
-              + '<div class="project-sector">' + escapeHtml(p.sector || '') + '</div>'
-              + '<h3 class="project-name">' + escapeHtml(p.title || '') + '</h3>'
-              + '<p class="project-status">' + escapeHtml(p.description || '') + '</p>'
-              + '<div class="project-meta">' + escapeHtml(p.status || '') + '</div>'
-              + '</a>';
-        visibleCount++;
-    });
-    if (!visibleCount) {
-        html = '<p class="portal-fine">No workstreams are currently available for your account. Contact <a href="mailto:info@axiosequity.com" style="color: var(--text);">info@axiosequity.com</a> if this seems wrong.</p>';
-    }
-    grid.innerHTML = html;
-}
-
 (function () {
     if (sessionStorage.getItem('eqx_partner_auth') !== '1') {
         window.location.href = 'partner-login.html';
@@ -111,47 +158,78 @@ function renderWorkstreamCards() {
         window.location.href = 'partner-disclaimer.html';
         return;
     }
-    var email = sessionStorage.getItem('eqx_partner_email');
-    if (email) {
-        document.getElementById('greeting').textContent = 'Signed in as ' + email;
+
+    var company = sessionStorage.getItem('eqx_partner_company') || '';
+    if (company) {
+        document.getElementById('companyLabel').innerHTML = '<strong>' + escapeHtml(company) + '</strong>';
+        document.getElementById('welcomeLine').textContent =
+            'Welcome, ' + company + '. The workstreams available to your team are listed below.';
+        document.getElementById('statCompany').textContent = company;
+    } else {
+        document.getElementById('statCompany').textContent = 'Authorised';
     }
 
-    renderWorkstreamCards();
+    var allowedRaw = sessionStorage.getItem('eqx_partner_workstreams');
+    var allowed = [];
+    try { allowed = JSON.parse(allowedRaw || '[]'); } catch(e) {}
 
+    var cfg = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.workstreams) || {};
+    var grid = document.getElementById('projectGrid');
+    var keys = Object.keys(cfg);
+    var visible = allowed.indexOf('*') >= 0 ? keys : keys.filter(function(k){ return allowed.indexOf(k) >= 0; });
+
+    document.getElementById('statStreams').textContent = visible.length;
+    var d = new Date();
+    var hh = String(d.getHours()).padStart(2,'0');
+    var mm = String(d.getMinutes()).padStart(2,'0');
+    document.getElementById('statSession').textContent = hh + ':' + mm + ' local';
+
+    if (!visible.length) {
+        grid.style.display = 'none';
+        document.getElementById('emptyState').style.display = 'block';
+        return;
+    }
+
+    var html = visible.map(function(key){
+        var p = cfg[key];
+        var title = escapeHtml(p.title || key);
+        var sector = escapeHtml(p.sector || '');
+        var desc = escapeHtml(p.description || '');
+        var status = escapeHtml(p.status || '');
+        var kw = escapeHtml(p.keywords || '');
+        return '' +
+            '<a class="stream-card" data-keywords="' + kw + '" href="partner-dataroom.html?stream=' + encodeURIComponent(key) + '">' +
+                '<div class="stream-card-eyebrow">' + sector + '</div>' +
+                '<div class="stream-card-title">' + title + '</div>' +
+                '<div class="stream-card-desc">' + desc + '</div>' +
+                '<div class="stream-card-status">' + status + '</div>' +
+                '<span class="stream-card-cta">Enter data room →</span>' +
+            '</a>';
+    }).join('');
+    grid.innerHTML = html;
+
+    // Live search
     var search = document.getElementById('projectSearch');
     var noMatch = document.getElementById('noMatch');
-
     search.addEventListener('input', function () {
         var q = search.value.toLowerCase().trim();
-        var cards = document.querySelectorAll('.project-card');
-        var visible = 0;
+        var cards = document.querySelectorAll('.stream-card');
+        var visibleCount = 0;
         cards.forEach(function (c) {
             var k = (c.getAttribute('data-keywords') || '').toLowerCase();
-            var n = (c.querySelector('.project-name').textContent || '').toLowerCase();
-            var s = (c.querySelector('.project-sector').textContent || '').toLowerCase();
-            if (!q || k.indexOf(q) > -1 || n.indexOf(q) > -1 || s.indexOf(q) > -1) {
-                c.classList.remove('is-hidden');
-                visible++;
+            var t = (c.querySelector('.stream-card-title').textContent || '').toLowerCase();
+            var s = (c.querySelector('.stream-card-eyebrow').textContent || '').toLowerCase();
+            if (!q || k.indexOf(q) > -1 || t.indexOf(q) > -1 || s.indexOf(q) > -1) {
+                c.style.display = '';
+                visibleCount++;
             } else {
-                c.classList.add('is-hidden');
+                c.style.display = 'none';
             }
         });
-        noMatch.style.display = visible === 0 ? 'block' : 'none';
+        noMatch.style.display = visibleCount === 0 ? 'block' : 'none';
     });
 })();
 </script>
-
-<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
-    <strong>Restricted area.</strong> Information on this page is confidential and intended only for the authorised recipient. Distribution outside your firm requires written consent.
-</div></div>
-
-<footer class="footer"><div class="footer-inner">
-    <div class="footer-bottom">
-        <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
-        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a></div>
-    </div>
-</div></footer>
-
 
 </body>
 </html>

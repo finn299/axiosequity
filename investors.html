@@ -1,537 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Relations — AXIOS EQUITY</title>
-    <meta name="description" content="Investor Relations at AXIOS EQUITY — investment thesis, capital structure, and resources for institutional investors evaluating participation in the platform or its operating subsidiaries.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .thesis-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            margin-top: 60px;
-        }
-
-        .thesis-cell {
-            background: var(--bg);
-            padding: 56px 48px;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .thesis-num {
-            font-family: var(--serif);
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 28px;
-            letter-spacing: 0.06em;
-        }
-
-        .thesis-title {
-            font-family: var(--serif);
-            font-size: 28px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .thesis-body {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-        /* Capital structure rows */
-        .structure-rows {
-            margin-top: 60px;
-            border-top: 1px solid var(--border);
-        }
-
-        .structure-row {
-            display: grid;
-            grid-template-columns: 200px 1fr 240px;
-            gap: 48px;
-            padding: 36px 0;
-            border-bottom: 1px solid var(--border);
-            align-items: start;
-        }
-
-        .structure-label {
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .structure-detail {
-            font-size: 17px;
-            color: var(--text);
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        .structure-meta {
-            font-family: var(--serif);
-            font-style: italic;
-            font-size: 15px;
-            color: var(--text-muted);
-            text-align: right;
-            font-weight: 300;
-        }
-
-        /* Materials */
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-
-        .material-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            padding: 40px 36px;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.25s, transform 0.25s;
-        }
-
-        .material-card:hover {
-            border-color: var(--text);
-        }
-
-        .material-tag {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 28px;
-        }
-
-        .material-title {
-            font-family: var(--serif);
-            font-size: 22px;
-            font-weight: 500;
-            letter-spacing: -0.015em;
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .material-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-weight: 300;
-            margin-bottom: 32px;
-            flex: 1;
-        }
-
-        .material-status {
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .status-pip {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-
-        .status-pip.live {
-            background: #4caf50;
-        }
-
-        @media (max-width: 1024px) {
-            .thesis-grid {
-                grid-template-columns: 1fr;
-            }
-            .structure-row {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .structure-meta {
-                text-align: left;
-            }
-            .materials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .thesis-cell {
-                padding: 36px 28px;
-                min-height: auto;
-            }
-            .material-card {
-                padding: 32px 28px;
-                min-height: auto;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor Portal — AXIOS EQUITY</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="dataroom-config.js"></script>
 </head>
 <body>
-    <div class="topbar"><div class="topbar-inner">
+
+<div class="topbar"><div class="topbar-inner">
     <div class="topbar-links"><a href="about.html">About</a><a href="insights.html">Insights</a><a href="press.html">Press</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
-    <div class="topbar-right"><span class="topbar-locale"><strong>United States</strong> · English</span><a href="investor-login.html" class="topbar-client">Sign out</a></div>
+    <div class="topbar-right"><span class="topbar-locale" id="firmLabel"><strong>Investor Portal</strong></span><a href="#" onclick="signOut();return false;" class="topbar-client">Sign out</a></div>
 </div></div>
 
 <nav class="nav"><div class="nav-inner">
     <a href="index.html" class="nav-logo"><img src="wordmark-dark.svg" alt="AXIOS EQUITY"></a>
     <ul class="nav-menu">
-        <li><a href="investor-login.html">← Sign out</a></li>
+        <li><a href="#" onclick="signOut();return false;">Sign out →</a></li>
     </ul>
 </div></nav>
 
-    <section class="page-header">
-        <div class="container">
-            <div class="eyebrow fade-up fade-up-1">
-                <span class="eyebrow-dot"></span>
-                Investor Relations
+<section class="page-hero" style="background-image:linear-gradient(180deg,rgba(11,29,51,0.72) 0%,rgba(11,29,51,0.88) 100%),url('imgs/wealth-stewardship.jpg');background-size:cover;background-position:center;padding:80px 32px 60px;">
+    <div class="page-hero-inner">
+        <div class="crumbs"><a href="client-login.html">Client Login</a><span>/</span>Investor Portal</div>
+        <h1 class="page-title" style="font-size:clamp(36px,4.5vw,56px);">Your active <em>data rooms.</em></h1>
+        <p class="page-lede" id="welcomeLine">Welcome. The projects available for your review are listed below.</p>
+    </div>
+</section>
+
+<section class="section section-cream" style="padding:50px 32px 40px;">
+    <div class="section-inner">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule);background:#fff;">
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Firm</div>
+                <div id="statFirm" style="font-family:var(--serif);font-size:18px;color:var(--navy-900);">—</div>
             </div>
-            <h1 class="display-lg fade-up fade-up-2">
-                Capital aligned with <em>compounding</em>.
-            </h1>
-            <p class="lede fade-up fade-up-3">
-                AXIOS EQUITY engages institutional investors, family offices, and capital partners interested in technology commercialization at platform scale. This page provides a structured overview of our investment thesis, capital structure, and engagement process.
-            </p>
-            <div class="hero-actions" style="margin-top: 56px; display: flex; gap: 16px; flex-wrap: wrap;">
-                <a class="btn btn-primary" href="investor-login.html">Investor Portal</a>
-                <a class="btn btn-secondary" href="investor-request.html">Request Access →</a>
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Active Projects</div>
+                <div id="statProjects" style="font-family:var(--serif);font-size:18px;color:var(--navy-900);">—</div>
+            </div>
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Session Started</div>
+                <div id="statSession" style="font-family:var(--serif);font-size:18px;color:var(--navy-900);">—</div>
+            </div>
+            <div style="padding:22px 24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px;">Disclaimer</div>
+                <div style="font-family:var(--serif);font-size:18px;color:var(--accent);">Acknowledged ✓</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header" style="max-width: 720px;">
-                <div class="eyebrow" style="margin-bottom: 24px;">
-                    <span class="eyebrow-dot"></span>
-                    Investment Thesis
-                </div>
-                <h2 class="display-md">Why AXIOS EQUITY, <em>now</em>.</h2>
-                <p class="lede">
-                    Four structural reasons institutional capital aligns with the AXIOS EQUITY platform.
-                </p>
+<section class="section section-cream" style="padding:30px 32px 80px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">Investor Data Room</div>
+                <h2 class="section-title" style="font-size:42px;max-width:22ch;">Projects available to <em>your firm.</em></h2>
             </div>
-            <div class="thesis-grid">
-                <div class="thesis-cell">
-                    <div class="thesis-num">01</div>
-                    <h3 class="thesis-title">Centralized IP &amp; rights ownership</h3>
-                    <p class="thesis-body">
-                        AXIOS EQUITY consolidates technology, commercialization rights, and economic benefit rights at the corporate level. This centralization concentrates value creation at the platform — preserving optionality and capital efficiency that fragmented IP structures cannot match.
-                    </p>
-                </div>
-                <div class="thesis-cell">
-                    <div class="thesis-num">02</div>
-                    <h3 class="thesis-title">Multi-sector compounding</h3>
-                    <p class="thesis-body">
-                        Six core verticals share a common HoldCo platform, allowing learnings, IP improvements, and commercial relationships to compound across industries. Capital deployed in one sector strengthens the platform's capability in adjacent sectors.
-                    </p>
-                </div>
-                <div class="thesis-cell">
-                    <div class="thesis-num">03</div>
-                    <h3 class="thesis-title">Operational separation</h3>
-                    <p class="thesis-body">
-                        Operating subsidiaries (OpCos) execute commercially while the HoldCo retains strategic control. The separation isolates operating risk to the OpCo level while preserving platform-level economics — a structure designed to protect downside without capping upside.
-                    </p>
-                </div>
-                <div class="thesis-cell">
-                    <div class="thesis-num">04</div>
-                    <h3 class="thesis-title">Scalable capital pathways</h3>
-                    <p class="thesis-body">
-                        The IP-focused HoldCo structure supports institutional financing, public market access pathways, and multi-stage capital formation. Capital partners can engage at the HoldCo level for diversified exposure or at the OpCo level for focused vertical participation.
-                    </p>
-                </div>
+            <p class="section-lede">Click a card to open the secure data room. Materials are confidential and subject to the acknowledgments you accepted on entry. Each project links to its own Drive-backed folder with subfolders organised by category.</p>
+        </div>
+
+        <div class="stream-grid" id="projectGrid">
+            <!-- Cards rendered by JS -->
+        </div>
+
+        <div id="emptyState" style="display:none;margin-top:48px;padding:48px 36px;border:1px solid var(--rule);background:#fff;text-align:center;">
+            <h3 style="font-family:var(--serif);font-size:24px;color:var(--navy-900);margin:0 0 10px;font-weight:500;">No projects available yet</h3>
+            <p style="color:var(--ink-500);font-size:14px;margin:0 0 18px;">Your access code is valid but no projects are currently assigned. Please contact your AXIOS EQUITY relationship partner.</p>
+            <a href="contact.html" class="btn btn-outline">Contact us</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-white" style="padding:80px 32px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">How the data room works</div>
+                <h2 class="section-title" style="font-size:36px;max-width:22ch;">A simple, secure <em>review process.</em></h2>
+            </div>
+            <p class="section-lede">Materials are hosted on enterprise Google Drive, scoped to your access code, and viewed in-portal with no downloads required.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px;">
+            <div style="padding:32px 28px;background:var(--cream-50);border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">01 / Browse</div>
+                <h3 style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin:0 0 12px;font-weight:500;">Open a project</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">Click a project card to enter its data room. You'll see subfolders organised by category — overview, technology, financials, regional plans.</p>
+            </div>
+            <div style="padding:32px 28px;background:var(--cream-50);border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">02 / Review</div>
+                <h3 style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin:0 0 12px;font-weight:500;">Read documents in-portal</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">PDFs, presentations, and reports open in a secure in-portal viewer. No downloads, no forwards — your firm's confidentiality undertaking applies.</p>
+            </div>
+            <div style="padding:32px 28px;background:var(--cream-50);border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">03 / Discuss</div>
+                <h3 style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin:0 0 12px;font-weight:500;">Speak with the deal team</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">When ready, contact your AXIOS EQUITY relationship partner to schedule a call with the deal team or request supplementary materials.</p>
             </div>
         </div>
-    </section>
 
-    <section class="section section-warm">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow" style="margin-bottom: 24px;">
-                    <span class="eyebrow-dot"></span>
-                    Capital Structure
-                </div>
-                <h2 class="display-md">A framework for capital <em>participation</em>.</h2>
-                <p class="lede">
-                    AXIOS EQUITY supports multiple structures of capital partnership across HoldCo and OpCo levels.
-                </p>
+        <div style="margin-top:48px;padding:28px 32px;background:var(--navy-900);color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+            <div>
+                <div style="font-family:var(--serif);font-size:22px;margin-bottom:4px;">Need additional context?</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:14px;">Our partners are available for confidential discussions about any project.</div>
             </div>
-            <div class="structure-rows">
-                <div class="structure-row">
-                    <div class="structure-label">Entity</div>
-                    <div class="structure-detail">AXIOS EQUITY LLC, organized as a New Mexico Limited Liability Company.</div>
-                    <div class="structure-meta">HoldCo · Active</div>
-                </div>
-                <div class="structure-row">
-                    <div class="structure-label">HoldCo participation</div>
-                    <div class="structure-detail">Membership interests in AXIOS EQUITY LLC are available to qualified institutional and accredited investors under negotiated terms. Participation provides exposure to the full multi-sector platform.</div>
-                    <div class="structure-meta">By engagement</div>
-                </div>
-                <div class="structure-row">
-                    <div class="structure-label">OpCo participation</div>
-                    <div class="structure-detail">Investors seeking focused exposure may participate at the operating company level. Each OpCo is structured as a separate legal entity with its own cap table.</div>
-                    <div class="structure-meta">Vertical-specific</div>
-                </div>
-                <div class="structure-row">
-                    <div class="structure-label">Royalty &amp; licensing structures</div>
-                    <div class="structure-detail">Where appropriate, AXIOS EQUITY offers structured exposure to licensing and royalty streams from specific technology verticals — providing yield-oriented participation without operating equity.</div>
-                    <div class="structure-meta">Custom · Yield</div>
-                </div>
-                <div class="structure-row">
-                    <div class="structure-label">Public market pathways</div>
-                    <div class="structure-detail">The corporate structure is designed to support eventual public market access for the HoldCo and/or specific OpCos as commercial scale and regulatory conditions warrant.</div>
-                    <div class="structure-meta">Long horizon</div>
-                </div>
-            </div>
+            <a href="contact.html" class="btn btn-accent">Contact our team</a>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow" style="margin-bottom: 24px;">
-                    <span class="eyebrow-dot"></span>
-                    IR Materials
-                </div>
-                <h2 class="display-md">Resources for <em>qualified counterparties</em>.</h2>
-                <p class="lede">
-                    Detailed materials are made available to qualified investors under standard confidentiality conventions, following an initial engagement.
-                </p>
-            </div>
-            <div class="materials-grid">
-                <div class="material-card">
-                    <span class="material-tag">Document</span>
-                    <h3 class="material-title">Corporate Overview Deck</h3>
-                    <p class="material-desc">
-                        Comprehensive presentation covering the platform structure, TIC Framework, sector portfolio, and capital architecture.
-                    </p>
-                    <div class="material-status">
-                        <span class="status-pip live"></span>Available on request
-                    </div>
-                </div>
-                <div class="material-card">
-                    <span class="material-tag">Document</span>
-                    <h3 class="material-title">Sector Briefings</h3>
-                    <p class="material-desc">
-                        Vertical-specific briefings detailing technology positioning, market opportunity, and operating subsidiary plans for each portfolio sector.
-                    </p>
-                    <div class="material-status">
-                        <span class="status-pip live"></span>Available on request
-                    </div>
-                </div>
-                <div class="material-card">
-                    <span class="material-tag">Data Room</span>
-                    <h3 class="material-title">Diligence Materials</h3>
-                    <p class="material-desc">
-                        Structured data room access covering financial models, IP documentation, governance documents, and vertical-level diligence packages.
-                    </p>
-                    <div class="material-status">
-                        <span class="status-pip"></span>NDA required
-                    </div>
-                </div>
-                <div class="material-card">
-                    <span class="material-tag">Document</span>
-                    <h3 class="material-title">Term Sheet Templates</h3>
-                    <p class="material-desc">
-                        Reference documents outlining standard terms for HoldCo membership, OpCo participation, and royalty structures.
-                    </p>
-                    <div class="material-status">
-                        <span class="status-pip"></span>Engagement stage
-                    </div>
-                </div>
-                <div class="material-card">
-                    <span class="material-tag">Document</span>
-                    <h3 class="material-title">Confidentiality Pact</h3>
-                    <p class="material-desc">
-                        Standard NDA executed prior to substantive disclosure. Custom pacts are available for institutional counterparties under review.
-                    </p>
-                    <div class="material-status">
-                        <span class="status-pip live"></span>Available on request
-                    </div>
-                </div>
-                <div class="material-card">
-                    <span class="material-tag">Briefing</span>
-                    <h3 class="material-title">Quarterly Updates</h3>
-                    <p class="material-desc">
-                        Periodic updates to engaged investors on platform development, OpCo progress, and pipeline activity. Distributed under standing relationships.
-                    </p>
-                    <div class="material-status">
-                        <span class="status-pip live"></span>Recurring
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <div class="eyebrow" style="margin-bottom: 28px; color: var(--text-muted-dark);">
-                    <span class="eyebrow-dot"></span>
-                    Engagement Process
-                </div>
-                <h2 class="display-md" style="color: var(--text-light);">A clear path from <em>inquiry</em> to engagement.</h2>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dark); border: 1px solid var(--border-dark);">
-                <div style="background: var(--bg-dark); padding: 48px 36px; min-height: 240px; display: flex; flex-direction: column;">
-                    <span style="font-family: var(--serif); font-size: 13px; color: var(--text-muted-dark); margin-bottom: 24px; letter-spacing: 0.06em;">Step 01</span>
-                    <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--text-light); margin-bottom: 16px; line-height: 1.2;">Initial inquiry</h3>
-                    <p style="font-size: 14px; color: var(--text-muted-dark); line-height: 1.65; font-weight: 300;">
-                        Brief introduction submitted via email, including organization, role, and area of interest.
-                    </p>
-                </div>
-                <div style="background: var(--bg-dark); padding: 48px 36px; min-height: 240px; display: flex; flex-direction: column;">
-                    <span style="font-family: var(--serif); font-size: 13px; color: var(--text-muted-dark); margin-bottom: 24px; letter-spacing: 0.06em;">Step 02</span>
-                    <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--text-light); margin-bottom: 16px; line-height: 1.2;">Qualification call</h3>
-                    <p style="font-size: 14px; color: var(--text-muted-dark); line-height: 1.65; font-weight: 300;">
-                        Initial conversation to align on objectives, structure preferences, and mutual fit.
-                    </p>
-                </div>
-                <div style="background: var(--bg-dark); padding: 48px 36px; min-height: 240px; display: flex; flex-direction: column;">
-                    <span style="font-family: var(--serif); font-size: 13px; color: var(--text-muted-dark); margin-bottom: 24px; letter-spacing: 0.06em;">Step 03</span>
-                    <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--text-light); margin-bottom: 16px; line-height: 1.2;">NDA &amp; materials</h3>
-                    <p style="font-size: 14px; color: var(--text-muted-dark); line-height: 1.65; font-weight: 300;">
-                        Confidentiality framework executed, data room access provided, detailed materials shared.
-                    </p>
-                </div>
-                <div style="background: var(--bg-dark); padding: 48px 36px; min-height: 240px; display: flex; flex-direction: column;">
-                    <span style="font-family: var(--serif); font-size: 13px; color: var(--text-muted-dark); margin-bottom: 24px; letter-spacing: 0.06em;">Step 04</span>
-                    <h3 style="font-family: var(--serif); font-size: 20px; font-weight: 500; color: var(--text-light); margin-bottom: 16px; line-height: 1.2;">Diligence &amp; terms</h3>
-                    <p style="font-size: 14px; color: var(--text-muted-dark); line-height: 1.65; font-weight: 300;">
-                        Diligence period, structuring discussion, and term-sheet finalization.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-strip section">
-        <div class="container">
-            <div class="cta-content" style="max-width: 880px;">
-                <div class="eyebrow" style="margin-bottom: 32px;">
-                    <span class="eyebrow-dot"></span>
-                    Investor Contact
-                </div>
-                <h2 class="display-lg">For institutional <em>capital partners</em>.</h2>
-                <p class="lede" style="margin-top: 32px;">
-                    Direct inquiries from qualified institutional and accredited investors are welcomed. Initial outreach should include a brief description of the organization and the nature of interest.
-                </p>
-                <div class="cta-actions" style="margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="mailto:info@axiosequity.com?subject=Investor%20Relations%20Inquiry" class="btn btn-primary">
-                        Submit IR inquiry
-                        <span aria-hidden="true">→</span>
-                    </a>
-                    <a href="framework.html" class="btn btn-ghost">Read the Framework</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-warm" style="padding: 60px 0;">
-        <div class="container">
-            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 1000px; margin: 0 auto;">
-                <strong style="color: var(--text);">Important notice.</strong> The information presented on this page is provided for general informational purposes only and is intended for professional and accredited investors. Nothing on this page constitutes an offer to sell, or a solicitation of an offer to buy, any securities, membership interests, or other instruments. Past performance does not guarantee future results. All investments involve risk, including the risk of loss. AXIOS EQUITY is a New Mexico Limited Liability Company. For substantive discussions, please contact us directly.
-            </p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo"><span class="logo-mark"></span>AXIOS EQUITY</div>
-                    <p class="footer-tagline">
-                        Turning advanced technologies into global enterprises.
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="team.html">Team</a></li>
-                        <li><a href="framework.html">Framework</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="insights.html">Insights</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Engage</h4>
-                    <ul>
-                        <li><a href="contact.html">General inquiries</a></li>
-                        <li><a href="investors.html">Investor relations</a></li>
-                        <li><a href="partnerships.html">Partnerships</a></li>
-                        <li><a href="press.html">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Entity</h4>
-                    <ul>
-                        <li>AXIOS EQUITY LLC</li>
-                        <li>New Mexico, USA</li>
-                        <li>Active HoldCo</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-legal">
-                    © 2026 AXIOS EQUITY LLC. All rights reserved. AXIOS EQUITY is a New Mexico Limited Liability Company. Information presented on this website is for general purposes only and does not constitute an offer to sell securities, a solicitation, or financial advice.
-                </div>
-                <div class="footer-meta">
-                    Global Technology Commercialization<br>
-                    &amp; IP Integration Platform
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const toggle = document.querySelector('.nav-toggle');
-        const links = document.querySelector('.nav-links');
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                links.classList.toggle('is-open');
-            });
-        }
-    </script>
+    </div>
+</section>
 
 <div class="disclaimer-bar"><div class="disclaimer-bar-inner">
-    <strong>Restricted area.</strong> Information on this page is confidential and intended only for the authorised recipient.
+    <strong>Restricted area.</strong> Project materials are confidential and intended solely for the authorised recipient. Distribution outside your firm requires written consent.
 </div></div>
 
 <footer class="footer"><div class="footer-inner">
     <div class="footer-bottom">
         <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
-        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a></div>
+        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a><a href="disclosures.html#terms">Terms</a></div>
     </div>
 </div></footer>
+
+<script>
+function signOut() {
+    sessionStorage.removeItem('eqx_investor_auth');
+    sessionStorage.removeItem('eqx_investor_email');
+    sessionStorage.removeItem('eqx_investor_firm');
+    sessionStorage.removeItem('eqx_investor_projects');
+    sessionStorage.removeItem('eqx_investor_disclaimer');
+    window.location.href = 'investor-login.html';
+}
+function escapeHtml(s){
+    return String(s || '').replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+}
+(function () {
+    if (sessionStorage.getItem('eqx_investor_auth') !== '1') {
+        window.location.href = 'investor-login.html';
+        return;
+    }
+    if (!sessionStorage.getItem('eqx_investor_disclaimer')) {
+        window.location.href = 'investor-disclaimer.html';
+        return;
+    }
+
+    var firm = sessionStorage.getItem('eqx_investor_firm') || '';
+    if (firm) {
+        document.getElementById('firmLabel').innerHTML = '<strong>' + escapeHtml(firm) + '</strong>';
+        document.getElementById('welcomeLine').textContent =
+            'Welcome, ' + firm + '. The projects available for your review are listed below.';
+        document.getElementById('statFirm').textContent = firm;
+    } else {
+        document.getElementById('statFirm').textContent = 'Authorised';
+    }
+
+    var allowedRaw = sessionStorage.getItem('eqx_investor_projects');
+    var allowed = [];
+    try { allowed = JSON.parse(allowedRaw || '[]'); } catch(e) {}
+
+    var cfg = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.projects) || {};
+    var grid = document.getElementById('projectGrid');
+    var keys = Object.keys(cfg);
+    var visible = allowed.indexOf('*') >= 0 ? keys : keys.filter(function(k){ return allowed.indexOf(k) >= 0; });
+
+    document.getElementById('statProjects').textContent = visible.length;
+    var d = new Date();
+    var hh = String(d.getHours()).padStart(2,'0');
+    var mm = String(d.getMinutes()).padStart(2,'0');
+    document.getElementById('statSession').textContent = hh + ':' + mm + ' local';
+
+    if (!visible.length) {
+        grid.style.display = 'none';
+        document.getElementById('emptyState').style.display = 'block';
+        return;
+    }
+
+    var html = visible.map(function(key){
+        var p = cfg[key];
+        var title = escapeHtml(p.title || key);
+        var sector = escapeHtml(p.sector || '');
+        var desc = escapeHtml(p.description || '');
+        var status = escapeHtml(p.status || '');
+        return '' +
+            '<a class="stream-card" href="investor-dataroom.html?stream=' + encodeURIComponent(key) + '">' +
+                '<div class="stream-card-eyebrow">' + sector + '</div>' +
+                '<div class="stream-card-title">' + title + '</div>' +
+                '<div class="stream-card-desc">' + desc + '</div>' +
+                '<div class="stream-card-status">' + status + '</div>' +
+                '<span class="stream-card-cta">Enter data room →</span>' +
+            '</a>';
+    }).join('');
+    grid.innerHTML = html;
+})();
+</script>
 
 </body>
 </html>
