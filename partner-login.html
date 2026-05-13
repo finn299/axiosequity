@@ -1,69 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partner Portal — AXIOS EQUITY</title>
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="dataroom-config.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Portal — AXIOS EQUITY</title>
+<meta name="description" content="Partner Portal — AXIOS EQUITY. Access restricted to authorised operating partners and counterparties.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="dataroom-config.js"></script>
 </head>
 <body>
 
-<nav class="nav">
-    <div class="container nav-inner">
-        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
-        <ul class="nav-links">
-            <li><a href="partnerships.html">Partnerships</a></li>
-            <li><a href="partner-request.html" class="nav-cta">Request Access</a></li>
-        </ul>
-    </div>
-</nav>
+<div class="topbar"><div class="topbar-inner">
+    <div class="topbar-links"><a href="about.html">About</a><a href="insights.html">Insights</a><a href="press.html">Press</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="topbar-right"><span class="topbar-locale"><strong>United States</strong> · English</span><a href="client-login.html" class="topbar-client">Client Login</a></div>
+</div></div>
 
-<main class="portal-shell">
-    <div class="portal-card">
-        <div class="portal-eyebrow">Partner Portal</div>
-        <h1 class="portal-title">Restricted access.</h1>
-        <p class="portal-lede">
-            Enter your access credentials. Credentials are issued by AXIOS EQUITY Partnerships after verification. If you have not received credentials, please <a href="partner-request.html" style="color: var(--text); text-decoration: underline;">request access</a>.
-        </p>
+<nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="wordmark-dark.svg" alt="AXIOS EQUITY"></a>
+    <ul class="nav-menu">
+        <li><a href="client-login.html">← Back to Client Login</a></li>
+    </ul>
+</div></nav>
 
-        <form class="portal-form" id="partnerLoginForm" autocomplete="off">
-            <div class="portal-field">
-                <label for="pl-email">Email on Record</label>
+<div class="login-shell">
+    <aside class="login-art">
+        <div>
+            <div class="eyebrow" style="color:var(--accent-2);">Partner Portal</div>
+            <h2>Workstream documents, shared in confidence.</h2>
+        </div>
+        <div>
+            <p>The Partner Portal hosts workstream-specific operational, financial, and project materials for authorised operating partners, portfolio companies, and counterparties of AXIOS EQUITY.</p>
+            <p style="margin-top:24px;color:rgba(255,255,255,0.55);font-size:13px;">Access is invitation only. Codes are issued by your AXIOS EQUITY relationship partner.</p>
+        </div>
+    </aside>
+
+    <div class="login-card">
+        <div style="display:inline-block;padding:6px 12px;background:var(--cream-100);border:1px solid var(--rule);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;font-weight:500;">Restricted Access</div>
+        <h1>Sign in</h1>
+        <p class="small">Enter the access code issued by AXIOS EQUITY Partnerships. Your email is recorded for audit purposes only — it does not need to match anything on file.</p>
+
+        <form id="partnerLoginForm" autocomplete="off" style="margin-top:24px;">
+            <div class="field">
+                <label for="pl-email">Email (for audit log)</label>
                 <input type="email" id="pl-email" name="email" required>
             </div>
-            <div class="portal-field">
+            <div class="field">
                 <label for="pl-pass">Access Code</label>
-                <input type="password" id="pl-pass" name="pass" required>
+                <input type="password" id="pl-pass" name="pass" required autocomplete="off" placeholder="e.g. YTONG-MGMT-2026">
             </div>
 
-            <div class="portal-actions">
-                <button type="submit" class="btn btn-primary">Continue</button>
-                <a class="btn btn-secondary" href="partner-request.html">Request Access →</a>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;">
+                <button class="btn btn-primary" type="submit">Continue</button>
+                <a class="btn btn-outline" href="partner-request.html">Request access</a>
             </div>
-            <p class="portal-error" id="pl-error">Invalid credentials. Please contact AXIOS EQUITY Partnerships.</p>
+            <p id="pl-error" style="display:none;margin-top:14px;padding:12px 14px;background:#fdecec;border:1px solid #f3c2c2;color:#7a1a1a;font-size:13px;">Invalid credentials. Please contact AXIOS EQUITY Partnerships.</p>
         </form>
 
-        <div class="portal-divider"></div>
-        <p class="portal-fine">
-            Access to the Partner Portal is granted by invitation only and is subject to confidentiality terms. By logging in you acknowledge that you will be required to accept additional confidentiality conditions before viewing portal content.
-        </p>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-400);line-height:1.6;">
+            Access to the Partner Portal is granted by invitation only and is subject to confidentiality terms. By signing in you acknowledge the firm's <a href="disclosures.html" style="color:var(--navy-900);border-bottom:1px solid var(--accent);">disclosures</a> and will be required to accept additional confidentiality conditions before viewing portal content.
+        </div>
     </div>
-</main>
+</div>
+
+<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
+    <strong>Important notice.</strong> AXIOS EQUITY LLC is a privately held investment platform. The firm is not a bank and does not accept deposits or extend balance-sheet credit. Information in the Partner Portal is restricted to authorised partners. Please review our <a href="disclosures.html">disclosures</a>.
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+    <div class="footer-bottom">
+        <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
+        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a><a href="disclosures.html#terms">Terms</a></div>
+    </div>
+</div></footer>
 
 <script>
-/*
- * SCOPED ACCESS GATE — client-side only.
- * Access codes are configured in dataroom-config.js → partnerAccess.
- * Each code grants visibility to a specific list of workstream keys.
- * Real security comes from Google Drive folder sharing settings.
- */
 (function () {
     var form = document.getElementById('partnerLoginForm');
     var error = document.getElementById('pl-error');
@@ -72,15 +87,9 @@
         e.preventDefault();
         var email = (document.getElementById('pl-email').value || '').trim().toLowerCase();
         var pass = (document.getElementById('pl-pass').value || '').trim();
-
-        if (!email || !pass) {
-            error.classList.add('is-visible');
-            return;
-        }
-
+        if (!email || !pass) { error.style.display = 'block'; return; }
         var accessMap = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.partnerAccess) || {};
         var grant = accessMap[pass];
-
         if (grant && grant.workstreams && grant.workstreams.length) {
             sessionStorage.setItem('eqx_partner_auth', '1');
             sessionStorage.setItem('eqx_partner_email', email);
@@ -89,7 +98,7 @@
             sessionStorage.removeItem('eqx_partner_disclaimer');
             window.location.href = 'partner-disclaimer.html';
         } else {
-            error.classList.add('is-visible');
+            error.style.display = 'block';
         }
     });
 })();

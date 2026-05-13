@@ -1,157 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confidentiality &amp; Disclaimer — AXIOS EQUITY Partner Portal</title>
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confidentiality — Partner Portal — AXIOS EQUITY</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="nav">
-    <div class="container nav-inner">
-        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
-        <ul class="nav-links">
-            <li><a href="#" onclick="signOut();return false;">Sign out</a></li>
-        </ul>
+<div class="topbar"><div class="topbar-inner">
+    <div class="topbar-links"><a href="about.html">About</a><a href="insights.html">Insights</a><a href="press.html">Press</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
+    <div class="topbar-right"><span class="topbar-locale"><strong>United States</strong> · English</span><a href="#" onclick="signOut();return false;" class="topbar-client">Sign out</a></div>
+</div></div>
+
+<nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="wordmark-dark.svg" alt="AXIOS EQUITY"></a>
+    <ul class="nav-menu">
+        <li><a href="#" onclick="signOut();return false;">← Sign out</a></li>
+    </ul>
+</div></nav>
+
+<section class="page-hero" style="background-image:linear-gradient(180deg,rgba(11,29,51,0.72) 0%,rgba(11,29,51,0.88) 100%),url('imgs/partnerships.jpg');background-size:cover;background-position:center;padding:80px 32px 60px;">
+    <div class="page-hero-inner">
+        <div class="crumbs"><a href="client-login.html">Client Login</a><span>/</span><a href="partner-login.html">Partner Portal</a><span>/</span>Confidentiality</div>
+        <h1 class="page-title" style="font-size:clamp(36px,4.5vw,56px);">Before entering the <em>Partner Portal.</em></h1>
+        <p class="page-lede">The materials behind this gate are confidential workstream documents, provided solely to authorised operating partners and counterparties. Please review and acknowledge each of the conditions below.</p>
     </div>
-</nav>
+</section>
 
-<main class="portal-shell">
-    <div class="portal-card portal-card--wide">
-        <div class="portal-eyebrow">Confidentiality · Required Acknowledgments</div>
-        <h1 class="portal-title">Before entering the <em>Partner Portal</em>.</h1>
-        <p class="portal-lede">
-            The materials on the following pages are confidential and provided to verified partnership counterparties for evaluation and engagement purposes. Please review and acknowledge each condition below. All boxes must be checked to continue.
-        </p>
+<section class="section section-cream" style="padding:60px 32px;">
+    <div class="section-inner-narrow">
 
-        <div class="disclaimer-checkall" style="margin: 24px 0 12px; padding: 14px 18px; background: rgba(184, 149, 106, 0.08); border: 1px solid rgba(184, 149, 106, 0.3); border-radius: 6px; display: flex; align-items: center; gap: 12px;">
-            <input type="checkbox" id="dcAll" style="width: 18px; height: 18px; cursor: pointer; margin: 0;">
-            <label for="dcAll" style="cursor: pointer; font-weight: 500; font-size: 15px; color: var(--text); margin: 0;">
-                Acknowledge all 7 conditions
-                <span style="font-weight: 400; color: var(--text-muted); font-size: 13px; margin-left: 6px;">— check this box to acknowledge every item below at once</span>
+        <div style="margin:0 0 24px;padding:16px 20px;background:#fff;border:1px solid var(--accent);display:flex;align-items:center;gap:14px;">
+            <input type="checkbox" id="dcAll" style="width:20px;height:20px;cursor:pointer;margin:0;flex-shrink:0;">
+            <label for="dcAll" style="cursor:pointer;font-weight:500;font-size:15px;color:var(--navy-900);margin:0;">
+                Acknowledge all 6 conditions
+                <span style="font-weight:400;color:var(--ink-500);font-size:13px;display:block;margin-top:2px;">Tick this box to acknowledge every item below at once.</span>
             </label>
         </div>
 
-        <ul class="disclaimer-list">
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d1">
-                <label for="d1" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">1 · Confidentiality</span>
-                    I will treat all information accessed through the Partner Portal as strictly confidential. I will not reproduce, distribute, forward, screenshot, or otherwise disclose any portal content to any person outside my organization, except as expressly authorized in writing by AXIOS EQUITY LLC.
+        <ol style="list-style:none;margin:0;padding:0;">
+
+            <li style="display:flex;gap:14px;padding:18px 0;border-top:1px solid var(--rule);">
+                <input type="checkbox" class="dc" id="d1" style="width:18px;height:18px;cursor:pointer;margin:3px 0 0;flex-shrink:0;">
+                <label for="d1" style="cursor:pointer;flex:1;">
+                    <div style="font-family:var(--serif);font-size:18px;color:var(--navy-900);margin-bottom:4px;font-weight:500;">1 · Confidentiality</div>
+                    <div style="font-size:14px;color:var(--ink-700);line-height:1.65;">I will treat all information accessed through the Partner Portal as strictly confidential. I will not reproduce, distribute, forward, screenshot, or otherwise disclose any portal content to any person outside my authorised team, except as expressly authorised in writing by AXIOS EQUITY LLC.</div>
                 </label>
             </li>
 
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d2">
-                <label for="d2" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">2 · No Engagement Created</span>
-                    I understand that access to the Partner Portal does not create any partnership, joint venture, licensing, distribution, supply, employment, agency, or other contractual relationship with AXIOS EQUITY LLC or its affiliates. Any such relationship arises only upon execution of a written engagement on terms agreed in writing.
+            <li style="display:flex;gap:14px;padding:18px 0;border-top:1px solid var(--rule);">
+                <input type="checkbox" class="dc" id="d2" style="width:18px;height:18px;cursor:pointer;margin:3px 0 0;flex-shrink:0;">
+                <label for="d2" style="cursor:pointer;flex:1;">
+                    <div style="font-family:var(--serif);font-size:18px;color:var(--navy-900);margin-bottom:4px;font-weight:500;">2 · Authorised use only</div>
+                    <div style="font-size:14px;color:var(--ink-700);line-height:1.65;">I will use the materials only for the purpose of evaluating, executing, or operating the partnership / workstream to which I have been granted access, and for no other purpose.</div>
                 </label>
             </li>
 
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d3">
-                <label for="d3" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">3 · Use Limitation</span>
-                    I will use materials accessed via the Partner Portal solely to evaluate or perform a specific engagement with AXIOS EQUITY LLC, and not for any other purpose, including without limitation product development, competing initiatives, or third-party advisory work.
+            <li style="display:flex;gap:14px;padding:18px 0;border-top:1px solid var(--rule);">
+                <input type="checkbox" class="dc" id="d3" style="width:18px;height:18px;cursor:pointer;margin:3px 0 0;flex-shrink:0;">
+                <label for="d3" style="cursor:pointer;flex:1;">
+                    <div style="font-family:var(--serif);font-size:18px;color:var(--navy-900);margin-bottom:4px;font-weight:500;">3 · Accuracy &amp; reliance</div>
+                    <div style="font-size:14px;color:var(--ink-700);line-height:1.65;">Materials are provided on an as-is basis. While the firm and the relevant partner endeavour to keep them current, no representation or warranty is made as to their accuracy, completeness, or fitness for any particular purpose.</div>
                 </label>
             </li>
 
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d4">
-                <label for="d4" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">4 · Intellectual Property</span>
-                    I acknowledge that all technology, know-how, designs, methodologies, and IP rights disclosed through the portal remain the property of AXIOS EQUITY LLC or its licensors. No license, express or implied, is granted by access to the portal.
+            <li style="display:flex;gap:14px;padding:18px 0;border-top:1px solid var(--rule);">
+                <input type="checkbox" class="dc" id="d4" style="width:18px;height:18px;cursor:pointer;margin:3px 0 0;flex-shrink:0;">
+                <label for="d4" style="cursor:pointer;flex:1;">
+                    <div style="font-family:var(--serif);font-size:18px;color:var(--navy-900);margin-bottom:4px;font-weight:500;">4 · No third-party rights</div>
+                    <div style="font-size:14px;color:var(--ink-700);line-height:1.65;">Nothing in the Partner Portal creates rights for any third party. Materials are not intended for, and must not be relied upon by, any person other than the partner organisation to which access has been granted.</div>
                 </label>
             </li>
 
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d5">
-                <label for="d5" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">5 · Authority to Bind</span>
-                    I represent and warrant that I am authorized by the organization I represent to access these materials and to bind that organization to the acknowledgments set forth here.
+            <li style="display:flex;gap:14px;padding:18px 0;border-top:1px solid var(--rule);">
+                <input type="checkbox" class="dc" id="d5" style="width:18px;height:18px;cursor:pointer;margin:3px 0 0;flex-shrink:0;">
+                <label for="d5" style="cursor:pointer;flex:1;">
+                    <div style="font-family:var(--serif);font-size:18px;color:var(--navy-900);margin-bottom:4px;font-weight:500;">5 · Logging &amp; revocation</div>
+                    <div style="font-size:14px;color:var(--ink-700);line-height:1.65;">I acknowledge that access to the Partner Portal may be logged for security and compliance purposes. AXIOS EQUITY may revoke access at any time at its sole discretion.</div>
                 </label>
             </li>
 
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d6">
-                <label for="d6" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">6 · Logging &amp; Access Control</span>
-                    I acknowledge that access is logged for compliance purposes including timestamps, IP address, and pages viewed. AXIOS EQUITY may revoke access at any time at its sole discretion.
+            <li style="display:flex;gap:14px;padding:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+                <input type="checkbox" class="dc" id="d6" style="width:18px;height:18px;cursor:pointer;margin:3px 0 0;flex-shrink:0;">
+                <label for="d6" style="cursor:pointer;flex:1;">
+                    <div style="font-family:var(--serif);font-size:18px;color:var(--navy-900);margin-bottom:4px;font-weight:500;">6 · Governing law</div>
+                    <div style="font-size:14px;color:var(--ink-700);line-height:1.65;">These acknowledgments are governed by the internal laws of the State of Delaware, USA, without regard to its choice-of-law principles, and I submit to the exclusive jurisdiction of the state and federal courts located in Delaware for any dispute arising hereunder.</div>
                 </label>
             </li>
 
-            <li class="disclaimer-item">
-                <input type="checkbox" class="dc" id="d7">
-                <label for="d7" class="disclaimer-item-body">
-                    <span class="disclaimer-item-title">7 · Governing Law</span>
-                    These acknowledgments are governed by the internal laws of the State of Delaware, USA, without regard to conflict-of-laws principles, and I submit to the exclusive jurisdiction of the state and federal courts located in Delaware for any dispute arising hereunder.
-                </label>
-            </li>
-        </ul>
+        </ol>
 
-        <div class="portal-actions">
-            <button type="button" class="btn btn-primary" id="dcContinue" aria-disabled="true" disabled>I Acknowledge — Continue</button>
-            <a class="btn btn-secondary" href="#" onclick="signOut();return false;">Decline &amp; Sign out</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;">
+            <button type="button" class="btn btn-primary" id="dcContinue" disabled style="opacity:0.5;cursor:not-allowed;">I acknowledge — Continue</button>
+            <a class="btn btn-outline" href="#" onclick="signOut();return false;">Decline &amp; sign out</a>
         </div>
 
-        <div class="portal-divider"></div>
-        <p class="portal-fine">
-            By clicking "I Acknowledge — Continue", I confirm that I have read each condition and accept them on my own behalf and on behalf of the organization I represent. This acknowledgment is timestamped and may be relied upon by AXIOS EQUITY LLC.
+        <p style="margin-top:24px;font-size:12px;color:var(--ink-400);line-height:1.65;">
+            By clicking "I acknowledge — Continue", I confirm that I have read each of the above conditions and accept them on behalf of myself and the partner organisation I represent.
         </p>
     </div>
-</main>
+</section>
+
+<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
+    <strong>Restricted area.</strong> The pages beyond this gate contain confidential workstream materials. Distribution outside your authorised team requires written consent.
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+    <div class="footer-bottom">
+        <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
+        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a></div>
+    </div>
+</div></footer>
 
 <script>
 function signOut() {
     sessionStorage.removeItem('eqx_partner_auth');
     sessionStorage.removeItem('eqx_partner_email');
+    sessionStorage.removeItem('eqx_partner_company');
+    sessionStorage.removeItem('eqx_partner_workstreams');
     sessionStorage.removeItem('eqx_partner_disclaimer');
     window.location.href = 'partner-login.html';
 }
-
 (function () {
     if (sessionStorage.getItem('eqx_partner_auth') !== '1') {
         window.location.href = 'partner-login.html';
         return;
     }
-
     var boxes = document.querySelectorAll('.dc');
     var btn = document.getElementById('dcContinue');
     var checkAll = document.getElementById('dcAll');
-
     function refresh() {
-        var allChecked = Array.prototype.every.call(boxes, function (b) { return b.checked; });
-        if (allChecked) {
-            btn.removeAttribute('disabled');
-            btn.removeAttribute('aria-disabled');
-        } else {
-            btn.setAttribute('disabled', 'disabled');
-            btn.setAttribute('aria-disabled', 'true');
-        }
-        if (checkAll) checkAll.checked = allChecked;
+        var all = Array.prototype.every.call(boxes, function (b) { return b.checked; });
+        if (all) { btn.removeAttribute('disabled'); btn.style.opacity = '1'; btn.style.cursor = 'pointer'; }
+        else { btn.setAttribute('disabled', 'disabled'); btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed'; }
+        if (checkAll) checkAll.checked = all;
     }
-
     boxes.forEach(function (b) { b.addEventListener('change', refresh); });
-
     if (checkAll) {
         checkAll.addEventListener('change', function () {
-            var state = checkAll.checked;
-            boxes.forEach(function (b) { b.checked = state; });
+            var s = checkAll.checked;
+            boxes.forEach(function (b) { b.checked = s; });
             refresh();
         });
     }
-
     btn.addEventListener('click', function () {
-        if (btn.hasAttribute('disabled')) return;
-        sessionStorage.setItem('eqx_partner_disclaimer', new Date().toISOString());
+        var all = Array.prototype.every.call(boxes, function (b) { return b.checked; });
+        if (!all) return;
+        sessionStorage.setItem('eqx_partner_disclaimer', String(Date.now()));
         window.location.href = 'partner-portal.html';
     });
 })();

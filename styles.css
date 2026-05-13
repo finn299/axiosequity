@@ -1117,3 +1117,304 @@ a { color: inherit; text-decoration: none; }
     .elig-card .elig-actions { flex-direction: column; }
     .elig-card .elig-actions .btn { width: 100%; justify-content: center; }
 }
+
+/* ===========================================================================
+   DATAROOM PORTAL SHIM
+   Maps EQUORIX-era portal classes onto AXIOS EQUITY visual language.
+   Used by: investors.html, partner-portal.html, investor-dataroom.html,
+            partner-dataroom.html, investor-request.html, partner-request.html,
+            admin.html, viewer.html
+   =========================================================================== */
+
+/* Container / shell */
+.portal-shell {
+    background: var(--cream-50);
+    min-height: 60vh;
+    padding: 60px 32px 90px;
+}
+.portal-shell .container,
+.portal-shell > .container { max-width: var(--maxw); margin: 0 auto; }
+
+.portal-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 40px 44px 44px;
+    max-width: var(--maxw-narrow);
+    margin: 0 auto;
+}
+.portal-card--wide { max-width: var(--maxw); }
+
+/* Portal typography */
+.portal-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+.portal-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    color: var(--navy-900);
+    margin: 0 0 16px;
+}
+.portal-title em { font-style: italic; color: var(--ink-500); }
+.portal-lede {
+    font-size: 16px;
+    color: var(--ink-500);
+    line-height: 1.65;
+    margin: 0 0 28px;
+    max-width: 70ch;
+}
+.portal-fine {
+    font-size: 12px;
+    color: var(--ink-400);
+    line-height: 1.65;
+    margin: 0;
+}
+.portal-divider {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 28px 0 18px;
+    height: 0;
+}
+
+/* Portal forms */
+.portal-form { display: grid; gap: 18px; margin: 24px 0 16px; }
+.portal-field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-500);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.portal-field input,
+.portal-field textarea,
+.portal-field select {
+    width: 100%;
+    padding: 14px 16px;
+    font: inherit;
+    background: #fff;
+    border: 1px solid var(--rule);
+    color: var(--ink-900);
+}
+.portal-field input:focus,
+.portal-field textarea:focus,
+.portal-field select:focus { outline: none; border-color: var(--navy-700); }
+
+.portal-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    align-items: center;
+}
+.btn-secondary {
+    background: transparent;
+    color: var(--navy-900);
+    border-color: var(--navy-900);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--navy-900);
+    transition: background .2s, color .2s;
+    text-decoration: none;
+}
+.btn-secondary:hover { background: var(--navy-900); color: #fff; }
+.portal-error {
+    display: none;
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: #fdecec;
+    border: 1px solid #f3c2c2;
+    color: #7a1a1a;
+    font-size: 13px;
+}
+.portal-error.is-visible { display: block; }
+
+/* Disclaimer checklist */
+.disclaimer-list { list-style: none; margin: 0; padding: 0; }
+.disclaimer-item {
+    display: flex;
+    gap: 14px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+}
+.disclaimer-item:last-child { border-bottom: 1px solid var(--rule); }
+.disclaimer-item input[type="checkbox"] {
+    width: 18px; height: 18px;
+    margin: 3px 0 0;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.disclaimer-item-body { cursor: pointer; flex: 1; }
+.disclaimer-item-title {
+    display: block;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--navy-900);
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+/* Workstream cards (portal grid) */
+.stream-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+.stream-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 28px 28px 30px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    display: flex;
+    flex-direction: column;
+}
+.stream-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(11,29,51,0.08);
+    border-color: var(--accent);
+}
+.stream-card-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+.stream-card-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--navy-900);
+    line-height: 1.2;
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+.stream-card-desc {
+    font-size: 13.5px;
+    color: var(--ink-500);
+    line-height: 1.6;
+    flex: 1;
+    margin: 0 0 16px;
+}
+.stream-card-status {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-400);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+}
+.stream-card-cta {
+    color: var(--navy-900);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+    align-self: flex-start;
+    margin-top: 8px;
+    text-decoration: none;
+}
+
+/* Dataroom listing */
+.dataroom-shell { background: var(--cream-50); min-height: 60vh; padding: 50px 32px 90px; }
+.dataroom-shell .container { max-width: var(--maxw); margin: 0 auto; }
+.dataroom-breadcrumb {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin-bottom: 16px;
+}
+.dataroom-breadcrumb a { color: var(--accent); }
+.dataroom-breadcrumb span { margin: 0 10px; color: var(--ink-200); }
+
+.dataroom-files {
+    background: #fff;
+    border: 1px solid var(--rule);
+}
+.dataroom-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 110px 130px 32px;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink-900);
+    transition: background .15s;
+    font-size: 14px;
+}
+.dataroom-row:first-child { border-top: 0; }
+.dataroom-row:hover { background: var(--cream-50); }
+.dataroom-row-icon { color: var(--accent); }
+.dataroom-row-name { font-weight: 500; color: var(--navy-900); }
+.dataroom-row-type, .dataroom-row-meta { font-size: 12px; color: var(--ink-500); }
+.dataroom-row-arrow { color: var(--ink-300); }
+
+/* Old logo class shim */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--navy-900);
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.logo-mark { display: none; }
+
+/* Old nav-links shim — desktop only */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+.nav-links a {
+    color: var(--ink-700);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--navy-900); }
+.nav-links .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 14px;
+}
+.nav-links .nav-cta:hover { background: var(--accent-2); color: #fff; }
+
+@media (max-width: 760px) {
+    .portal-shell { padding: 40px 20px 60px; }
+    .portal-card { padding: 28px 22px 28px; }
+    .portal-title { font-size: 28px; }
+    .dataroom-row {
+        grid-template-columns: 28px 1fr 24px;
+        font-size: 13.5px;
+    }
+    .dataroom-row-type, .dataroom-row-meta { display: none; }
+}
