@@ -1,1249 +1,1400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin — AXIOS EQUITY Data Room Management</title>
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="dataroom-config.js?v=20260513c"></script>
-    <!-- Google APIs for Drive Picker -->
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="https://accounts.google.com/gsi/client"></script>
-    <style>
-        .admin-gate {
-            min-height: 100vh;
-            background: var(--bg-warm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        .admin-shell { padding: 120px 0 80px; background: var(--bg); min-height: 100vh; }
-        .admin-section {
-            margin-bottom: 80px;
-            border-top: 1px solid var(--border);
-            padding-top: 48px;
-        }
-        .admin-section:first-of-type { border-top: 0; padding-top: 0; }
-        .admin-h2 {
-            font-family: var(--serif);
-            font-size: 28px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-        .admin-lede {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.65;
-            margin-bottom: 32px;
-            max-width: 720px;
-        }
-        .admin-snippet {
-            font-family: 'JetBrains Mono', Menlo, monospace;
-            font-size: 12px;
-            line-height: 1.65;
-            background: var(--bg-warm);
-            border: 1px solid var(--border);
-            padding: 24px;
-            white-space: pre;
-            overflow-x: auto;
-            color: var(--text);
-            margin-top: 16px;
-        }
-        .admin-instructions {
-            background: var(--bg-warm);
-            border-left: 3px solid var(--accent);
-            padding: 20px 24px;
-            margin-top: 24px;
-            font-size: 13px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-        }
-        .admin-instructions code {
-            font-family: 'JetBrains Mono', Menlo, monospace;
-            font-size: 12px;
-            background: var(--bg);
-            padding: 2px 6px;
-            border: 1px solid var(--border);
-        }
-        .admin-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-        @media (max-width: 768px) {
-            .admin-form-grid { grid-template-columns: 1fr; }
-        }
-        .admin-actions { margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap; }
-        .admin-copy-btn {
-            background: var(--text);
-            color: var(--bg);
-            border: 0;
-            padding: 12px 24px;
-            font-family: var(--sans);
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            letter-spacing: 0.02em;
-        }
-        .admin-copy-btn:hover { opacity: 0.85; }
-        .inventory-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            margin-top: 24px;
-        }
-        .inventory-table th, .inventory-table td {
-            text-align: left;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-        }
-        .inventory-table th {
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-        .inventory-table td.mono {
-            font-family: 'JetBrains Mono', Menlo, monospace;
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-        .badge {
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            border: 1px solid var(--border);
-            display: inline-block;
-            font-weight: 500;
-        }
-        .badge--view { color: var(--accent-dark); border-color: var(--accent); }
-        .badge--request { color: var(--text-muted); }
-        .badge--missing { color: #a04040; border-color: #d4a0a0; }
-    </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — AXIOS EQUITY Data Room Management</title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="dataroom-config.js?v=20260513d"></script>
+<style>
+/* ============ ADMIN LAYOUT ============ */
+:root {
+    --admin-bg: #f7f5f0;
+    --admin-card: #ffffff;
+    --admin-border: #e5e1d8;
+    --admin-rule: #d6d0c2;
+    --admin-navy: #0b1d33;
+    --admin-accent: #b8860b;
+    --admin-ink: #2a2a2a;
+    --admin-ink-muted: #6b6b6b;
+    --admin-success: #2d6a4f;
+    --admin-warn: #b8860b;
+    --admin-danger: #a04040;
+}
 
-<!-- LOGIN GATE -->
+body.admin-body {
+    background: var(--admin-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--admin-ink);
+}
+
+/* Layout */
+.admin-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+}
+.admin-sidebar {
+    background: var(--admin-navy);
+    color: #fff;
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+.admin-sidebar-brand {
+    padding: 0 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 16px;
+}
+.admin-sidebar-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+.admin-sidebar-brand-sub {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+.admin-nav-section {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding: 12px 24px 6px;
+}
+.admin-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.admin-nav-item:hover {
+    background: rgba(255,255,255,0.06);
+}
+.admin-nav-item.is-active {
+    background: rgba(255,255,255,0.1);
+    border-left: 3px solid var(--admin-accent);
+    padding-left: 21px;
+    color: #fff;
+}
+.admin-nav-icon {
+    width: 18px;
+    text-align: center;
+    opacity: 0.7;
+}
+.admin-sidebar-footer {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 24px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+}
+
+/* Main content */
+.admin-main {
+    padding: 32px 40px;
+    max-width: 1280px;
+}
+.admin-pagehead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--admin-border);
+}
+.admin-page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--admin-navy);
+    line-height: 1.1;
+    margin: 0 0 4px;
+}
+.admin-page-sub {
+    font-size: 13px;
+    color: var(--admin-ink-muted);
+}
+
+/* Cards */
+.admin-card {
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+}
+.admin-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--admin-navy);
+    margin: 0 0 6px;
+}
+.admin-card-sub {
+    font-size: 13px;
+    color: var(--admin-ink-muted);
+    margin-bottom: 18px;
+}
+.admin-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+}
+.admin-stat {
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    padding: 18px 22px;
+}
+.admin-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--admin-ink-muted);
+    margin-bottom: 8px;
+}
+.admin-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--admin-navy);
+    line-height: 1;
+}
+.admin-stat-meta {
+    font-size: 11px;
+    color: var(--admin-accent);
+    margin-top: 6px;
+}
+
+/* Permission matrix table */
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 12px;
+}
+.matrix-table th, .matrix-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--admin-border);
+}
+.matrix-table th {
+    background: var(--admin-bg);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--admin-ink-muted);
+    font-weight: 500;
+    border-bottom: 2px solid var(--admin-rule);
+}
+.matrix-table th.col-room {
+    text-align: center;
+    width: 80px;
+    font-size: 9px;
+}
+.matrix-table td.col-room {
+    text-align: center;
+}
+.matrix-table tr:hover td {
+    background: rgba(184,134,11,0.04);
+}
+.matrix-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--admin-navy);
+    font-weight: 500;
+}
+.matrix-firm {
+    font-size: 11px;
+    color: var(--admin-ink-muted);
+    margin-top: 2px;
+}
+.matrix-check {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--admin-rule);
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+}
+.matrix-check.is-on {
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+}
+.matrix-check.is-on::after {
+    content: "✓";
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.matrix-check.is-wildcard {
+    background: var(--admin-accent);
+    border-color: var(--admin-accent);
+}
+.matrix-check.is-wildcard::after {
+    content: "★";
+    color: #fff;
+}
+
+/* Buttons */
+.adm-btn {
+    display: inline-block;
+    padding: 9px 18px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--admin-navy);
+    background: var(--admin-navy);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Inter', sans-serif;
+}
+.adm-btn:hover { opacity: 0.88; }
+.adm-btn.adm-btn-outline {
+    background: transparent;
+    color: var(--admin-navy);
+}
+.adm-btn.adm-btn-outline:hover {
+    background: var(--admin-navy);
+    color: #fff;
+}
+.adm-btn.adm-btn-accent {
+    background: var(--admin-accent);
+    border-color: var(--admin-accent);
+}
+.adm-btn.adm-btn-danger {
+    background: var(--admin-danger);
+    border-color: var(--admin-danger);
+}
+.adm-btn.adm-btn-sm {
+    padding: 5px 12px;
+    font-size: 10px;
+}
+.adm-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Forms */
+.adm-field {
+    margin-bottom: 14px;
+}
+.adm-field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--admin-ink-muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.adm-field input[type="text"],
+.adm-field input[type="email"],
+.adm-field select,
+.adm-field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--admin-rule);
+    background: #fff;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    color: var(--admin-ink);
+}
+.adm-field textarea {
+    resize: vertical;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+}
+.adm-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* Data room cards */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+.room-card {
+    border: 1px solid var(--admin-border);
+    background: var(--admin-card);
+    padding: 18px 20px;
+}
+.room-card-sector {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--admin-accent);
+    margin-bottom: 6px;
+}
+.room-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--admin-navy);
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+.room-card-desc {
+    font-size: 12px;
+    color: var(--admin-ink-muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+.room-card-meta {
+    font-size: 10px;
+    color: var(--admin-ink-muted);
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+}
+.room-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--admin-border);
+}
+.room-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    font-size: 10px;
+    color: var(--admin-ink-muted);
+    margin-right: 4px;
+}
+.room-tag.tag-active { color: var(--admin-success); border-color: var(--admin-success); }
+.room-tag.tag-restricted { color: var(--admin-danger); border-color: var(--admin-danger); }
+
+/* Section visibility */
+.admin-section { display: none; }
+.admin-section.is-active { display: block; }
+
+/* Modal */
+.adm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11,29,51,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 40px;
+}
+.adm-modal-overlay.is-open { display: flex; }
+.adm-modal {
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    padding: 32px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.adm-modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--admin-navy);
+    margin: 0 0 16px;
+}
+.adm-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--admin-border);
+}
+.checkbox-list {
+    border: 1px solid var(--admin-rule);
+    padding: 12px 14px;
+    background: var(--admin-bg);
+}
+.checkbox-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--admin-ink);
+}
+.checkbox-list label input { width: auto; }
+.checkbox-list-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--admin-ink-muted);
+    margin-left: auto;
+}
+
+/* Export pane */
+.export-pane {
+    background: #0b1d33;
+    color: #d8e1ef;
+    border-radius: 0;
+    padding: 16px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    max-height: 480px;
+    overflow-y: auto;
+    white-space: pre;
+}
+
+/* Status pill */
+.status-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 2px;
+}
+.status-pill.is-active { background: rgba(45,106,79,0.12); color: var(--admin-success); }
+.status-pill.is-warn { background: rgba(184,134,11,0.12); color: var(--admin-accent); }
+.status-pill.is-danger { background: rgba(160,64,64,0.12); color: var(--admin-danger); }
+
+/* Login gate */
+.admin-gate {
+    min-height: 100vh;
+    background: var(--admin-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.admin-gate-card {
+    max-width: 480px;
+    width: 100%;
+    background: var(--admin-card);
+    border: 1px solid var(--admin-border);
+    padding: 40px;
+}
+.admin-gate-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--admin-navy);
+    margin: 0 0 4px;
+}
+.admin-gate-sub {
+    color: var(--admin-ink-muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+.adm-error {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #fdecec;
+    border: 1px solid #f3c2c2;
+    color: #7a1a1a;
+    font-size: 13px;
+    display: none;
+}
+.adm-error.is-on { display: block; }
+
+@media (max-width: 768px) {
+    .admin-layout { grid-template-columns: 1fr; }
+    .admin-sidebar { position: relative; height: auto; }
+    .admin-main { padding: 24px 20px; }
+}
+</style>
+</head>
+<body class="admin-body">
+
+<!-- ===== LOGIN GATE ===== -->
 <div id="adminGate" class="admin-gate">
-    <div class="portal-card">
-        <div class="portal-eyebrow">Admin · Restricted</div>
-        <h1 class="portal-title">Data room <em>admin</em>.</h1>
-        <p class="portal-lede">
-            AXIOS EQUITY internal use only. Enter administrator access code to manage portal documents.
-        </p>
-        <form class="portal-form" id="adminLoginForm" autocomplete="off">
-            <div class="portal-field">
+    <div class="admin-gate-card">
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--admin-accent);font-weight:500;margin-bottom:14px;">Admin · Restricted</div>
+        <h1 class="admin-gate-title">Data Room <em>Admin</em></h1>
+        <p class="admin-gate-sub">Cloudflare Access has verified your identity. Enter the admin code to manage portal settings.</p>
+        <form id="adminLoginForm" autocomplete="off">
+            <div class="adm-field">
                 <label for="ad-pass">Admin Code</label>
                 <input type="password" id="ad-pass" required>
             </div>
-            <div class="portal-actions">
-                <button type="submit" class="btn btn-primary">Enter Admin</button>
-                <a class="btn btn-secondary" href="index.html">Exit</a>
+            <div style="display:flex;gap:10px;margin-top:18px;">
+                <button type="submit" class="adm-btn">Enter Admin</button>
+                <a class="adm-btn adm-btn-outline" href="index.html">Exit</a>
             </div>
-            <p class="portal-error" id="ad-error">Invalid admin code.</p>
+            <div class="adm-error" id="ad-error">Invalid admin code.</div>
         </form>
     </div>
 </div>
 
-<!-- ADMIN BODY -->
-<div id="adminBody" style="display:none;">
+<!-- ===== ADMIN BODY ===== -->
+<div id="adminBody" class="admin-layout" style="display:none;">
 
-<div class="topbar"><div class="topbar-inner">
-    <div class="topbar-links"><a href="about.html">About</a><a href="insights.html">Insights</a><a href="press.html">Press</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
-    <div class="topbar-right"><span class="topbar-locale"><strong>United States</strong> · English</span><a href="client-login.html" class="topbar-client">Sign out</a></div>
-</div></div>
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-brand">
+            <div class="admin-sidebar-brand-name">AXIOS EQUITY</div>
+            <div class="admin-sidebar-brand-sub">Data Room Admin</div>
+        </div>
 
-<nav class="nav"><div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="wordmark-dark.svg" alt="AXIOS EQUITY"></a>
-    <ul class="nav-menu">
-        <li><a href="client-login.html">← Back to Client Login</a></li>
-    </ul>
-</div></nav>
+        <div class="admin-nav-section">Main</div>
+        <a class="admin-nav-item is-active" data-section="dashboard"><span class="admin-nav-icon">◐</span> Dashboard</a>
+        <a class="admin-nav-item" data-section="access-codes"><span class="admin-nav-icon">⚿</span> Access Codes</a>
+        <a class="admin-nav-item" data-section="data-rooms"><span class="admin-nav-icon">▦</span> Data Rooms</a>
+        <a class="admin-nav-item" data-section="activity"><span class="admin-nav-icon">⏱</span> Activity Log</a>
 
-<div class="admin-shell">
-    <div class="container" style="max-width: 1080px;">
+        <div class="admin-nav-section">System</div>
+        <a class="admin-nav-item" data-section="export"><span class="admin-nav-icon">⤓</span> Export Config</a>
+        <a class="admin-nav-item" data-section="settings"><span class="admin-nav-icon">⚙</span> Settings</a>
 
-        <header style="margin-bottom: 56px;">
-            <p class="portal-greeting">AXIOS EQUITY · Data Room Admin</p>
-            <h1 class="display-md" style="font-family: var(--serif); font-weight: 500; font-size: 44px; letter-spacing: -0.02em; margin-bottom: 24px;">Manage <em>portal documents</em>.</h1>
-            <p class="lede" style="max-width: 760px;">
-                This page is internal-only. Use the generator below to produce a document entry snippet, then paste it into the corresponding data room HTML file in the repository. All changes require git commit and Vercel redeployment.
-            </p>
-        </header>
+        <div class="admin-nav-section">External</div>
+        <a class="admin-nav-item" href="https://one.dash.cloudflare.com/" target="_blank"><span class="admin-nav-icon">↗</span> Cloudflare Access</a>
+        <a class="admin-nav-item" href="https://drive.google.com/" target="_blank"><span class="admin-nav-icon">↗</span> Google Drive</a>
+        <a class="admin-nav-item" href="https://github.com/finn299/axiosequity" target="_blank"><span class="admin-nav-icon">↗</span> GitHub Repo</a>
 
-        <!-- GENERATOR -->
-        <section class="admin-section" id="generator">
-            <h2 class="admin-h2">1 · Generate document entry</h2>
-            <p class="admin-lede">Fill the form below. The generator produces a JavaScript snippet you copy and paste into the appropriate <code>investor-dataroom.html</code> or <code>partner-dataroom.html</code>.</p>
+        <div class="admin-sidebar-footer">
+            <strong style="color:#fff;display:block;margin-bottom:4px;">Signed in</strong>
+            <span id="admUserEmail">finn@equorix.com</span><br>
+            <a href="#" onclick="adminSignOut();return false;" style="color:rgba(255,255,255,0.7);text-decoration:underline;font-size:11px;">Sign out</a>
+        </div>
+    </aside>
 
-            <form id="genForm" autocomplete="off">
+    <!-- Main content -->
+    <main class="admin-main">
 
-                <div class="admin-form-grid">
-                    <div class="portal-field">
-                        <label for="g-portal">Portal</label>
-                        <select id="g-portal" required>
-                            <option value="investor">Investor Portal</option>
-                            <option value="partner">Partner Portal</option>
-                        </select>
-                    </div>
-
-                    <div class="portal-field">
-                        <label for="g-key">Project / Workstream Key</label>
-                        <select id="g-key" required></select>
-                    </div>
+        <!-- ============ SECTION 1: DASHBOARD ============ -->
+        <section class="admin-section is-active" id="section-dashboard">
+            <div class="admin-pagehead">
+                <div>
+                    <h1 class="admin-page-title">Dashboard</h1>
+                    <p class="admin-page-sub">System overview and quick health check.</p>
                 </div>
+            </div>
 
-                <div class="admin-form-grid">
-                    <div class="portal-field">
-                        <label for="g-section">Section</label>
-                        <input type="text" id="g-section" placeholder="e.g., Overview Materials, Diligence Materials, Engagement Materials" required>
-                    </div>
-
-                    <div class="portal-field">
-                        <label for="g-type">File Type</label>
-                        <input type="text" id="g-type" placeholder="e.g., PDF, PDF · XLSX, XLSX" value="PDF" required>
-                    </div>
+            <div class="admin-stat-grid">
+                <div class="admin-stat">
+                    <div class="admin-stat-label">Investor Codes</div>
+                    <div class="admin-stat-value" id="statInvestorCodes">—</div>
+                    <div class="admin-stat-meta" id="statInvestorMeta"></div>
                 </div>
-
-                <!-- Drive Picker upload -->
-                <div class="portal-field" style="margin-bottom: 24px;">
-                    <label>Upload PDF (optional — auto-fills File ID below)</label>
-                    <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-                        <button type="button" class="btn btn-secondary" id="upload-btn" disabled>
-                            ⬆ Configure Google credentials below
-                        </button>
-                        <span id="upload-status" style="font-size: 13px; color: var(--text-muted);"></span>
-                    </div>
-                    <p style="font-size:12px; color:var(--text-muted); margin-top:8px; line-height:1.6;">
-                        Click to upload a new PDF from your computer to Drive, or pick an existing file. The PDF will be uploaded to the project/workstream folder selected above. File ID, name, and type will auto-populate.
-                    </p>
+                <div class="admin-stat">
+                    <div class="admin-stat-label">Partner Codes</div>
+                    <div class="admin-stat-value" id="statPartnerCodes">—</div>
+                    <div class="admin-stat-meta" id="statPartnerMeta"></div>
                 </div>
-
-                <div class="portal-field">
-                    <label for="g-name">Document Name</label>
-                    <input type="text" id="g-name" placeholder="e.g., SDR Company Overview (v3, EN)" required>
+                <div class="admin-stat">
+                    <div class="admin-stat-label">Data Rooms — Projects</div>
+                    <div class="admin-stat-value" id="statProjects">—</div>
+                    <div class="admin-stat-meta">Investor Portal</div>
                 </div>
-
-                <div class="admin-form-grid">
-                    <div class="portal-field">
-                        <label for="g-fileid">Google Drive File ID</label>
-                        <input type="text" id="g-fileid" placeholder="e.g., 1AbCdEfGhIjKlMnOpQr..." style="font-family:'JetBrains Mono',Menlo,monospace; font-size:13px;">
-                    </div>
-
-                    <div class="portal-field">
-                        <label for="g-meta">Meta Label</label>
-                        <input type="text" id="g-meta" placeholder="e.g., Confidential, Updated quarterly, Current">
-                    </div>
+                <div class="admin-stat">
+                    <div class="admin-stat-label">Data Rooms — Workstreams</div>
+                    <div class="admin-stat-value" id="statWorkstreams">—</div>
+                    <div class="admin-stat-meta">Partner Portal</div>
                 </div>
+            </div>
 
-                <div class="portal-field">
-                    <label for="g-access">Access Behavior</label>
-                    <select id="g-access" required>
-                        <option value="view">View — Direct view in viewer.html (requires File ID)</option>
-                        <option value="request">Request — User must request access via email (no File ID needed)</option>
-                    </select>
-                </div>
+            <div class="admin-card">
+                <h3 class="admin-card-title">System Status</h3>
+                <p class="admin-card-sub">Health of each layer.</p>
+                <table class="matrix-table">
+                    <tbody>
+                        <tr>
+                            <td>Cloudflare Access (authentication)</td>
+                            <td style="text-align:right;"><span class="status-pill is-active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Google Drive API (folder browsing)</td>
+                            <td style="text-align:right;"><span class="status-pill is-active" id="statApiKey">Configured</span></td>
+                        </tr>
+                        <tr>
+                            <td>dataroom-config.js (in-portal access)</td>
+                            <td style="text-align:right;"><span class="status-pill is-active">Loaded</span></td>
+                        </tr>
+                        <tr>
+                            <td>Vercel deployment</td>
+                            <td style="text-align:right;"><span class="status-pill is-active">Live</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="admin-actions">
-                    <button type="button" class="btn btn-primary" id="generateBtn">Generate Snippet</button>
-                    <button type="button" class="btn btn-secondary" id="clearBtn">Clear</button>
-                </div>
-            </form>
-
-            <div id="snippetOutput" style="display:none; margin-top: 32px;">
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 8px;">
-                    <strong style="font-size: 13px; letter-spacing: 0.06em;">Generated snippet — paste into the <code style="font-family:'JetBrains Mono',Menlo,monospace; font-size:12px;">documents: [...]</code> array of the relevant project/workstream:</strong>
-                    <button class="admin-copy-btn" id="copyBtn">Copy</button>
-                </div>
-                <div class="admin-snippet" id="snippetCode"></div>
-
-                <div class="admin-instructions">
-                    <strong>Where to paste:</strong><br>
-                    1. Open <code id="targetFile">investor-dataroom.html</code> in the AXIOS EQUITY LLC repo<br>
-                    2. Find the <code id="targetBlock">PROJECTS['drone-defense']</code> block (or whichever project/stream applies)<br>
-                    3. Add the snippet to its <code>documents: [ ... ]</code> array (comma-separate from existing entries)<br>
-                    4. Git commit & push — Vercel will redeploy automatically<br>
-                    5. Update the <code>_ACCESS-MATRIX.md</code> in <code>AXIOS-DATAROOM/</code> with the new entry
+            <div class="admin-card">
+                <h3 class="admin-card-title">Quick Links</h3>
+                <p class="admin-card-sub">Common admin destinations.</p>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+                    <a class="adm-btn adm-btn-outline" href="https://one.dash.cloudflare.com/" target="_blank">Cloudflare Logs ↗</a>
+                    <a class="adm-btn adm-btn-outline" href="https://github.com/finn299/axiosequity" target="_blank">GitHub Repo ↗</a>
+                    <a class="adm-btn adm-btn-outline" href="https://vercel.com/" target="_blank">Vercel Deploys ↗</a>
+                    <a class="adm-btn adm-btn-outline" href="https://console.cloud.google.com/apis/credentials" target="_blank">Google Cloud ↗</a>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECT & WORKSTREAM MANAGER -->
-        <section class="admin-section" id="manager">
-            <h2 class="admin-h2">2 · Project &amp; Workstream Manager</h2>
-            <p class="admin-lede">Add, edit, or remove projects (Investor Portal) and workstreams (Partner Portal). All changes are saved locally as a draft. When ready, click "Export Config" to generate the updated <code>dataroom-config.js</code> file content for commit.</p>
-
-            <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:24px;">
-                <div style="display:flex; gap:4px; background:var(--bg-warm); padding:4px; border:1px solid var(--border);">
-                    <button type="button" class="btn" id="tab-projects" onclick="showManagerTab('projects')" style="background:var(--text); color:var(--bg); border:0; padding:8px 16px; font-size:13px;">Investor Projects</button>
-                    <button type="button" class="btn" id="tab-workstreams" onclick="showManagerTab('workstreams')" style="background:transparent; color:var(--text); border:0; padding:8px 16px; font-size:13px;">Partner Workstreams</button>
+        <!-- ============ SECTION 2: ACCESS CODES ============ -->
+        <section class="admin-section" id="section-access-codes">
+            <div class="admin-pagehead">
+                <div>
+                    <h1 class="admin-page-title">Access Codes</h1>
+                    <p class="admin-page-sub">Manage per-user codes that determine which data rooms each user can see after Cloudflare authentication.</p>
                 </div>
-                <button type="button" class="btn btn-secondary" onclick="addEntry()">+ Add new</button>
-                <button type="button" class="btn btn-primary" onclick="exportConfig()" style="margin-left:auto;">Export Config →</button>
-            </div>
-
-            <div id="managerStatus" class="admin-instructions" style="display:none; margin-bottom: 16px;"></div>
-
-            <div id="managerTable">
-                <p style="color:var(--text-muted); font-size:13px;">Loading…</p>
-            </div>
-
-            <div id="exportOutput" style="display:none; margin-top: 32px;">
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 8px;">
-                    <strong style="font-size: 13px; letter-spacing: 0.06em;">Updated dataroom-config.js — copy and replace the file:</strong>
-                    <button class="admin-copy-btn" id="copyConfigBtn">Copy Full Config</button>
-                </div>
-                <div class="admin-snippet" id="exportSnippet" style="max-height:480px; overflow-y:auto;"></div>
-
-                <div class="admin-instructions">
-                    <strong>Where to paste:</strong><br>
-                    1. Open <code>dataroom-config.js</code> in the AXIOS EQUITY LLC repo<br>
-                    2. Replace the entire file contents with the above<br>
-                    3. Git commit &amp; push — Vercel auto-deploys<br>
-                    4. Reload pages — changes appear everywhere (portals + data rooms)<br>
-                    5. Update <code>_ACCESS-MATRIX.md</code> if needed
+                <div>
+                    <button class="adm-btn" onclick="openAddCodeModal('investor')">+ Add Investor Code</button>
+                    <button class="adm-btn adm-btn-accent" onclick="openAddCodeModal('partner')">+ Add Partner Code</button>
                 </div>
             </div>
-        </section>
 
-        <!-- DRIVE FOLDER IDs -->
-        <section class="admin-section" id="folders">
-            <h2 class="admin-h2">3 · Project / Workstream Drive Folder IDs</h2>
-            <p class="admin-lede">Each project (Investor Portal) and workstream (Partner Portal) can display an auto-synced Drive folder view. Set the Drive Folder ID once; new PDFs added to the folder appear in the data room automatically without HTML changes.</p>
-
-            <div class="admin-instructions" style="margin-bottom: 32px;">
-                <strong>How to get a Folder ID:</strong><br>
-                1. In Drive, right-click the project/workstream folder (e.g. <code>02-Drone Defense (SDR)</code>) → <strong>Share</strong> → set permissions (Specific people or Anyone with link for testing)<br>
-                2. Right-click the folder again → <strong>Get link</strong><br>
-                3. The URL format: <code>https://drive.google.com/drive/folders/<strong>[FOLDER_ID]</strong>?usp=sharing</code><br>
-                4. Copy the <code>[FOLDER_ID]</code> portion (between <code>/folders/</code> and <code>?</code>)<br>
-                5. Paste it into <code>investor-dataroom.html</code> or <code>partner-dataroom.html</code>, replacing <code>PASTE_FOLDER_ID_HERE</code> for the matching project/workstream
+            <div class="admin-card">
+                <h3 class="admin-card-title">Investor Portal Codes</h3>
+                <p class="admin-card-sub">Codes entered on <code>/investor-login.html</code>. Tap a check to toggle a data room. Click ★ for wildcard (all rooms).</p>
+                <div id="investorMatrix"></div>
             </div>
 
-            <h3 style="font-family:var(--serif); font-size:18px; font-weight:500; margin-top: 32px; margin-bottom: 16px;">Current Folder ID Status</h3>
-            <div id="folderStatus">Loading…</div>
-        </section>
-
-        <!-- GOOGLE SETUP -->
-        <section class="admin-section" id="setup">
-            <h2 class="admin-h2">4 · Google Drive Picker — Setup</h2>
-            <p class="admin-lede">One-time setup to enable PDF upload directly from this admin page. After configuration, the "Upload PDF" button in section 1 becomes active.</p>
-
-            <div id="setupStatus" class="admin-instructions" style="margin-bottom: 32px; border-left-color: #d4a0a0;">
-                <strong>Current status:</strong> <span id="setupStatusText">Checking…</span>
+            <div class="admin-card">
+                <h3 class="admin-card-title">Partner Portal Codes</h3>
+                <p class="admin-card-sub">Codes entered on <code>/partner-login.html</code>. Same matrix logic.</p>
+                <div id="partnerMatrix"></div>
             </div>
 
-            <h3 style="font-family:var(--serif); font-size:18px; font-weight:500; margin-top:32px; margin-bottom:16px;">Setup Steps (one-time)</h3>
-
-            <ol style="font-size:14px; line-height:1.85; color:var(--text-secondary); padding-left:24px;">
-                <li>
-                    <strong>Create a Google Cloud Project</strong> (or use existing)<br>
-                    Visit <a href="https://console.cloud.google.com/" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;">console.cloud.google.com</a> → "New Project" → name it <code>AXIOS EQUITY Admin</code> (or any name)
-                </li>
-                <li>
-                    <strong>Enable APIs</strong>:
-                    <ul style="margin-top:8px;">
-                        <li>Go to <a href="https://console.cloud.google.com/apis/library" target="_blank" rel="noopener" style="color:var(--text);text-decoration:underline;">APIs & Services → Library</a></li>
-                        <li>Search and enable: <code>Google Picker API</code></li>
-                        <li>Search and enable: <code>Google Drive API</code></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Configure OAuth Consent Screen</strong>:
-                    <ul style="margin-top:8px;">
-                        <li>APIs &amp; Services → OAuth consent screen</li>
-                        <li>User Type: <strong>External</strong> (or Internal if using Workspace)</li>
-                        <li>App name: <code>AXIOS EQUITY Admin</code></li>
-                        <li>User support email: <code>info@axiosequity.com</code></li>
-                        <li>Authorized domains: <code>axiosequity.com</code></li>
-                        <li>Add scope: <code>https://www.googleapis.com/auth/drive.file</code></li>
-                        <li>Add yourself as a test user (info@axiosequity.com or whichever you use)</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Create OAuth 2.0 Client ID</strong>:
-                    <ul style="margin-top:8px;">
-                        <li>APIs &amp; Services → Credentials → Create Credentials → <strong>OAuth client ID</strong></li>
-                        <li>Application type: <strong>Web application</strong></li>
-                        <li>Name: <code>AXIOS EQUITY Admin Web</code></li>
-                        <li>Authorized JavaScript origins (add all):
-                            <ul>
-                                <li><code>https://axiosequity.com</code></li>
-                                <li><code>https://www.axiosequity.com</code></li>
-                                <li><code>http://localhost:8080</code> (optional, for local testing)</li>
-                            </ul>
-                        </li>
-                        <li>Save → copy the <strong>Client ID</strong> (ends with <code>.apps.googleusercontent.com</code>)</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Create API Key</strong>:
-                    <ul style="margin-top:8px;">
-                        <li>APIs &amp; Services → Credentials → Create Credentials → <strong>API key</strong></li>
-                        <li>Copy the key</li>
-                        <li>(Recommended) Edit it → Restrict key → API restrictions → Restrict to <strong>Google Picker API</strong></li>
-                        <li>(Recommended) Website restrictions → add <code>https://axiosequity.com/*</code> and <code>https://www.axiosequity.com/*</code></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Find Project Number (App ID)</strong>:
-                    <ul style="margin-top:8px;">
-                        <li>Click the project name at top of Cloud Console</li>
-                        <li>Copy the <strong>Project Number</strong> (numeric, e.g. <code>123456789012</code>)</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Paste credentials into admin.html</strong>:<br>
-                    Open <code>admin.html</code> in editor, find the <code>GOOGLE_CONFIG</code> block at the top of the script, replace:
-                    <div class="admin-snippet" style="margin-top:12px;">var GOOGLE_CONFIG = {
-    clientId: 'PASTE_CLIENT_ID_HERE.apps.googleusercontent.com',
-    apiKey: 'PASTE_API_KEY_HERE',
-    appId: 'PASTE_PROJECT_NUMBER_HERE',
-    scopes: 'https://www.googleapis.com/auth/drive.file'
-};</div>
-                </li>
-                <li>
-                    <strong>Commit &amp; push</strong> the updated admin.html. Reload the admin page — the Upload button should activate.
-                </li>
-            </ol>
-
-            <div class="admin-instructions" style="margin-top: 32px;">
-                <strong>⚠ Security notes:</strong><br>
-                • OAuth Client ID and API Key are <em>not</em> secrets — they are designed to be embedded in client-side code, restricted by domain origin.<br>
-                • Anyone visiting admin.html can attempt to use them, but the actions are limited to their own Drive permissions and the admin login gate (<code>AXIOS EQUITY-ADMIN-2026</code>).<br>
-                • The <code>drive.file</code> scope only grants access to files created or opened by the user via the Picker (least privilege).<br>
-                • Rotate the admin login code if compromise is suspected.
+            <div class="admin-card" style="background:#fffaf0;border-color:var(--admin-warn);">
+                <h3 class="admin-card-title" style="color:var(--admin-warn);">⚠ Changes not saved yet?</h3>
+                <p style="font-size:13px;color:var(--admin-ink);line-height:1.6;">Edits are stored as a local draft until you export the new <code>dataroom-config.js</code> and commit it to GitHub. Use the <strong>Export Config</strong> section in the sidebar to generate the file content.</p>
+                <button class="adm-btn adm-btn-accent" onclick="showSection('export')">Go to Export →</button>
             </div>
         </section>
 
-        <!-- INVENTORY -->
-        <section class="admin-section" id="inventory">
-            <h2 class="admin-h2">5 · Current document inventory</h2>
-            <p class="admin-lede">Read-only snapshot of all documents currently configured in <code>investor-dataroom.html</code> and <code>partner-dataroom.html</code>. To remove or edit, modify the source files directly.</p>
+        <!-- ============ SECTION 3: DATA ROOMS ============ -->
+        <section class="admin-section" id="section-data-rooms">
+            <div class="admin-pagehead">
+                <div>
+                    <h1 class="admin-page-title">Data Rooms</h1>
+                    <p class="admin-page-sub">Project and workstream data rooms. Each maps to a Google Drive folder.</p>
+                </div>
+                <div>
+                    <button class="adm-btn" onclick="openAddRoomModal('projects')">+ Add Project</button>
+                    <button class="adm-btn adm-btn-accent" onclick="openAddRoomModal('workstreams')">+ Add Workstream</button>
+                </div>
+            </div>
 
-            <div id="inventoryArea">Loading inventory…</div>
-        </section>
+            <div class="admin-card">
+                <h3 class="admin-card-title">Investor Projects</h3>
+                <p class="admin-card-sub">Visible in the Investor Portal.</p>
+                <div class="room-grid" id="projectsGrid"></div>
+            </div>
 
-        <!-- GUIDE -->
-        <section class="admin-section" id="guide">
-            <h2 class="admin-h2">6 · Workflow guide</h2>
-            <p class="admin-lede">Standard procedure for adding a new document to a data room.</p>
-
-            <ol style="font-size: 14px; line-height: 1.85; color: var(--text-secondary); padding-left: 24px;">
-                <li><strong>Upload PDF</strong> to Google Drive: <code>My Drive / WWW / AXIOS-DATAROOM / [Investor or Partner] / [Project or Workstream folder]</code></li>
-                <li><strong>Set sharing permissions</strong> on the file:
-                    <ul style="margin-top: 8px;">
-                        <li>Right-click → Share → add specific investor/partner emails as <strong>Viewer</strong></li>
-                        <li>Click ⚙ Settings → uncheck "Viewers and commenters can see the option to download, print, and copy"</li>
-                        <li>(Optional) Set expiration date</li>
-                    </ul>
-                </li>
-                <li><strong>Copy the File ID</strong> — open the file in Drive, the URL contains: <code>https://drive.google.com/file/d/<strong>[FILE_ID]</strong>/view</code></li>
-                <li><strong>Generate the snippet</strong> using the form above</li>
-                <li><strong>Paste</strong> into the appropriate data room HTML file at the right project/workstream block</li>
-                <li><strong>Commit & push</strong> to GitHub. Vercel auto-deploys.</li>
-                <li><strong>Record</strong> the new entry in <code>AXIOS-DATAROOM/_ACCESS-MATRIX.md</code></li>
-                <li><strong>Notify</strong> the relevant investor/partner that the document is available (optional)</li>
-            </ol>
-
-            <div class="admin-instructions" style="margin-top: 32px;">
-                <strong>⚠ Important:</strong><br>
-                • PDFs themselves must never be placed in <code>AXIOS EQUITY LLC/</code> — only in <code>AXIOS-DATAROOM/</code><br>
-                • Always use Drive's "Specific people" sharing — never "Anyone with the link"<br>
-                • Rotate portal access codes every 6 months: see <code>investor-login.html</code> and <code>partner-login.html</code><br>
-                • Review <code>Drive Activity</code> log monthly for unusual access patterns
+            <div class="admin-card">
+                <h3 class="admin-card-title">Partner Workstreams</h3>
+                <p class="admin-card-sub">Visible in the Partner Portal.</p>
+                <div class="room-grid" id="workstreamsGrid"></div>
             </div>
         </section>
 
+        <!-- ============ SECTION 4: ACTIVITY ============ -->
+        <section class="admin-section" id="section-activity">
+            <div class="admin-pagehead">
+                <div>
+                    <h1 class="admin-page-title">Activity Log</h1>
+                    <p class="admin-page-sub">User authentication and access events.</p>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <h3 class="admin-card-title">Authentication Logs — Cloudflare Access</h3>
+                <p class="admin-card-sub">Every login attempt (success or failure) is recorded by Cloudflare. View the full log in the Zero Trust dashboard.</p>
+                <table class="matrix-table">
+                    <thead>
+                        <tr><th>What is logged</th><th>Where</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Email of user attempting access</td><td>Cloudflare Insights & Logs → Access</td></tr>
+                        <tr><td>Application accessed (Investor / Partner / Admin)</td><td>same</td></tr>
+                        <tr><td>Action: ALLOWED or DENIED</td><td>same</td></tr>
+                        <tr><td>Timestamp (UTC), source IP, user agent</td><td>same</td></tr>
+                        <tr><td>Country / approximate location</td><td>same</td></tr>
+                    </tbody>
+                </table>
+                <div style="margin-top:18px;">
+                    <a class="adm-btn" href="https://one.dash.cloudflare.com/" target="_blank">Open Cloudflare Access Logs ↗</a>
+                </div>
+            </div>
+
+            <div class="admin-card" style="background:#fffaf0;border-color:var(--admin-warn);">
+                <h3 class="admin-card-title" style="color:var(--admin-warn);">In-Portal Activity (Phase 3 — Not Yet Built)</h3>
+                <p style="font-size:13px;color:var(--admin-ink);line-height:1.6;">Currently, in-portal activity (which folder a user browsed, which file they opened) is <strong>not logged</strong>. Cloudflare only logs the initial page entry. To capture file-level activity, a Cloudflare Worker + KV store needs to be added (Phase 3). Estimated work: 3 hours.</p>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 5: EXPORT ============ -->
+        <section class="admin-section" id="section-export">
+            <div class="admin-pagehead">
+                <div>
+                    <h1 class="admin-page-title">Export Config</h1>
+                    <p class="admin-page-sub">Generate the updated <code>dataroom-config.js</code> file content from current draft.</p>
+                </div>
+                <div>
+                    <button class="adm-btn adm-btn-outline" onclick="copyExport()">Copy to Clipboard</button>
+                    <button class="adm-btn" onclick="downloadExport()">Download File</button>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <h3 class="admin-card-title">Updated dataroom-config.js</h3>
+                <p class="admin-card-sub">Copy this content and replace <code>dataroom-config.js</code> in the GitHub repo, then commit & push. Vercel will auto-deploy in 1–2 minutes.</p>
+                <div class="export-pane" id="exportPane">Generating…</div>
+            </div>
+
+            <div class="admin-card">
+                <h3 class="admin-card-title">Deployment Steps</h3>
+                <ol style="font-size:14px;line-height:1.8;padding-left:24px;">
+                    <li>Click <strong>Copy to Clipboard</strong> above.</li>
+                    <li>Open the GitHub repo: <a href="https://github.com/finn299/axiosequity/blob/main/dataroom-config.js" target="_blank">finn299/axiosequity → dataroom-config.js</a></li>
+                    <li>Click the pencil icon (Edit this file).</li>
+                    <li>Select all (Cmd+A) and paste (Cmd+V) the copied content.</li>
+                    <li>Scroll down → Commit message: "Update access codes / data rooms" → Commit changes.</li>
+                    <li>Wait 1–2 minutes for Vercel auto-deploy.</li>
+                    <li>(Optional) Bump cache-buster version in all HTML files to force fresh load.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 6: SETTINGS ============ -->
+        <section class="admin-section" id="section-settings">
+            <div class="admin-pagehead">
+                <div>
+                    <h1 class="admin-page-title">Settings</h1>
+                    <p class="admin-page-sub">System configuration and security operations.</p>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <h3 class="admin-card-title">Admin Code</h3>
+                <p class="admin-card-sub">The code required to enter this admin page (in addition to Cloudflare Access authentication). Rotate periodically.</p>
+                <div class="adm-field">
+                    <label>Current Code (hidden)</label>
+                    <input type="password" value="hidden-for-security" readonly style="font-family:'JetBrains Mono',monospace;">
+                </div>
+                <p style="font-size:12px;color:var(--admin-ink-muted);line-height:1.6;">To change: edit <code>admin.html</code> directly, find <code>var ADMIN_CODE = ...</code> near the bottom, replace, bump cache-buster, commit & push.</p>
+            </div>
+
+            <div class="admin-card">
+                <h3 class="admin-card-title">Google API Key</h3>
+                <p class="admin-card-sub">Used by the portal to list Drive folder contents. Visible in <code>dataroom-config.js</code> but restricted to axiosequity.com via HTTP referrer.</p>
+                <div class="adm-field">
+                    <label>API Key (live)</label>
+                    <input type="text" id="adminApiKey" readonly style="font-family:'JetBrains Mono',monospace;font-size:11px;">
+                </div>
+                <a class="adm-btn adm-btn-outline" href="https://console.cloud.google.com/apis/credentials" target="_blank">Manage in Google Cloud ↗</a>
+            </div>
+
+            <div class="admin-card">
+                <h3 class="admin-card-title">Local Draft</h3>
+                <p class="admin-card-sub">All edits in this admin page are stored in browser localStorage as a draft until exported.</p>
+                <button class="adm-btn adm-btn-outline" onclick="loadDraftToWorking()">Reload from Draft</button>
+                <button class="adm-btn adm-btn-outline" onclick="resetWorkingToLive()">Discard Draft (reload live config)</button>
+                <button class="adm-btn adm-btn-danger" onclick="clearLocalDraft()">Clear Draft</button>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ===== ADD CODE MODAL ===== -->
+<div class="adm-modal-overlay" id="addCodeModal">
+    <div class="adm-modal">
+        <h2 class="adm-modal-title" id="addCodeTitle">Add Access Code</h2>
+        <form id="addCodeForm" onsubmit="submitAddCode(event)">
+            <input type="hidden" id="addCodeType" value="investor">
+            <div class="adm-field">
+                <label>Access Code <span style="color:var(--admin-danger);">*</span></label>
+                <input type="text" id="addCodeValue" required placeholder="e.g. NEWCASTLE-INV-2026" style="text-transform:uppercase;font-family:'JetBrains Mono',monospace;">
+            </div>
+            <div class="adm-field">
+                <label>Issued To (Firm / Company) <span style="color:var(--admin-danger);">*</span></label>
+                <input type="text" id="addCodeFirm" required placeholder="e.g. Newcastle Investor Group">
+            </div>
+            <div class="adm-field">
+                <label>Visible Data Rooms</label>
+                <div class="checkbox-list" id="addCodeRooms"></div>
+                <p style="font-size:11px;color:var(--admin-ink-muted);margin-top:6px;">Check rooms to grant access, or check ★ for wildcard (all rooms — master code).</p>
+            </div>
+            <div class="adm-modal-actions">
+                <button type="button" class="adm-btn adm-btn-outline" onclick="closeModal('addCodeModal')">Cancel</button>
+                <button type="submit" class="adm-btn">Add Code</button>
+            </div>
+        </form>
     </div>
 </div>
 
+<!-- ===== ADD ROOM MODAL ===== -->
+<div class="adm-modal-overlay" id="addRoomModal">
+    <div class="adm-modal">
+        <h2 class="adm-modal-title" id="addRoomTitle">Add Data Room</h2>
+        <form id="addRoomForm" onsubmit="submitAddRoom(event)">
+            <input type="hidden" id="addRoomType" value="projects">
+            <div class="adm-field">
+                <label>Room Key (lowercase, hyphens) <span style="color:var(--admin-danger);">*</span></label>
+                <input type="text" id="addRoomKey" required placeholder="e.g. newcastle-claim" style="font-family:'JetBrains Mono',monospace;">
+            </div>
+            <div class="adm-field">
+                <label>Title <span style="color:var(--admin-danger);">*</span></label>
+                <input type="text" id="addRoomTitle_" required placeholder="e.g. Newcastle Claim — BKGT Gold Mining">
+            </div>
+            <div class="adm-field-row">
+                <div class="adm-field">
+                    <label>Sector</label>
+                    <input type="text" id="addRoomSector" placeholder="e.g. Mining — Energy">
+                </div>
+                <div class="adm-field">
+                    <label>Status</label>
+                    <input type="text" id="addRoomStatus" placeholder="e.g. Active — Multi-jurisdiction">
+                </div>
+            </div>
+            <div class="adm-field">
+                <label>Description</label>
+                <textarea id="addRoomDesc" rows="3" placeholder="Short description shown on portal cards"></textarea>
+            </div>
+            <div class="adm-field">
+                <label>Drive Folder ID <span style="color:var(--admin-danger);">*</span></label>
+                <input type="text" id="addRoomFolderId" required placeholder="e.g. 1RNt-UfneEohx8UShyhrVRhDbA1yYR7H4" style="font-family:'JetBrains Mono',monospace;">
+                <p style="font-size:11px;color:var(--admin-ink-muted);margin-top:4px;">Found in the Drive folder URL after <code>/folders/</code></p>
+            </div>
+            <div class="adm-field">
+                <label>Keywords (search)</label>
+                <input type="text" id="addRoomKeywords" placeholder="space-separated keywords for search">
+            </div>
+            <div class="adm-modal-actions">
+                <button type="button" class="adm-btn adm-btn-outline" onclick="closeModal('addRoomModal')">Cancel</button>
+                <button type="submit" class="adm-btn">Add Room</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script>
 /* ============================================
-   ADMIN ACCESS CODE
+   AXIOS EQUITY ADMIN - Phase 1
+   Browser-side editor that generates dataroom-config.js
    ============================================ */
-var ADMIN_CODE = 'AXIOS EQUITY-ADMIN-2026';  // CHANGE THIS — rotate periodically
 
-/* ============================================
-   GOOGLE DRIVE PICKER CONFIG
-   ============================================
-   Paste your Google Cloud OAuth credentials below.
-   See section "3 · Google Drive Picker — Setup" for instructions.
-   Until configured, the Upload button stays disabled and
-   manual File ID entry continues to work.
-   ============================================ */
-var GOOGLE_CONFIG = {
-    clientId: 'PASTE_CLIENT_ID_HERE.apps.googleusercontent.com',
-    apiKey:   'PASTE_API_KEY_HERE',
-    appId:    'PASTE_PROJECT_NUMBER_HERE',
-    scopes:   'https://www.googleapis.com/auth/drive.file'
-};
+var ADMIN_CODE = 'AXIOS EQUITY-ADMIN-2026';
+var DRAFT_KEY = 'eqx_admin_draft_v1';
 
-/* Picker runtime state */
-var pickerInited = false;
-var gisInited = false;
-var tokenClient = null;
-var accessToken = null;
-var folderMaps = { investor: {}, partner: {} };
+// Working state - deep clone of live config, modified by user
+var working = null;
 
-/* Login gate */
-(function () {
-    var gate = document.getElementById('adminGate');
-    var body = document.getElementById('adminBody');
+// ===== LOGIN GATE =====
+(function() {
+    var auth = sessionStorage.getItem('eqx_admin_auth') === '1';
+    if (auth) { enterAdmin(); return; }
+
     var form = document.getElementById('adminLoginForm');
-    var error = document.getElementById('ad-error');
-
-    if (sessionStorage.getItem('eqx_admin_auth') === '1') {
-        gate.style.display = 'none';
-        body.style.display = 'block';
-        initAdmin();
-        return;
-    }
-
-    form.addEventListener('submit', function (e) {
+    var err = document.getElementById('ad-error');
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         var v = document.getElementById('ad-pass').value;
         if (v === ADMIN_CODE) {
             sessionStorage.setItem('eqx_admin_auth', '1');
-            gate.style.display = 'none';
-            body.style.display = 'block';
-            initAdmin();
+            err.classList.remove('is-on');
+            enterAdmin();
         } else {
-            error.classList.add('is-visible');
+            err.classList.add('is-on');
         }
     });
 })();
 
+function enterAdmin() {
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminBody').style.display = 'grid';
+    initWorking();
+    renderAll();
+    bindNav();
+}
+
 function adminSignOut() {
     sessionStorage.removeItem('eqx_admin_auth');
-    window.location.href = 'index.html';
+    location.reload();
 }
 
-function initAdmin() {
-    populateKeyDropdown();
-    document.getElementById('g-portal').addEventListener('change', populateKeyDropdown);
-    document.getElementById('generateBtn').addEventListener('click', generateSnippet);
-    document.getElementById('clearBtn').addEventListener('click', clearForm);
-    document.getElementById('copyBtn').addEventListener('click', copySnippet);
-
-    var uploadBtn = document.getElementById('upload-btn');
-    if (uploadBtn) uploadBtn.addEventListener('click', handleUploadClick);
-
-    var copyConfigBtn = document.getElementById('copyConfigBtn');
-    if (copyConfigBtn) copyConfigBtn.addEventListener('click', copyConfigToClipboard);
-
-    initManager();      // load Project/Workstream Manager
-    loadInventory();
-    loadFolderStatus();
-    loadFolderMaps();   // for Picker upload targeting
-    initPicker();       // sets up OAuth + Picker if configured
-}
-
-/* ============================================
-   Project & Workstream Manager
-   ============================================ */
-var managerState = {
-    activeTab: 'projects',  // 'projects' or 'workstreams'
-    data: null              // deep-cloned AXIOS_CONFIG
-};
-
-function initManager() {
-    // Load from AXIOS_CONFIG into a working copy
-    if (window.AXIOS_CONFIG) {
-        managerState.data = JSON.parse(JSON.stringify(window.AXIOS_CONFIG));
-    } else {
-        managerState.data = { projects: {}, workstreams: {} };
-    }
-    // Try to load any localStorage draft
-    try {
-        var draft = localStorage.getItem('eqx_admin_config_draft');
-        if (draft) {
-            var parsed = JSON.parse(draft);
-            if (parsed && parsed.projects && parsed.workstreams) {
-                if (confirm('A local draft of project/workstream config exists. Load it?\n\nClick OK to load draft, Cancel to use the current dataroom-config.js as-is.')) {
-                    managerState.data = parsed;
-                    showStatus('Loaded draft from local browser storage.');
-                } else {
-                    localStorage.removeItem('eqx_admin_config_draft');
-                }
-            }
-        }
-    } catch (e) {}
-
-    renderManager();
-}
-
-function showManagerTab(tab) {
-    managerState.activeTab = tab;
-    document.getElementById('tab-projects').style.background = tab === 'projects' ? 'var(--text)' : 'transparent';
-    document.getElementById('tab-projects').style.color = tab === 'projects' ? 'var(--bg)' : 'var(--text)';
-    document.getElementById('tab-workstreams').style.background = tab === 'workstreams' ? 'var(--text)' : 'transparent';
-    document.getElementById('tab-workstreams').style.color = tab === 'workstreams' ? 'var(--bg)' : 'var(--text)';
-    renderManager();
-}
-
-function renderManager() {
-    var area = document.getElementById('managerTable');
-    var data = managerState.activeTab === 'projects' ? managerState.data.projects : managerState.data.workstreams;
-    var keys = Object.keys(data || {});
-
-    if (keys.length === 0) {
-        area.innerHTML = '<p style="color:var(--text-muted); font-size:14px; padding:24px 0;">No entries. Click "Add new" above to create one.</p>';
-        return;
-    }
-
-    var html = '<table class="inventory-table"><thead><tr>' +
-        '<th style="width:140px;">Key</th>' +
-        '<th>Title</th>' +
-        '<th>Sector</th>' +
-        '<th style="width:120px;">Folder ID</th>' +
-        '<th style="width:60px;">Docs</th>' +
-        '<th style="width:140px;">Actions</th>' +
-        '</tr></thead><tbody>';
-
-    keys.forEach(function (key) {
-        var entry = data[key];
-        var folderShort = (entry.driveFolderId && entry.driveFolderId !== 'PASTE_FOLDER_ID_HERE' && entry.driveFolderId.length > 10)
-            ? '<span class="badge badge--view">Set</span>'
-            : '<span class="badge badge--missing">Missing</span>';
-        var docCount = (entry.documents && entry.documents.length) || 0;
-        html += '<tr>' +
-            '<td class="mono">' + escapeHtml(key) + '</td>' +
-            '<td>' + escapeHtml(entry.title || '') + '</td>' +
-            '<td style="font-size:12px; color:var(--text-muted);">' + escapeHtml(entry.sector || '') + '</td>' +
-            '<td>' + folderShort + '</td>' +
-            '<td style="font-size:12px;">' + docCount + '</td>' +
-            '<td>' +
-                '<a href="#" onclick="editEntry(\'' + escapeHtml(key) + '\');return false;" style="color:var(--text); text-decoration:underline; font-size:12px; margin-right:12px;">Edit</a>' +
-                '<a href="#" onclick="deleteEntry(\'' + escapeHtml(key) + '\');return false;" style="color:#a04040; text-decoration:underline; font-size:12px;">Delete</a>' +
-            '</td>' +
-            '</tr>';
+// ===== NAV =====
+function bindNav() {
+    document.querySelectorAll('.admin-nav-item[data-section]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection(el.getAttribute('data-section'));
+        });
     });
-    html += '</tbody></table>';
-    area.innerHTML = html;
+}
+function showSection(name) {
+    document.querySelectorAll('.admin-section').forEach(function(s) {
+        s.classList.toggle('is-active', s.id === 'section-' + name);
+    });
+    document.querySelectorAll('.admin-nav-item[data-section]').forEach(function(el) {
+        el.classList.toggle('is-active', el.getAttribute('data-section') === name);
+    });
+    if (name === 'export') buildExport();
 }
 
-function getCurrentBucket() {
-    return managerState.activeTab === 'projects' ? managerState.data.projects : managerState.data.workstreams;
-}
-
-function setCurrentBucket(bucket) {
-    if (managerState.activeTab === 'projects') {
-        managerState.data.projects = bucket;
+// ===== WORKING STATE =====
+function initWorking() {
+    var saved = localStorage.getItem(DRAFT_KEY);
+    if (saved) {
+        try {
+            working = JSON.parse(saved);
+            console.log('Loaded draft from localStorage');
+        } catch (e) {
+            working = deepClone(window.AXIOS_CONFIG);
+        }
     } else {
-        managerState.data.workstreams = bucket;
+        working = deepClone(window.AXIOS_CONFIG);
     }
 }
-
-function addEntry() {
-    var label = managerState.activeTab === 'projects' ? 'project' : 'workstream';
-    var key = prompt('Enter a key for this ' + label + ' (lowercase, hyphens, no spaces — e.g. "drone-defense"):');
-    if (!key) return;
-    key = key.toLowerCase().replace(/[^a-z0-9-]/g, '');
-    if (!key) {
-        alert('Invalid key. Use lowercase letters, numbers, and hyphens only.');
-        return;
-    }
-    var bucket = getCurrentBucket();
-    if (bucket[key]) {
-        alert('Key already exists. Choose a different one.');
-        return;
-    }
-    bucket[key] = {
-        title: 'New ' + label,
-        sector: managerState.activeTab === 'projects' ? 'Sector · Sub-sector' : 'Sector Workstream',
-        description: '(Add a 1-2 sentence description here)',
-        status: managerState.activeTab === 'projects' ? 'Status · Pipeline' : 'New workstream',
-        keywords: key,
-        driveFolderId: 'PASTE_FOLDER_ID_HERE',
-        documents: []
-    };
-    saveDraft();
-    renderManager();
-    editEntry(key);
-}
-
-function editEntry(key) {
-    var bucket = getCurrentBucket();
-    var entry = bucket[key];
-    if (!entry) return;
-
-    var newTitle = prompt('Title:', entry.title || '');
-    if (newTitle === null) return;
-    var newSector = prompt('Sector / Type:', entry.sector || '');
-    if (newSector === null) return;
-    var newDesc = prompt('Description (1-2 sentences):', entry.description || '');
-    if (newDesc === null) return;
-    var newStatus = prompt('Status label:', entry.status || '');
-    if (newStatus === null) return;
-    var newKeywords = prompt('Search keywords (space-separated):', entry.keywords || '');
-    if (newKeywords === null) return;
-    var newFolder = prompt('Google Drive Folder ID (or leave PASTE_FOLDER_ID_HERE):', entry.driveFolderId || 'PASTE_FOLDER_ID_HERE');
-    if (newFolder === null) return;
-
-    entry.title = newTitle.trim();
-    entry.sector = newSector.trim();
-    entry.description = newDesc.trim();
-    entry.status = newStatus.trim();
-    entry.keywords = newKeywords.trim();
-    entry.driveFolderId = newFolder.trim() || 'PASTE_FOLDER_ID_HERE';
-
-    saveDraft();
-    renderManager();
-    showStatus('Entry "' + key + '" updated. Click "Export Config" to commit.');
-}
-
-function deleteEntry(key) {
-    if (!confirm('Delete "' + key + '"? Its documents will also be removed. This change is saved as a draft until you Export Config.')) return;
-    var bucket = getCurrentBucket();
-    delete bucket[key];
-    saveDraft();
-    renderManager();
-    showStatus('Entry "' + key + '" deleted. Click "Export Config" to commit.');
-}
+function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
 
 function saveDraft() {
-    try {
-        localStorage.setItem('eqx_admin_config_draft', JSON.stringify(managerState.data));
-    } catch (e) {}
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(working));
 }
 
-function showStatus(msg) {
-    var el = document.getElementById('managerStatus');
-    el.innerHTML = '<strong>Draft saved:</strong> ' + escapeHtml(msg) + ' <em style="color:var(--text-muted);">Changes are local until Export.</em>';
-    el.style.display = 'block';
-    el.style.borderLeftColor = 'var(--accent)';
-}
-
-function exportConfig() {
-    // Generate full dataroom-config.js content from managerState.data
-    var content = generateConfigJs(managerState.data);
-    var outEl = document.getElementById('exportOutput');
-    var snip = document.getElementById('exportSnippet');
-    snip.textContent = content;
-    outEl.style.display = 'block';
-    outEl.scrollIntoView({ behavior: 'smooth' });
-}
-
-function copyConfigToClipboard() {
-    var text = document.getElementById('exportSnippet').textContent;
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function () {
-            var btn = document.getElementById('copyConfigBtn');
-            var orig = btn.textContent;
-            btn.textContent = 'Copied ✓';
-            setTimeout(function () { btn.textContent = orig; }, 1500);
-        });
-    }
-}
-
-function generateConfigJs(data) {
-    var output = '/* ============================================\n';
-    output += '   AXIOS EQUITY DATA ROOM — Central Configuration\n';
-    output += '   Generated by admin.html · ' + new Date().toISOString().substring(0, 10) + '\n';
-    output += '   ============================================ */\n\n';
-    output += 'window.AXIOS_CONFIG = {\n\n';
-
-    // Projects
-    output += '    projects: {\n\n';
-    var projKeys = Object.keys(data.projects || {});
-    projKeys.forEach(function (k, idx) {
-        output += '        ' + JSON.stringify(k) + ': ' + formatEntry(data.projects[k], '        ') + (idx < projKeys.length - 1 ? ',\n\n' : '\n\n');
-    });
-    output += '    },\n\n';
-
-    // Workstreams
-    output += '    workstreams: {\n\n';
-    var streamKeys = Object.keys(data.workstreams || {});
-    streamKeys.forEach(function (k, idx) {
-        output += '        ' + JSON.stringify(k) + ': ' + formatEntry(data.workstreams[k], '        ') + (idx < streamKeys.length - 1 ? ',\n\n' : '\n\n');
-    });
-    output += '    }\n\n';
-
-    output += '};\n';
-    return output;
-}
-
-function formatEntry(entry, indent) {
-    var ind = indent + '    ';
-    var out = '{\n';
-    out += ind + 'title: '         + JSON.stringify(entry.title || '') + ',\n';
-    out += ind + 'sector: '        + JSON.stringify(entry.sector || '') + ',\n';
-    out += ind + 'description: '   + JSON.stringify(entry.description || '') + ',\n';
-    out += ind + 'status: '        + JSON.stringify(entry.status || '') + ',\n';
-    out += ind + 'keywords: '      + JSON.stringify(entry.keywords || '') + ',\n';
-    out += ind + 'driveFolderId: ' + JSON.stringify(entry.driveFolderId || 'PASTE_FOLDER_ID_HERE') + ',\n';
-    out += ind + 'documents: ' + formatDocuments(entry.documents || [], ind) + '\n';
-    out += indent + '}';
-    return out;
-}
-
-function formatDocuments(docs, indent) {
-    if (!docs || docs.length === 0) return '[]';
-    var ind = indent + '    ';
-    var out = '[\n';
-    docs.forEach(function (d, idx) {
-        out += ind + '{\n';
-        out += ind + '    section: ' + JSON.stringify(d.section || '') + ',\n';
-        out += ind + '    name: '    + JSON.stringify(d.name || '') + ',\n';
-        out += ind + '    fileId: '  + JSON.stringify(d.fileId || 'PASTE_FILE_ID_HERE') + ',\n';
-        out += ind + '    type: '    + JSON.stringify(d.type || 'PDF') + ',\n';
-        out += ind + '    meta: '    + JSON.stringify(d.meta || '') + ',\n';
-        out += ind + '    access: '  + JSON.stringify(d.access || 'view') + '\n';
-        out += ind + '}' + (idx < docs.length - 1 ? ',' : '') + '\n';
-    });
-    out += indent + ']';
-    return out;
-}
-
-/* ============================================
-   Drive Picker — initialization
-   ============================================ */
-function isPickerConfigured() {
-    return GOOGLE_CONFIG.clientId &&
-           GOOGLE_CONFIG.clientId !== 'PASTE_CLIENT_ID_HERE.apps.googleusercontent.com' &&
-           GOOGLE_CONFIG.apiKey &&
-           GOOGLE_CONFIG.apiKey !== 'PASTE_API_KEY_HERE' &&
-           GOOGLE_CONFIG.appId &&
-           GOOGLE_CONFIG.appId !== 'PASTE_PROJECT_NUMBER_HERE';
-}
-
-function initPicker() {
-    var statusText = document.getElementById('setupStatusText');
-    var statusBox = document.getElementById('setupStatus');
-
-    if (!isPickerConfigured()) {
-        if (statusText) statusText.textContent = 'Not configured — fill in GOOGLE_CONFIG in admin.html (see steps below).';
-        return;
-    }
-
-    // Load Picker via gapi
-    if (typeof gapi !== 'undefined') {
-        gapi.load('picker', function () {
-            pickerInited = true;
-            checkPickerReady();
-        });
-    }
-
-    // Initialize Google Identity Services token client
-    try {
-        if (typeof google !== 'undefined' && google.accounts && google.accounts.oauth2) {
-            tokenClient = google.accounts.oauth2.initTokenClient({
-                client_id: GOOGLE_CONFIG.clientId,
-                scope: GOOGLE_CONFIG.scopes,
-                callback: '' // set per-request
-            });
-            gisInited = true;
-            checkPickerReady();
-        }
-    } catch (e) {
-        if (statusText) statusText.textContent = 'Initialization error: ' + e.message;
-    }
-}
-
-function checkPickerReady() {
-    var uploadBtn = document.getElementById('upload-btn');
-    var statusText = document.getElementById('setupStatusText');
-    var statusBox = document.getElementById('setupStatus');
-
-    if (pickerInited && gisInited && isPickerConfigured()) {
-        if (uploadBtn) {
-            uploadBtn.removeAttribute('disabled');
-            uploadBtn.textContent = '⬆ Upload PDF via Drive';
-            uploadBtn.classList.remove('btn-secondary');
-            uploadBtn.classList.add('btn-primary');
-        }
-        if (statusText) statusText.textContent = 'Configured ✓ — Upload button is active in section 1.';
-        if (statusBox) statusBox.style.borderLeftColor = 'var(--accent)';
-    }
-}
-
-function handleUploadClick() {
-    if (!isPickerConfigured()) {
-        alert('Google Picker is not configured. Please complete setup section 3 below.');
-        return;
-    }
-    if (!tokenClient) {
-        alert('Token client not initialized. Reload the page.');
-        return;
-    }
-
-    tokenClient.callback = function (response) {
-        if (response.error) {
-            console.error(response);
-            alert('Authentication failed: ' + (response.error_description || response.error));
-            return;
-        }
-        accessToken = response.access_token;
-        openPicker();
-    };
-
-    if (accessToken) {
-        tokenClient.requestAccessToken({ prompt: '' });
+function loadDraftToWorking() {
+    var saved = localStorage.getItem(DRAFT_KEY);
+    if (saved) {
+        try {
+            working = JSON.parse(saved);
+            renderAll();
+            alert('Draft reloaded.');
+        } catch (e) { alert('Could not parse draft.'); }
     } else {
-        tokenClient.requestAccessToken({ prompt: 'consent' });
+        alert('No draft saved.');
     }
 }
-
-function openPicker() {
-    var portal = document.getElementById('g-portal').value;
-    var key = document.getElementById('g-key').value;
-    var folderMap = portal === 'partner' ? folderMaps.partner : folderMaps.investor;
-    var parentFolderId = folderMap[key];
-    var validParent = parentFolderId &&
-                      parentFolderId !== 'PASTE_FOLDER_ID_HERE' &&
-                      parentFolderId.length > 10;
-
-    var uploadView = new google.picker.DocsUploadView()
-        .setIncludeFolders(true);
-    if (validParent) uploadView.setParent(parentFolderId);
-
-    var browseView = new google.picker.DocsView(google.picker.ViewId.PDFS)
-        .setIncludeFolders(true)
-        .setSelectFolderEnabled(false)
-        .setMode(google.picker.DocsViewMode.LIST);
-    if (validParent) browseView.setParent(parentFolderId);
-
-    var pickerBuilder = new google.picker.PickerBuilder()
-        .setAppId(GOOGLE_CONFIG.appId)
-        .setOAuthToken(accessToken)
-        .setDeveloperKey(GOOGLE_CONFIG.apiKey)
-        .addView(uploadView)
-        .addView(browseView)
-        .setCallback(pickerCallback);
-
-    if (validParent) {
-        pickerBuilder.setTitle('Upload to: ' + key + ' folder');
-    } else {
-        pickerBuilder.setTitle('Drive Picker (no project folder set — uploads to My Drive)');
-    }
-
-    pickerBuilder.build().setVisible(true);
+function resetWorkingToLive() {
+    if (!confirm('Discard all local edits and revert to the live config?')) return;
+    working = deepClone(window.AXIOS_CONFIG);
+    saveDraft();
+    renderAll();
+}
+function clearLocalDraft() {
+    if (!confirm('Clear the local draft? This cannot be undone.')) return;
+    localStorage.removeItem(DRAFT_KEY);
+    working = deepClone(window.AXIOS_CONFIG);
+    renderAll();
+    alert('Draft cleared.');
 }
 
-function pickerCallback(data) {
-    if (data.action === google.picker.Action.PICKED && data.docs && data.docs.length > 0) {
-        var file = data.docs[0];
-
-        var fileIdInput = document.getElementById('g-fileid');
-        var nameInput = document.getElementById('g-name');
-        var typeInput = document.getElementById('g-type');
-        var statusEl = document.getElementById('upload-status');
-
-        if (fileIdInput) fileIdInput.value = file.id;
-
-        // Auto-fill name if blank
-        if (nameInput && !nameInput.value && file.name) {
-            var cleaned = file.name.replace(/\.pdf$/i, '').replace(/_/g, ' ');
-            nameInput.value = cleaned;
-        }
-
-        // Auto-fill type from MIME
-        if (typeInput && file.mimeType) {
-            if (file.mimeType.indexOf('pdf') !== -1) typeInput.value = 'PDF';
-            else if (file.mimeType.indexOf('spreadsheet') !== -1 || file.mimeType.indexOf('excel') !== -1) typeInput.value = 'XLSX';
-            else if (file.mimeType.indexOf('document') !== -1 || file.mimeType.indexOf('word') !== -1) typeInput.value = 'DOCX';
-            else if (file.mimeType.indexOf('presentation') !== -1) typeInput.value = 'PPTX';
-        }
-
-        if (statusEl) {
-            statusEl.innerHTML = '✓ Selected: <strong>' + escapeHtml(file.name) + '</strong>';
-            statusEl.style.color = 'var(--accent-dark)';
-        }
-    }
+// ===== RENDER =====
+function renderAll() {
+    renderStats();
+    renderMatrix('investor');
+    renderMatrix('partner');
+    renderRooms('projects');
+    renderRooms('workstreams');
+    renderSettings();
 }
 
-/* Cache folder maps from data room HTMLs (for Picker upload targeting) */
-async function loadFolderMaps() {
-    try {
-        var [invHtml, parHtml] = await Promise.all([
-            fetch('investor-dataroom.html').then(function (r) { return r.text(); }),
-            fetch('partner-dataroom.html').then(function (r) { return r.text(); })
-        ]);
-        var invProjects = extractDataObject(invHtml, 'PROJECTS') || {};
-        var parWorkstreams = extractDataObject(parHtml, 'WORKSTREAMS') || {};
-        Object.keys(invProjects).forEach(function (k) {
-            if (invProjects[k] && invProjects[k].driveFolderId) {
-                folderMaps.investor[k] = invProjects[k].driveFolderId;
-            }
-        });
-        Object.keys(parWorkstreams).forEach(function (k) {
-            if (parWorkstreams[k] && parWorkstreams[k].driveFolderId) {
-                folderMaps.partner[k] = parWorkstreams[k].driveFolderId;
-            }
-        });
-    } catch (e) {
-        // Picker still works without folder targeting
-        console.warn('Could not load folder maps:', e);
-    }
-}
+function renderStats() {
+    document.getElementById('statInvestorCodes').textContent = Object.keys(working.investorAccess || {}).length;
+    document.getElementById('statPartnerCodes').textContent = Object.keys(working.partnerAccess || {}).length;
+    document.getElementById('statProjects').textContent = Object.keys(working.projects || {}).length;
+    document.getElementById('statWorkstreams').textContent = Object.keys(working.workstreams || {}).length;
 
-/* Project/workstream registries — keep in sync with dataroom HTMLs */
-var INVESTOR_KEYS = {
-    'lfp-localization': 'LFP Battery Localization Platform',
-    'drone-defense': 'Defense Drone Platform — SDR',
-    'hydrogen': 'Industrial Hydrogen Initiative',
-    'robotics': 'Industrial Robotics Consolidation',
-    'ai-platform': 'Applied AI Operating Platform',
-    'fintech-rails': 'Cross-Border Financial Rails'
-};
-var PARTNER_KEYS = {
-    'materials': 'Advanced Materials',
-    'aerospace': 'Aerospace & Defense',
-    'energy': 'Energy',
-    'robotics': 'Robotics',
-    'ai': 'Artificial Intelligence',
-    'fintech': 'Fintech Infrastructure',
-    'manufacturing': 'Smart Manufacturing',
-    'onboarding': 'Partner Onboarding'
-};
-
-function populateKeyDropdown() {
-    var portal = document.getElementById('g-portal').value;
-    var keyEl = document.getElementById('g-key');
-    var src = portal === 'partner' ? PARTNER_KEYS : INVESTOR_KEYS;
-    keyEl.innerHTML = '';
-    Object.keys(src).forEach(function (k) {
-        var opt = document.createElement('option');
-        opt.value = k;
-        opt.textContent = k + ' — ' + src[k];
-        keyEl.appendChild(opt);
-    });
-}
-
-function generateSnippet() {
-    var portal = document.getElementById('g-portal').value;
-    var key = document.getElementById('g-key').value;
-    var section = document.getElementById('g-section').value.trim();
-    var type = document.getElementById('g-type').value.trim() || 'PDF';
-    var name = document.getElementById('g-name').value.trim();
-    var fileId = document.getElementById('g-fileid').value.trim();
-    var meta = document.getElementById('g-meta').value.trim();
-    var access = document.getElementById('g-access').value;
-
-    if (!section || !name) {
-        alert('Section and Document Name are required.');
-        return;
-    }
-    if (access === 'view' && !fileId) {
-        if (!confirm('View access selected but no File ID provided. The link will show an alert until you add the File ID. Continue?')) return;
-        fileId = 'PASTE_FILE_ID_HERE';
-    }
-
-    var snippet =
-'            {\n' +
-'                section: ' + JSON.stringify(section) + ',\n' +
-'                name: ' + JSON.stringify(name) + ',\n' +
-'                fileId: ' + JSON.stringify(fileId || 'PASTE_FILE_ID_HERE') + ',\n' +
-'                type: ' + JSON.stringify(type) + ',\n' +
-'                meta: ' + JSON.stringify(meta) + ',\n' +
-'                access: ' + JSON.stringify(access) + '\n' +
-'            },';
-
-    document.getElementById('snippetCode').textContent = snippet;
-    document.getElementById('snippetOutput').style.display = 'block';
-
-    var targetFile = portal === 'partner' ? 'partner-dataroom.html' : 'investor-dataroom.html';
-    var rootObj = portal === 'partner' ? 'WORKSTREAMS' : 'PROJECTS';
-    document.getElementById('targetFile').textContent = targetFile;
-    document.getElementById('targetBlock').textContent = rootObj + "['" + key + "']";
-
-    document.getElementById('snippetOutput').scrollIntoView({ behavior: 'smooth' });
-}
-
-function clearForm() {
-    document.getElementById('genForm').reset();
-    document.getElementById('snippetOutput').style.display = 'none';
-    populateKeyDropdown();
-    document.getElementById('g-type').value = 'PDF';
-}
-
-function copySnippet() {
-    var text = document.getElementById('snippetCode').textContent;
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function () {
-            var btn = document.getElementById('copyBtn');
-            var orig = btn.textContent;
-            btn.textContent = 'Copied ✓';
-            setTimeout(function () { btn.textContent = orig; }, 1500);
-        });
-    } else {
-        // Fallback
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        var btn = document.getElementById('copyBtn');
-        btn.textContent = 'Copied ✓';
-        setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
-    }
-}
-
-/* Folder ID status loader */
-async function loadFolderStatus() {
-    var area = document.getElementById('folderStatus');
-    if (!area) return;
-
-    try {
-        var [invHtml, parHtml] = await Promise.all([
-            fetch('investor-dataroom.html').then(function (r) { return r.text(); }),
-            fetch('partner-dataroom.html').then(function (r) { return r.text(); })
-        ]);
-
-        var invProjects = extractDataObject(invHtml, 'PROJECTS');
-        var parWorkstreams = extractDataObject(parHtml, 'WORKSTREAMS');
-
-        area.innerHTML =
-            renderFolderTable('Investor Portal Projects', 'investor-dataroom.html', invProjects, INVESTOR_KEYS) +
-            renderFolderTable('Partner Portal Workstreams', 'partner-dataroom.html', parWorkstreams, PARTNER_KEYS);
-    } catch (err) {
-        area.innerHTML = '<p style="color:var(--text-muted);font-size:13px;">Could not load folder status.</p>';
-    }
-}
-
-function renderFolderTable(label, file, data, keys) {
-    if (!data) return '';
-    var rows = '';
-    var configured = 0, total = 0;
-    Object.keys(keys).forEach(function (k) {
-        total++;
-        var p = data[k];
-        var fid = p && p.driveFolderId ? p.driveFolderId : '';
-        var status, statusBadge;
-        if (fid && fid !== 'PASTE_FOLDER_ID_HERE' && fid.length > 10) {
-            statusBadge = '<span class="badge badge--view">Configured</span>';
-            status = fid.length > 20 ? fid.substring(0, 18) + '…' : fid;
-            configured++;
-        } else {
-            statusBadge = '<span class="badge badge--missing">Not set</span>';
-            status = '—';
-        }
-        rows += '<tr>' +
-            '<td>' + escapeHtml(k) + '</td>' +
-            '<td>' + escapeHtml(keys[k]) + '</td>' +
-            '<td class="mono">' + escapeHtml(status) + '</td>' +
-            '<td>' + statusBadge + '</td>' +
-            '</tr>';
-    });
-    return '<h4 style="font-family:var(--serif); font-size:16px; font-weight:500; margin-top:24px; margin-bottom:8px;">' + label + '</h4>' +
-        '<p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">' + configured + ' of ' + total + ' folders configured · Edit <code>' + file + '</code> to set folder IDs</p>' +
-        '<table class="inventory-table">' +
-            '<thead><tr><th>Key</th><th>Project / Workstream</th><th>Folder ID</th><th>Status</th></tr></thead>' +
-            '<tbody>' + rows + '</tbody></table>';
-}
-
-/* Inventory loader — fetches and parses dataroom HTMLs */
-async function loadInventory() {
-    var area = document.getElementById('inventoryArea');
-    area.innerHTML = '';
-
-    try {
-        var [invHtml, parHtml] = await Promise.all([
-            fetch('investor-dataroom.html').then(function (r) { return r.text(); }),
-            fetch('partner-dataroom.html').then(function (r) { return r.text(); })
-        ]);
-
-        var invProjects = extractDataObject(invHtml, 'PROJECTS');
-        var parWorkstreams = extractDataObject(parHtml, 'WORKSTREAMS');
-
-        area.innerHTML =
-            renderInventory('Investor Portal', invProjects, INVESTOR_KEYS) +
-            renderInventory('Partner Portal', parWorkstreams, PARTNER_KEYS);
-    } catch (err) {
-        area.innerHTML = '<p style="color: var(--text-muted); font-size: 13px;">Could not load inventory automatically. Open <code>investor-dataroom.html</code> and <code>partner-dataroom.html</code> in your editor to view current entries.<br><br>Error: ' + (err && err.message ? err.message : err) + '</p>';
-    }
-}
-
-function extractDataObject(html, varName) {
-    // Find the variable assignment and eval its object literal in a sandbox
-    try {
-        var re = new RegExp('var\\s+' + varName + '\\s*=\\s*(\\{[\\s\\S]*?\\n\\};)', 'm');
-        var m = html.match(re);
-        if (!m) return null;
-        // Use Function constructor for safer eval scope
-        var fn = new Function('return ' + m[1].replace(/;\s*$/, ''));
-        return fn();
-    } catch (e) {
-        return null;
-    }
-}
-
-function renderInventory(label, data, keys) {
-    if (!data) return '<h3 style="font-family:var(--serif);font-size:20px;margin-top:32px;margin-bottom:16px;">' + label + '</h3><p style="color:var(--text-muted);font-size:13px;">Could not parse data.</p>';
-    var html = '<h3 style="font-family:var(--serif);font-size:20px;margin-top:32px;margin-bottom:8px;">' + label + '</h3>';
-    var totalDocs = 0;
-    var rows = '';
-    Object.keys(keys).forEach(function (k) {
-        var p = data[k];
-        if (!p || !p.documents || p.documents.length === 0) return;
-        p.documents.forEach(function (doc) {
-            totalDocs++;
-            var fileIdDisplay;
-            var badge;
-            if (doc.access === 'view' && doc.fileId && doc.fileId !== 'PASTE_FILE_ID_HERE') {
-                fileIdDisplay = doc.fileId.length > 16 ? doc.fileId.substring(0, 14) + '…' : doc.fileId;
-                badge = '<span class="badge badge--view">View</span>';
-            } else if (doc.access === 'view') {
-                fileIdDisplay = '—';
-                badge = '<span class="badge badge--missing">Missing ID</span>';
-            } else {
-                fileIdDisplay = '—';
-                badge = '<span class="badge badge--request">Request</span>';
-            }
-            rows += '<tr>' +
-                '<td>' + escapeHtml(k) + '</td>' +
-                '<td>' + escapeHtml(doc.section || '') + '</td>' +
-                '<td>' + escapeHtml(doc.name || '') + '</td>' +
-                '<td>' + escapeHtml(doc.type || '') + '</td>' +
-                '<td class="mono">' + escapeHtml(fileIdDisplay) + '</td>' +
-                '<td>' + badge + '</td>' +
-                '</tr>';
-        });
-    });
-    if (totalDocs === 0) {
-        html += '<p style="color:var(--text-muted);font-size:13px;">No documents configured.</p>';
-    } else {
-        html += '<p style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">' + totalDocs + ' document' + (totalDocs===1?'':'s') + ' configured</p>';
-        html += '<table class="inventory-table">' +
-            '<thead><tr><th>Key</th><th>Section</th><th>Document</th><th>Type</th><th>File ID</th><th>Status</th></tr></thead>' +
-            '<tbody>' + rows + '</tbody></table>';
-    }
-    return html;
+    var masterInv = Object.values(working.investorAccess || {}).filter(function(g){ return (g.projects||[]).indexOf('*') >= 0; }).length;
+    var masterPt = Object.values(working.partnerAccess || {}).filter(function(g){ return (g.workstreams||[]).indexOf('*') >= 0; }).length;
+    document.getElementById('statInvestorMeta').textContent = masterInv + ' master · ' + (Object.keys(working.investorAccess||{}).length - masterInv) + ' scoped';
+    document.getElementById('statPartnerMeta').textContent = masterPt + ' master · ' + (Object.keys(working.partnerAccess||{}).length - masterPt) + ' scoped';
 }
 
 function escapeHtml(s) {
-    return String(s || '').replace(/[&<>"']/g, function (c) {
-        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    return String(s||'').replace(/[&<>"']/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
 }
+
+function renderMatrix(kind) {
+    var isInv = kind === 'investor';
+    var accessKey = isInv ? 'investorAccess' : 'partnerAccess';
+    var roomKey = isInv ? 'projects' : 'workstreams';
+    var listKey = isInv ? 'projects' : 'workstreams';
+    var rooms = working[roomKey] || {};
+    var roomKeys = Object.keys(rooms);
+    var codes = working[accessKey] || {};
+    var container = document.getElementById(isInv ? 'investorMatrix' : 'partnerMatrix');
+
+    var html = '<table class="matrix-table">';
+    html += '<thead><tr>';
+    html += '<th style="min-width:240px;">Code / Issued To</th>';
+    html += '<th class="col-room" style="width:60px;" title="Wildcard - all rooms">★</th>';
+    roomKeys.forEach(function(rk){
+        var r = rooms[rk];
+        html += '<th class="col-room" title="' + escapeHtml(r.title) + '">' + escapeHtml((r.title||rk).split(' ')[0].substring(0,12)) + '</th>';
+    });
+    html += '<th style="width:120px;text-align:right;">Actions</th>';
+    html += '</tr></thead><tbody>';
+
+    Object.keys(codes).forEach(function(code) {
+        var grant = codes[code];
+        var grantList = grant[listKey] || [];
+        var isWildcard = grantList.indexOf('*') >= 0;
+        html += '<tr>';
+        html += '<td><div class="matrix-code">' + escapeHtml(code) + '</div>';
+        html += '<div class="matrix-firm">' + escapeHtml(grant.firm || grant.company || '') + '</div></td>';
+        // Wildcard cell
+        html += '<td class="col-room"><span class="matrix-check ' + (isWildcard ? 'is-wildcard' : '') + '" onclick="toggleWildcard(\'' + kind + '\',\'' + code + '\')"></span></td>';
+        // Per-room cells
+        roomKeys.forEach(function(rk){
+            var checked = isWildcard || grantList.indexOf(rk) >= 0;
+            html += '<td class="col-room"><span class="matrix-check ' + (checked ? 'is-on' : '') + (isWildcard ? ' is-wildcard' : '') + '" onclick="toggleRoom(\'' + kind + '\',\'' + code + '\',\'' + rk + '\')"></span></td>';
+        });
+        html += '<td style="text-align:right;"><button class="adm-btn adm-btn-outline adm-btn-sm" onclick="renameCode(\'' + kind + '\',\'' + code + '\')">Edit</button> <button class="adm-btn adm-btn-danger adm-btn-sm" onclick="deleteCode(\'' + kind + '\',\'' + code + '\')">×</button></td>';
+        html += '</tr>';
+    });
+
+    if (!Object.keys(codes).length) {
+        html += '<tr><td colspan="' + (roomKeys.length + 3) + '" style="text-align:center;padding:24px;color:var(--admin-ink-muted);">No codes yet. Click "+ Add ' + (isInv?'Investor':'Partner') + ' Code" above.</td></tr>';
+    }
+
+    html += '</tbody></table>';
+    container.innerHTML = html;
+}
+
+function toggleRoom(kind, code, room) {
+    var isInv = kind === 'investor';
+    var accessKey = isInv ? 'investorAccess' : 'partnerAccess';
+    var listKey = isInv ? 'projects' : 'workstreams';
+    var grant = working[accessKey][code];
+    if (!grant) return;
+    var list = grant[listKey] || [];
+    // If wildcard, clicking a room converts to explicit list
+    if (list.indexOf('*') >= 0) {
+        if (!confirm('This code currently has wildcard access (all rooms). Switch to explicit list?')) return;
+        list = Object.keys(working[isInv?'projects':'workstreams']);
+    }
+    var idx = list.indexOf(room);
+    if (idx >= 0) list.splice(idx, 1);
+    else list.push(room);
+    grant[listKey] = list;
+    saveDraft();
+    renderMatrix(kind);
+}
+
+function toggleWildcard(kind, code) {
+    var isInv = kind === 'investor';
+    var accessKey = isInv ? 'investorAccess' : 'partnerAccess';
+    var listKey = isInv ? 'projects' : 'workstreams';
+    var grant = working[accessKey][code];
+    if (!grant) return;
+    var list = grant[listKey] || [];
+    if (list.indexOf('*') >= 0) grant[listKey] = [];
+    else grant[listKey] = ['*'];
+    saveDraft();
+    renderMatrix(kind);
+}
+
+function renameCode(kind, code) {
+    var isInv = kind === 'investor';
+    var accessKey = isInv ? 'investorAccess' : 'partnerAccess';
+    var grant = working[accessKey][code];
+    if (!grant) return;
+    var newCode = prompt('New code value:', code);
+    if (!newCode || newCode === code) return;
+    newCode = newCode.trim().toUpperCase();
+    if (working[accessKey][newCode]) { alert('Code already exists.'); return; }
+    var newFirm = prompt('Issued to (firm/company):', grant.firm || grant.company || '');
+    working[accessKey][newCode] = grant;
+    if (isInv) grant.firm = newFirm || grant.firm;
+    else grant.company = newFirm || grant.company;
+    delete working[accessKey][code];
+    saveDraft();
+    renderMatrix(kind);
+}
+
+function deleteCode(kind, code) {
+    if (!confirm('Delete code: ' + code + ' ?')) return;
+    var isInv = kind === 'investor';
+    var accessKey = isInv ? 'investorAccess' : 'partnerAccess';
+    delete working[accessKey][code];
+    saveDraft();
+    renderMatrix(kind);
+    renderStats();
+}
+
+// ===== ADD CODE MODAL =====
+function openAddCodeModal(kind) {
+    document.getElementById('addCodeType').value = kind;
+    document.getElementById('addCodeTitle').textContent = 'Add ' + (kind==='investor'?'Investor':'Partner') + ' Code';
+    document.getElementById('addCodeValue').value = '';
+    document.getElementById('addCodeFirm').value = '';
+    // Populate room checkbox list
+    var rooms = working[kind==='investor'?'projects':'workstreams'] || {};
+    var html = '';
+    html += '<label><input type="checkbox" id="addCodeWildcard"> <strong>★ All rooms (Wildcard / Master code)</strong></label>';
+    html += '<hr style="margin:8px 0;border:none;border-top:1px solid var(--admin-rule);">';
+    Object.keys(rooms).forEach(function(rk){
+        html += '<label><input type="checkbox" class="addCodeRoom" data-key="' + rk + '"> ' + escapeHtml(rooms[rk].title || rk) + ' <span class="checkbox-list-key">' + escapeHtml(rk) + '</span></label>';
+    });
+    document.getElementById('addCodeRooms').innerHTML = html;
+    document.getElementById('addCodeModal').classList.add('is-open');
+}
+function submitAddCode(e) {
+    e.preventDefault();
+    var kind = document.getElementById('addCodeType').value;
+    var code = document.getElementById('addCodeValue').value.trim().toUpperCase();
+    var firm = document.getElementById('addCodeFirm').value.trim();
+    if (!code || !firm) return;
+    var isInv = kind === 'investor';
+    var accessKey = isInv ? 'investorAccess' : 'partnerAccess';
+    var listKey = isInv ? 'projects' : 'workstreams';
+    if (working[accessKey][code]) { alert('Code already exists.'); return; }
+    var rooms = [];
+    if (document.getElementById('addCodeWildcard').checked) {
+        rooms = ['*'];
+    } else {
+        document.querySelectorAll('.addCodeRoom:checked').forEach(function(cb){ rooms.push(cb.getAttribute('data-key')); });
+    }
+    var entry = {};
+    if (isInv) entry.firm = firm;
+    else entry.company = firm;
+    entry[listKey] = rooms;
+    working[accessKey][code] = entry;
+    saveDraft();
+    closeModal('addCodeModal');
+    renderMatrix(kind);
+    renderStats();
+}
+
+// ===== ROOMS =====
+function renderRooms(type) {
+    var rooms = working[type] || {};
+    var container = document.getElementById(type + 'Grid');
+    var html = '';
+    Object.keys(rooms).forEach(function(k){
+        var r = rooms[k];
+        var isRestricted = (r.title || '').toLowerCase().indexOf('confidential') >= 0 || (r.title || '').toLowerCase().indexOf('admin') >= 0;
+        html += '<div class="room-card">';
+        if (r.sector) html += '<div class="room-card-sector">' + escapeHtml(r.sector) + '</div>';
+        html += '<div class="room-card-title">' + escapeHtml(r.title || k) + '</div>';
+        if (r.description) html += '<div class="room-card-desc">' + escapeHtml(String(r.description).substring(0, 140)) + (r.description.length > 140 ? '…' : '') + '</div>';
+        html += '<div class="room-card-meta">Key: <strong>' + escapeHtml(k) + '</strong><br>Drive: ' + escapeHtml((r.driveFolderId||'—').substring(0, 22)) + '…</div>';
+        html += '<div>';
+        if (r.status) html += '<span class="room-tag tag-active">' + escapeHtml(r.status) + '</span>';
+        if (isRestricted) html += '<span class="room-tag tag-restricted">Restricted</span>';
+        html += '</div>';
+        html += '<div class="room-card-actions">';
+        html += '<button class="adm-btn adm-btn-outline adm-btn-sm" onclick="editRoom(\'' + type + '\',\'' + k + '\')">Edit</button>';
+        html += '<button class="adm-btn adm-btn-danger adm-btn-sm" onclick="deleteRoom(\'' + type + '\',\'' + k + '\')">Delete</button>';
+        if (r.driveFolderId) html += ' <a class="adm-btn adm-btn-outline adm-btn-sm" href="https://drive.google.com/drive/folders/' + encodeURIComponent(r.driveFolderId) + '" target="_blank">Drive ↗</a>';
+        html += '</div>';
+        html += '</div>';
+    });
+    if (!Object.keys(rooms).length) {
+        html = '<div style="padding:32px;text-align:center;color:var(--admin-ink-muted);font-size:13px;">No ' + type + ' yet. Click "+ Add" above.</div>';
+    }
+    container.innerHTML = html;
+}
+
+function deleteRoom(type, key) {
+    if (!confirm('Delete data room "' + key + '"?\nThis also removes it from any access code that references it.')) return;
+    delete working[type][key];
+    // Clean up access codes referencing this room
+    var accessKey = type === 'projects' ? 'investorAccess' : 'partnerAccess';
+    var listKey = type;
+    Object.keys(working[accessKey] || {}).forEach(function(code){
+        var list = working[accessKey][code][listKey] || [];
+        var idx = list.indexOf(key);
+        if (idx >= 0) list.splice(idx, 1);
+    });
+    saveDraft();
+    renderRooms(type);
+    renderMatrix(type === 'projects' ? 'investor' : 'partner');
+    renderStats();
+}
+
+function editRoom(type, key) {
+    var r = working[type][key];
+    var newTitle = prompt('Title:', r.title || '');
+    if (newTitle === null) return;
+    var newSector = prompt('Sector:', r.sector || '');
+    var newStatus = prompt('Status:', r.status || '');
+    var newDesc = prompt('Description:', r.description || '');
+    var newFolder = prompt('Drive Folder ID:', r.driveFolderId || '');
+    if (newTitle !== null) r.title = newTitle;
+    if (newSector !== null) r.sector = newSector;
+    if (newStatus !== null) r.status = newStatus;
+    if (newDesc !== null) r.description = newDesc;
+    if (newFolder !== null) r.driveFolderId = newFolder;
+    saveDraft();
+    renderRooms(type);
+}
+
+function openAddRoomModal(type) {
+    document.getElementById('addRoomType').value = type;
+    document.getElementById('addRoomTitle').textContent = 'Add ' + (type==='projects'?'Project':'Workstream');
+    ['addRoomKey','addRoomTitle_','addRoomSector','addRoomStatus','addRoomDesc','addRoomFolderId','addRoomKeywords'].forEach(function(id){
+        document.getElementById(id).value = '';
+    });
+    document.getElementById('addRoomModal').classList.add('is-open');
+}
+function submitAddRoom(e) {
+    e.preventDefault();
+    var type = document.getElementById('addRoomType').value;
+    var key = document.getElementById('addRoomKey').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'-');
+    if (!key || !document.getElementById('addRoomTitle_').value.trim()) return;
+    if (working[type][key]) { alert('Room key already exists.'); return; }
+    working[type][key] = {
+        title: document.getElementById('addRoomTitle_').value.trim(),
+        sector: document.getElementById('addRoomSector').value.trim(),
+        description: document.getElementById('addRoomDesc').value.trim(),
+        status: document.getElementById('addRoomStatus').value.trim() || 'Active',
+        keywords: document.getElementById('addRoomKeywords').value.trim(),
+        driveFolderId: document.getElementById('addRoomFolderId').value.trim(),
+        documents: []
+    };
+    saveDraft();
+    closeModal('addRoomModal');
+    renderRooms(type);
+    renderMatrix(type === 'projects' ? 'investor' : 'partner');
+    renderStats();
+}
+
+// ===== MODAL =====
+function closeModal(id) {
+    document.getElementById(id).classList.remove('is-open');
+}
+document.querySelectorAll('.adm-modal-overlay').forEach(function(o){
+    o.addEventListener('click', function(e){
+        if (e.target === o) o.classList.remove('is-open');
+    });
+});
+
+// ===== SETTINGS =====
+function renderSettings() {
+    document.getElementById('adminApiKey').value = working.googleApiKey || '(not set)';
+}
+
+// ===== EXPORT =====
+function buildExport() {
+    var text = generateConfigJS(working);
+    document.getElementById('exportPane').textContent = text;
+}
+
+function generateConfigJS(cfg) {
+    var lines = [];
+    lines.push('/* ============================================');
+    lines.push('   AXIOS EQUITY DATA ROOM — Central Configuration');
+    lines.push('   ============================================');
+    lines.push('   Generated by admin.html on ' + new Date().toISOString());
+    lines.push('   Single source of truth for Investor Projects and Partner Workstreams');
+    lines.push('   served from the axiosequity.com Client Login portal.');
+    lines.push('   ============================================ */');
+    lines.push('');
+    lines.push('window.AXIOS_CONFIG = {');
+    lines.push('');
+    lines.push('    googleApiKey: ' + JSON.stringify(cfg.googleApiKey || '') + ',');
+    lines.push('');
+    lines.push('    /* ==========  PARTNER ACCESS CODES  ========== */');
+    lines.push('    partnerAccess: ' + indent(formatObject(cfg.partnerAccess || {}, 2), 4).trim() + ',');
+    lines.push('');
+    lines.push('    /* ==========  INVESTOR ACCESS CODES  ========== */');
+    lines.push('    investorAccess: ' + indent(formatObject(cfg.investorAccess || {}, 2), 4).trim() + ',');
+    lines.push('');
+    lines.push('    /* ==========  INVESTOR PROJECTS  ========== */');
+    lines.push('    projects: ' + indent(formatRoomsObject(cfg.projects || {}, 2), 4).trim() + ',');
+    lines.push('');
+    lines.push('    /* ==========  PARTNER WORKSTREAMS  ========== */');
+    lines.push('    workstreams: ' + indent(formatRoomsObject(cfg.workstreams || {}, 2), 4).trim() + '');
+    lines.push('};');
+    return lines.join('\n');
+}
+
+function indent(text, n) {
+    var pad = ' '.repeat(n);
+    return text.split('\n').map(function(line){ return pad + line; }).join('\n');
+}
+
+function formatObject(obj, depth) {
+    var keys = Object.keys(obj);
+    if (!keys.length) return '{}';
+    var lines = ['{'];
+    keys.forEach(function(k, i){
+        var v = obj[k];
+        var comma = i < keys.length - 1 ? ',' : '';
+        if (typeof v === 'object' && !Array.isArray(v)) {
+            lines.push('    ' + JSON.stringify(k) + ': ' + JSON.stringify(v) + comma);
+        } else {
+            lines.push('    ' + JSON.stringify(k) + ': ' + JSON.stringify(v) + comma);
+        }
+    });
+    lines.push('}');
+    return lines.join('\n');
+}
+
+function formatRoomsObject(rooms, depth) {
+    var keys = Object.keys(rooms);
+    if (!keys.length) return '{}';
+    var lines = ['{'];
+    keys.forEach(function(k, i){
+        var r = rooms[k];
+        var comma = i < keys.length - 1 ? ',' : '';
+        lines.push('');
+        lines.push('    ' + JSON.stringify(k) + ': {');
+        lines.push('        title: ' + JSON.stringify(r.title || '') + ',');
+        lines.push('        sector: ' + JSON.stringify(r.sector || '') + ',');
+        lines.push('        description: ' + JSON.stringify(r.description || '') + ',');
+        lines.push('        status: ' + JSON.stringify(r.status || '') + ',');
+        lines.push('        keywords: ' + JSON.stringify(r.keywords || '') + ',');
+        lines.push('        driveFolderId: ' + JSON.stringify(r.driveFolderId || '') + ',');
+        lines.push('        documents: ' + JSON.stringify(r.documents || []));
+        lines.push('    }' + comma);
+    });
+    lines.push('}');
+    return lines.join('\n');
+}
+
+function copyExport() {
+    var text = document.getElementById('exportPane').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+        alert('Copied to clipboard! Now paste into dataroom-config.js on GitHub.');
+    }, function(){
+        alert('Could not copy. Select manually and copy.');
+    });
+}
+
+function downloadExport() {
+    var text = document.getElementById('exportPane').textContent;
+    var blob = new Blob([text], { type: 'application/javascript' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'dataroom-config.js';
+    a.click();
+    URL.revokeObjectURL(url);
+}
 </script>
-
-<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
-    <strong>Restricted area.</strong> Information on this page is confidential and intended only for the authorised recipient. Distribution outside your firm requires written consent.
-</div></div>
-
-<footer class="footer"><div class="footer-inner">
-    <div class="footer-bottom">
-        <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
-        <div class="footer-legal"><a href="disclosures.html">Disclosures</a><a href="disclosures.html#privacy">Privacy</a></div>
-    </div>
-</div></footer>
-
 
 </body>
 </html>
