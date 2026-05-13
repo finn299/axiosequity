@@ -794,13 +794,61 @@ body.admin-body {
             </div>
 
             <div class="admin-card">
-                <h3 class="admin-card-title">Admin Code</h3>
-                <p class="admin-card-sub">The code required to enter this admin page (in addition to Cloudflare Access authentication). Rotate periodically.</p>
-                <div class="adm-field">
-                    <label>Current Code (hidden)</label>
-                    <input type="password" value="hidden-for-security" readonly style="font-family:'JetBrains Mono',monospace;">
+                <h3 class="admin-card-title">Admin Code Rotation</h3>
+                <p class="admin-card-sub">Change the code required to enter this admin page (after Cloudflare Access authentication). The current code lives in <code>admin.html</code>. Use the form below to rotate it.</p>
+
+                <form id="rotateAdminForm" onsubmit="generateAdminCodeChange(event)" autocomplete="off">
+                    <div class="adm-field-row">
+                        <div class="adm-field">
+                            <label>Current Admin Code <span style="color:var(--admin-danger);">*</span></label>
+                            <input type="password" id="rotateCurrentCode" required placeholder="Enter current code to verify" style="font-family:'JetBrains Mono',monospace;">
+                        </div>
+                        <div class="adm-field">
+                            <label>New Admin Code <span style="color:var(--admin-danger);">*</span></label>
+                            <input type="text" id="rotateNewCode" required placeholder="e.g. AXIOS-ADMIN-2026-Q2" style="font-family:'JetBrains Mono',monospace;">
+                        </div>
+                    </div>
+                    <div class="adm-field">
+                        <label>Confirm New Admin Code <span style="color:var(--admin-danger);">*</span></label>
+                        <input type="text" id="rotateConfirmCode" required placeholder="Re-type the new code" style="font-family:'JetBrains Mono',monospace;">
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                        <button type="submit" class="adm-btn">Generate Update</button>
+                        <button type="button" class="adm-btn adm-btn-outline" onclick="document.getElementById('rotateOutput').style.display='none';document.getElementById('rotateAdminForm').reset();">Clear</button>
+                    </div>
+                    <p style="font-size:11px;color:var(--admin-ink-muted);margin-top:10px;line-height:1.5;">
+                        💡 Tip: Use a memorable but hard-to-guess pattern. Examples: <code>AXIOS-ADMIN-2026-Q2</code>, <code>AE-MASTER-MAY26</code>, <code>FINN-ROTATE-2026-05</code>
+                    </p>
+                </form>
+
+                <div id="rotateOutput" style="display:none;margin-top:24px;padding-top:24px;border-top:1px solid var(--admin-border);">
+                    <h4 style="font-family:var(--serif);font-size:18px;color:var(--admin-navy);margin:0 0 8px;">Update Instructions</h4>
+                    <p style="font-size:13px;color:var(--admin-ink-muted);margin-bottom:14px;">Three options to apply the change. Pick whichever is easiest.</p>
+
+                    <div style="background:var(--admin-bg);padding:16px;border:1px solid var(--admin-rule);margin-bottom:16px;">
+                        <strong style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--admin-accent);display:block;margin-bottom:8px;">Option A — Download patched admin.html (easiest) ⭐</strong>
+                        <p style="font-size:12px;color:var(--admin-ink);margin-bottom:10px;line-height:1.6;">Click below to download a new admin.html with the new code already baked in. Then upload to GitHub (replacing the current admin.html).</p>
+                        <button class="adm-btn" onclick="downloadPatchedAdmin()">Download Patched admin.html</button>
+                    </div>
+
+                    <div style="background:var(--admin-bg);padding:16px;border:1px solid var(--admin-rule);margin-bottom:16px;">
+                        <strong style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--admin-accent);display:block;margin-bottom:8px;">Option B — Copy the new line</strong>
+                        <p style="font-size:12px;color:var(--admin-ink);margin-bottom:10px;line-height:1.6;">Replace the existing <code>var ADMIN_CODE = ...</code> line in admin.html with this:</p>
+                        <div class="export-pane" id="rotateLineOutput" style="max-height:auto;font-size:13px;"></div>
+                        <button class="adm-btn adm-btn-outline adm-btn-sm" style="margin-top:8px;" onclick="copyRotateLine()">Copy Line</button>
+                    </div>
+
+                    <div style="background:#fffaf0;padding:16px;border:1px solid var(--admin-warn);border-left:4px solid var(--admin-warn);">
+                        <strong style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--admin-warn);display:block;margin-bottom:8px;">⚠ After deploying</strong>
+                        <p style="font-size:12px;color:var(--admin-ink);line-height:1.6;margin:0;">
+                            1. Commit the new admin.html to GitHub.<br>
+                            2. Wait for Vercel auto-deploy (1–2 min).<br>
+                            3. <strong>Update the admin guide</strong> document and your password manager with the new code.<br>
+                            4. The old code will stop working as soon as deploy completes — make sure all admins know the new code.<br>
+                            5. Sign out of admin (top-left) and re-test with the new code.
+                        </p>
+                    </div>
                 </div>
-                <p style="font-size:12px;color:var(--admin-ink-muted);line-height:1.6;">To change: edit <code>admin.html</code> directly, find <code>var ADMIN_CODE = ...</code> near the bottom, replace, bump cache-buster, commit & push.</p>
             </div>
 
             <div class="admin-card">
@@ -1393,6 +1441,94 @@ function downloadExport() {
     a.download = 'dataroom-config.js';
     a.click();
     URL.revokeObjectURL(url);
+}
+
+// ===== ADMIN CODE ROTATION =====
+var pendingNewAdminCode = null;
+
+function generateAdminCodeChange(e) {
+    e.preventDefault();
+    var current = document.getElementById('rotateCurrentCode').value;
+    var newCode = document.getElementById('rotateNewCode').value.trim();
+    var confirm = document.getElementById('rotateConfirmCode').value.trim();
+
+    // Validate
+    if (current !== ADMIN_CODE) {
+        alert('Current admin code is incorrect. Cannot proceed.');
+        return;
+    }
+    if (newCode.length < 8) {
+        alert('New admin code must be at least 8 characters.');
+        return;
+    }
+    if (newCode === ADMIN_CODE) {
+        alert('New code must be different from current code.');
+        return;
+    }
+    if (newCode !== confirm) {
+        alert('New code and confirmation do not match.');
+        return;
+    }
+
+    pendingNewAdminCode = newCode;
+
+    // Generate the line to replace
+    var newLine = "var ADMIN_CODE = '" + newCode.replace(/'/g, "\\'") + "';";
+    document.getElementById('rotateLineOutput').textContent = newLine;
+    document.getElementById('rotateOutput').style.display = 'block';
+
+    // Scroll to output
+    setTimeout(function(){
+        document.getElementById('rotateOutput').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+}
+
+function copyRotateLine() {
+    var text = document.getElementById('rotateLineOutput').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+        alert('Copied! Now paste this into admin.html (replacing the existing var ADMIN_CODE = ... line) and commit to GitHub.');
+    }, function(){
+        alert('Could not copy. Select manually.');
+    });
+}
+
+function downloadPatchedAdmin() {
+    if (!pendingNewAdminCode) {
+        alert('Generate the update first.');
+        return;
+    }
+    // Fetch the current admin.html, replace the ADMIN_CODE line, offer download
+    fetch(location.pathname + '?nocache=' + Date.now())
+        .then(function(r){ return r.text(); })
+        .then(function(html){
+            // Replace the ADMIN_CODE declaration. Tolerant regex: var ADMIN_CODE = '...';
+            var patched = html.replace(
+                /var\s+ADMIN_CODE\s*=\s*['"][^'"]*['"]\s*;/,
+                "var ADMIN_CODE = '" + pendingNewAdminCode.replace(/'/g, "\\'") + "';"
+            );
+            if (patched === html) {
+                alert('Could not find ADMIN_CODE line in current admin.html. Use Option B (copy line) instead.');
+                return;
+            }
+            // Also bump cache-buster on dataroom-config.js inside admin.html so the new admin loads cleanly
+            var today = new Date();
+            var stamp = today.getFullYear() + String(today.getMonth()+1).padStart(2,'0') + String(today.getDate()).padStart(2,'0');
+            patched = patched.replace(
+                /dataroom-config\.js\?v=[a-zA-Z0-9]+/g,
+                'dataroom-config.js?v=' + stamp + 'r'
+            );
+            var blob = new Blob([patched], { type: 'text/html' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'admin.html';
+            a.click();
+            URL.revokeObjectURL(url);
+            alert('Patched admin.html downloaded! Upload it to GitHub (replacing the current admin.html) and commit. Make sure to save the new code to your password manager BEFORE deploying.');
+        })
+        .catch(function(err){
+            alert('Could not fetch admin.html: ' + err.message + '\nUse Option B (copy line) instead.');
+        });
 }
 </script>
 

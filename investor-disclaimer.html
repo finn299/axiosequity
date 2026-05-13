@@ -133,6 +133,10 @@ function signOut() {
     sessionStorage.removeItem('eqx_investor_firm');
     sessionStorage.removeItem('eqx_investor_projects');
     sessionStorage.removeItem('eqx_investor_disclaimer');
+    localStorage.removeItem('eqx_investor_remember_code');
+    localStorage.removeItem('eqx_investor_remember_email');
+    localStorage.removeItem('eqx_investor_disclaimer_accepted_at');
+    localStorage.removeItem('eqx_investor_disclaimer_for_code');
     window.location.href = 'investor-login.html';
 }
 (function () {
@@ -160,7 +164,12 @@ function signOut() {
     btn.addEventListener('click', function () {
         var all = Array.prototype.every.call(boxes, function (b) { return b.checked; });
         if (!all) return;
-        sessionStorage.setItem('eqx_investor_disclaimer', String(Date.now()));
+        var now = Date.now();
+        sessionStorage.setItem('eqx_investor_disclaimer', String(now));
+        // Persist for auto-skip on future visits (90-day TTL enforced in login page)
+        var code = localStorage.getItem('eqx_investor_remember_code') || '';
+        localStorage.setItem('eqx_investor_disclaimer_accepted_at', String(now));
+        if (code) localStorage.setItem('eqx_investor_disclaimer_for_code', code);
         window.location.href = 'investors.html';
     });
 })();

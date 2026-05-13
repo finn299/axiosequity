@@ -125,6 +125,10 @@ function signOut() {
     sessionStorage.removeItem('eqx_partner_company');
     sessionStorage.removeItem('eqx_partner_workstreams');
     sessionStorage.removeItem('eqx_partner_disclaimer');
+    localStorage.removeItem('eqx_partner_remember_code');
+    localStorage.removeItem('eqx_partner_remember_email');
+    localStorage.removeItem('eqx_partner_disclaimer_accepted_at');
+    localStorage.removeItem('eqx_partner_disclaimer_for_code');
     window.location.href = 'partner-login.html';
 }
 (function () {
@@ -152,7 +156,11 @@ function signOut() {
     btn.addEventListener('click', function () {
         var all = Array.prototype.every.call(boxes, function (b) { return b.checked; });
         if (!all) return;
-        sessionStorage.setItem('eqx_partner_disclaimer', String(Date.now()));
+        var now = Date.now();
+        sessionStorage.setItem('eqx_partner_disclaimer', String(now));
+        var code = localStorage.getItem('eqx_partner_remember_code') || '';
+        localStorage.setItem('eqx_partner_disclaimer_accepted_at', String(now));
+        if (code) localStorage.setItem('eqx_partner_disclaimer_for_code', code);
         window.location.href = 'partner-portal.html';
     });
 })();

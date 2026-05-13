@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script src="dataroom-config.js?v=20260513c"></script>
+<script src="dataroom-config.js?v=20260513d"></script>
 </head>
 <body>
 
@@ -138,6 +138,11 @@ function signOut() {
     sessionStorage.removeItem('eqx_investor_firm');
     sessionStorage.removeItem('eqx_investor_projects');
     sessionStorage.removeItem('eqx_investor_disclaimer');
+    // Clear remembered credentials too (otherwise auto-login would re-route immediately)
+    localStorage.removeItem('eqx_investor_remember_code');
+    localStorage.removeItem('eqx_investor_remember_email');
+    localStorage.removeItem('eqx_investor_disclaimer_accepted_at');
+    localStorage.removeItem('eqx_investor_disclaimer_for_code');
     window.location.href = 'investor-login.html';
 }
 function escapeHtml(s){
