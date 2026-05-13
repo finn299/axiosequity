@@ -101,6 +101,16 @@ window.AXIOS_CONFIG = {
             keywords: 'iep partner',
             driveFolderId: '1hh23Yk9KlXCgULwzUIlAGKT1IWo1opc0',
             documents: []
+        },
+
+        'iep-confidential': {
+            title: 'IEP — Confidential (Admin only)',
+            sector: 'Restricted · Admin',
+            description: 'IEP confidential workstream — admin-only materials. Not visible to the IEP partner code. Visible only to master admin codes (AXIOS-IR-2026 / AXIOS-PT-2026).',
+            status: 'Restricted access',
+            keywords: 'iep confidential admin restricted',
+            driveFolderId: '1jRIcOZodplemhrLnAwITSVROQUA8bdT1',
+            documents: []
         }
 
         // Add additional investor projects below as needed.
@@ -140,6 +150,16 @@ window.AXIOS_CONFIG = {
             status: 'Active partnership',
             keywords: 'iep partner',
             driveFolderId: '1hh23Yk9KlXCgULwzUIlAGKT1IWo1opc0',
+            documents: []
+        },
+
+        'iep-confidential': {
+            title: 'IEP — Confidential (Admin only)',
+            sector: 'Restricted · Admin',
+            description: 'IEP confidential workstream — admin-only materials. Not visible to the IEP partner code. Visible only to master admin codes (AXIOS-IR-2026 / AXIOS-PT-2026).',
+            status: 'Restricted access',
+            keywords: 'iep confidential admin restricted',
+            driveFolderId: '1jRIcOZodplemhrLnAwITSVROQUA8bdT1',
             documents: []
         }
 
