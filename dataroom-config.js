@@ -67,7 +67,10 @@ window.AXIOS_CONFIG = {
         // 'ACME-CAPITAL-2026': { firm: 'Acme Capital', projects: ['newcastle-claim'] }
     },
 
-    /* ==========  INVESTOR PROJECTS  ========== */
+    /* ==========  INVESTOR PROJECTS  ==========
+       Master code AXIOS-IR-2026 (projects: ['*']) sees ALL entries here.
+       Per-investor codes only see the project keys they are explicitly granted.
+       ============================================ */
     projects: {
 
         'newcastle-claim': {
@@ -78,18 +81,52 @@ window.AXIOS_CONFIG = {
             keywords: 'newcastle bkgt gold mining nevada pce precision controlled electrolysis catamarca argentina saudi okan ceeg spac stablecoin tether',
             driveFolderId: '1RNt-UfneEohx8UShyhrVRhDbA1yYR7H4',
             documents: []
+        },
+
+        'turk-ytong': {
+            title: 'Türk Ytong',
+            sector: 'Building Materials - Industrial',
+            description: 'Türk Ytong partnership - operational and financial reporting, resource statements, project pipeline. Annual reports 2022-2025, operational results, UMREK resource report, SPP project.',
+            status: 'Active partnership',
+            keywords: 'turk ytong building materials autoclaved aerated concrete operational financial spp umrek',
+            driveFolderId: '1tuPEOL7TRQJEH0EdmDIUPk_FqQRHyy1m',
+            documents: []
+        },
+
+        'iep': {
+            title: 'IEP',
+            sector: 'Partner Workstream',
+            description: 'IEP partner engagement and shared materials. Description to be updated by AXIOS EQUITY partnerships team.',
+            status: 'Active partnership',
+            keywords: 'iep partner',
+            driveFolderId: '1hh23Yk9KlXCgULwzUIlAGKT1IWo1opc0',
+            documents: []
         }
 
         // Add additional investor projects below as needed.
     },
 
-    /* ==========  PARTNER WORKSTREAMS  ========== */
+    /* ==========  PARTNER WORKSTREAMS  ==========
+       Master code AXIOS-PT-2026 (workstreams: ['*']) sees ALL entries here.
+       Per-partner codes only see the workstream keys they are explicitly granted.
+       Newcastle is mirrored here so the master partner code sees all 3 rooms.
+       ============================================ */
     workstreams: {
 
+        'newcastle-claim': {
+            title: 'Newcastle Claim - BKGT Gold Mining + PCE Technology',
+            sector: 'Mining - Energy - Tokenisation',
+            description: 'BKGT gold mining project at Newcastle Claim, Nevada, combined with Precision Controlled Electrolysis (PCE) technology and parallel development across Argentina (Catamarca), Saudi Arabia, and OKAN CEEG. Includes SPAC strategy, tokenisation, and integrated financial / operational thesis.',
+            status: 'Status - Active - Multi-jurisdiction',
+            keywords: 'newcastle bkgt gold mining nevada pce precision controlled electrolysis catamarca argentina saudi okan ceeg spac stablecoin tether',
+            driveFolderId: '1RNt-UfneEohx8UShyhrVRhDbA1yYR7H4',
+            documents: []
+        },
+
         'turk-ytong': {
-            title: 'Turk Ytong',
+            title: 'Türk Ytong',
             sector: 'Building Materials - Industrial',
-            description: 'Turk Ytong partnership - operational and financial reporting, resource statements, project pipeline. Annual reports 2022-2025, operational results, UMREK resource report, SPP project.',
+            description: 'Türk Ytong partnership - operational and financial reporting, resource statements, project pipeline. Annual reports 2022-2025, operational results, UMREK resource report, SPP project.',
             status: 'Active partnership',
             keywords: 'turk ytong building materials autoclaved aerated concrete operational financial spp umrek',
             driveFolderId: '1tuPEOL7TRQJEH0EdmDIUPk_FqQRHyy1m',
