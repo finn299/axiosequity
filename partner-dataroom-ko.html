@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터룸 — AXIOS EQUITY 파트너 포털</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dataroom-config.js?v=20260513c"></script>
+</head>
+<body style="font-family:'Noto Sans KR','Inter',sans-serif;">
+
+<div class="topbar"><div class="topbar-inner">
+    <div class="topbar-links"><a href="about.html">소개</a><a href="insights.html">인사이트</a><a href="press.html">언론</a><a href="careers.html">채용</a><a href="contact.html">문의</a></div>
+    <div class="topbar-right"><span class="topbar-locale"><strong>대한민국</strong> · 한국어 &middot; <a href="partner-dataroom.html" style="color:rgba(255,255,255,0.7);">EN</a></span><a href="partner-login-ko.html" class="topbar-client">로그아웃</a></div>
+</div></div>
+
+<nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="wordmark-dark.svg" alt="AXIOS EQUITY"></a>
+    <ul class="nav-menu">
+        <li><a href="partner-portal-ko.html">← 포털로 돌아가기</a></li>
+    </ul>
+</div></nav>
+
+<section class="portal-dashboard">
+    <div class="container" style="max-width: 1080px;">
+        <div class="portal-header">
+            <p class="portal-greeting" id="sessionLine">파트너 포털 · 워크스트림 데이터룸</p>
+            <h1 id="projectTitle" class="display-md" style="font-family: var(--serif); font-weight: 500; font-size: 44px; letter-spacing: -0.02em; margin-bottom: 24px;">워크스트림 데이터룸</h1>
+            <p class="lede" id="projectDesc" style="max-width: 760px;">
+                기밀 워크스트림 자료. 모든 접근은 기록됩니다. 다운로드, 스크린샷, 재배포 금지. 문서 이름을 클릭하면 제어된 뷰어에서 열립니다.
+            </p>
+        </div>
+
+        <div id="documentSections">
+            <!-- Folder contents rendered by JS -->
+        </div>
+
+        <div id="emptyState" style="display:none; margin-top: 56px;">
+            <p class="portal-fine">
+                현재 이 데이터룸에 게시된 문서가 없습니다. <a href="mailto:info@axiosequity.com" style="color: var(--text);">info@axiosequity.com</a>로 특정 자료를 요청하세요.
+            </p>
+        </div>
+
+        <div style="margin-top: 96px; padding-top: 56px; border-top: 1px solid var(--border);">
+            <h2 style="font-family: var(--serif); font-size: 22px; font-weight: 500; margin-bottom: 20px;">추가 자료가 필요하신가요?</h2>
+            <p class="portal-fine" style="margin-bottom: 24px;">
+                특정 자료 요청, 운영 데이터, 파트너십팀과의 통화를 주선할 수 있습니다.
+            </p>
+            <a class="btn btn-primary" href="#" onclick="requestMaterial(event)">추가 자료 요청 →</a>
+        </div>
+
+        <div style="margin-top: 96px;">
+            <p class="portal-fine">
+                <strong>유의사항:</strong> 본 데이터룸을 통해 접근한 자료는 기밀이며 입장 시 수락한 동의 사항에 따라 제공됩니다.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+var STREAMS = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.workstreams) ? window.AXIOS_CONFIG.workstreams : {};
+Object.keys(STREAMS).forEach(function(k) {
+    if (STREAMS[k].description && !STREAMS[k].desc) {
+        STREAMS[k].desc = STREAMS[k].description;
+    }
+});
+
+function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+}
+
+function getDriveFileType(mime) {
+    var map = {
+        'application/vnd.google-apps.folder': '폴더',
+        'application/vnd.google-apps.document': 'Google 문서',
+        'application/vnd.google-apps.spreadsheet': 'Google 스프레드시트',
+        'application/vnd.google-apps.presentation': 'Google 프레젠테이션',
+        'application/pdf': 'PDF',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'Word',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'Excel',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'PowerPoint',
+        'application/msword': 'Word',
+        'application/vnd.ms-excel': 'Excel',
+        'application/vnd.ms-powerpoint': 'PowerPoint',
+        'text/plain': '텍스트'
+    };
+    if (map[mime]) return map[mime];
+    if (!mime) return '파일';
+    if (mime.indexOf('image/') === 0) return '이미지';
+    if (mime.indexOf('video/') === 0) return '동영상';
+    if (mime.indexOf('audio/') === 0) return '오디오';
+    return '파일';
+}
+
+function buildFolderPlaceholder() { return '<div id="folderContentsContainer"></div>'; }
+
+function buildFolderFallbackEmbed(folderId, streamTitle) {
+    var safeId = encodeURIComponent(folderId);
+    var openInDrive = 'https://drive.google.com/drive/folders/' + safeId;
+    return '<div class="dataroom-section" style="margin-top: 56px;">' +
+        '<h2 class="dataroom-section-title">모든 자료 탐색</h2>' +
+        '<p class="portal-fine" style="margin-bottom: 20px;"><strong>참고:</strong> 아래 브라우저의 파일은 새 Google Drive 탭에서 열립니다.</p>' +
+        '<div style="border:1px solid var(--border); border-radius:8px; overflow:hidden; background:#fff;">' +
+        '<iframe src="https://drive.google.com/embeddedfolderview?id=' + safeId + '#list" style="width:100%; height:640px; border:0; display:block;" title="' + escapeHtml(streamTitle) + ' 폴더" allow="autoplay"></iframe>' +
+        '</div>' +
+        '<p class="portal-fine" style="margin-top: 16px;"><a href="' + openInDrive + '" target="_blank" rel="noopener" style="color: var(--text);">새 탭에서 열기 →</a></p>' +
+        '</div>';
+}
+
+function loadFolderContents(folderId, streamTitle, streamKey, folderName) {
+    var container = document.getElementById('folderContentsContainer');
+    if (!container) return;
+
+    var apiKey = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.googleApiKey) || '';
+    var hasApiKey = apiKey && apiKey !== 'PASTE_API_KEY_HERE';
+
+    if (!hasApiKey) {
+        container.innerHTML = buildFolderFallbackEmbed(folderId, streamTitle);
+        return;
+    }
+
+    var isSubfolder = !!folderName;
+    var sectionTitle = isSubfolder ? folderName : '모든 자료';
+    var streamRootUrl = 'partner-dataroom-ko.html?stream=' + encodeURIComponent(streamKey);
+
+    var loadingHeader = '';
+    if (isSubfolder) {
+        loadingHeader = '<p class="portal-fine" style="margin-bottom: 12px;"><a href="' + streamRootUrl + '" style="color: var(--text);">← ' + escapeHtml(streamTitle) + '(으)로 돌아가기</a></p>';
+    }
+    container.innerHTML = '<div class="dataroom-section" style="margin-top: 56px;">' +
+        loadingHeader +
+        '<h2 class="dataroom-section-title">' + escapeHtml(sectionTitle) + '</h2>' +
+        '<p class="portal-fine">폴더 콘텐츠 로드 중...</p>' +
+        '</div>';
+
+    var query = "'" + folderId + "' in parents and trashed = false";
+    var url = 'https://www.googleapis.com/drive/v3/files?' +
+        'q=' + encodeURIComponent(query) +
+        '&fields=' + encodeURIComponent('files(id,name,mimeType,modifiedTime)') +
+        '&orderBy=folder,name' +
+        '&pageSize=200' +
+        '&key=' + encodeURIComponent(apiKey);
+
+    fetch(url)
+        .then(function (r) {
+            if (!r.ok) {
+                return r.json().then(function (errJson) {
+                    var msg = (errJson && errJson.error && errJson.error.message) ? errJson.error.message : ('HTTP ' + r.status);
+                    throw new Error(msg);
+                });
+            }
+            return r.json();
+        })
+        .then(function (data) {
+            var files = (data && data.files) ? data.files : [];
+            var html = '<div class="dataroom-section" style="margin-top: 56px;">';
+
+            if (isSubfolder) {
+                html += '<p class="portal-fine" style="margin-bottom: 12px;"><a href="' + streamRootUrl + '" style="color: var(--text);">← ' + escapeHtml(streamTitle) + '(으)로 돌아가기</a></p>';
+            }
+            html += '<h2 class="dataroom-section-title">' + escapeHtml(sectionTitle) + '</h2>';
+            html += '<p class="portal-fine" style="margin-bottom: 20px;">Drive 폴더에서 실시간 동기화.</p>';
+
+            if (!files.length) {
+                html += '<p class="portal-fine">이 폴더에는 아직 파일이 없습니다.</p>';
+                html += '</div>';
+                container.innerHTML = html;
+                return;
+            }
+
+            var currentPageUrl = isSubfolder
+                ? 'partner-dataroom-ko.html?stream=' + encodeURIComponent(streamKey) +
+                  '&folder=' + encodeURIComponent(folderId) +
+                  '&folderName=' + encodeURIComponent(folderName)
+                : streamRootUrl;
+
+            files.forEach(function (f) {
+                var type = getDriveFileType(f.mimeType);
+                var isFolder = f.mimeType === 'application/vnd.google-apps.folder';
+                var modifiedDate = '';
+                if (f.modifiedTime) {
+                    try {
+                        modifiedDate = new Date(f.modifiedTime).toLocaleDateString('ko-KR', {year:'numeric',month:'short',day:'numeric'});
+                    } catch (e) { modifiedDate = ''; }
+                }
+                var actionHtml;
+                if (isFolder) {
+                    var subfolderUrl = 'partner-dataroom-ko.html?stream=' + encodeURIComponent(streamKey) +
+                        '&folder=' + encodeURIComponent(f.id) +
+                        '&folderName=' + encodeURIComponent(f.name);
+                    actionHtml = '<a href="' + subfolderUrl + '">폴더 열기 →</a>';
+                } else {
+                    var viewerUrl = 'viewer.html?file=' + encodeURIComponent(f.id) +
+                        '&title=' + encodeURIComponent(f.name) +
+                        '&room=' + encodeURIComponent(streamTitle) +
+                        '&back=' + encodeURIComponent(currentPageUrl);
+                    actionHtml = '<a href="' + viewerUrl + '">보기 →</a>';
+                }
+                html += '<div class="dataroom-doc">' +
+                    '<div class="dataroom-doc-name">' + escapeHtml(f.name) + '</div>' +
+                    '<div class="dataroom-doc-type">' + escapeHtml(type) + '</div>' +
+                    '<div class="dataroom-doc-meta">' + escapeHtml(modifiedDate) + '</div>' +
+                    '<div>' + actionHtml + '</div>' +
+                    '</div>';
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        })
+        .catch(function (err) {
+            container.innerHTML = '<div class="dataroom-section" style="margin-top: 56px;">' +
+                '<h2 class="dataroom-section-title">' + escapeHtml(sectionTitle) + '</h2>' +
+                '<p class="portal-fine">폴더 콘텐츠를 로드할 수 없습니다: ' + escapeHtml(err.message || '알 수 없는 오류') + '.</p>' +
+                '</div>';
+        });
+}
+
+function renderStream(streamKey, subFolderId, subFolderName) {
+    var p = STREAMS[streamKey];
+    var titleEl = document.getElementById('projectTitle');
+    var descEl = document.getElementById('projectDesc');
+    var sectionsEl = document.getElementById('documentSections');
+    var emptyEl = document.getElementById('emptyState');
+
+    if (!p) {
+        titleEl.textContent = '일반 데이터룸';
+        descEl.textContent = '선택된 워크스트림이 없습니다. 포털로 돌아가서 워크스트림을 선택하세요.';
+        sectionsEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+    }
+
+    titleEl.textContent = p.title;
+    descEl.textContent = p.desc;
+    document.title = p.title + ' — AXIOS EQUITY 파트너 포털';
+
+    var hasFolder = p.driveFolderId && p.driveFolderId !== 'PASTE_FOLDER_ID_HERE';
+    var inSubfolder = !!(subFolderId);
+
+    if (!hasFolder) {
+        sectionsEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+    }
+
+    sectionsEl.innerHTML = buildFolderPlaceholder();
+    emptyEl.style.display = 'none';
+
+    var folderToLoad = inSubfolder ? subFolderId : p.driveFolderId;
+    var folderNameForTitle = inSubfolder ? subFolderName : '';
+    loadFolderContents(folderToLoad, p.title, streamKey, folderNameForTitle);
+}
+
+(function () {
+    if (sessionStorage.getItem('eqx_partner_auth') !== '1') {
+        window.location.href = 'partner-login-ko.html';
+        return;
+    }
+    if (!sessionStorage.getItem('eqx_partner_disclaimer')) {
+        window.location.href = 'partner-disclaimer-ko.html';
+        return;
+    }
+
+    var email = sessionStorage.getItem('eqx_partner_email');
+    if (email) {
+        document.getElementById('sessionLine').textContent = '로그인: ' + email + ' · 워크스트림 데이터룸';
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var key = (params.get('stream') || '').toLowerCase();
+    var subFolderId = params.get('folder') || '';
+    var subFolderName = params.get('folderName') || '';
+
+    var allowedRaw = sessionStorage.getItem('eqx_partner_workstreams');
+    var allowed = [];
+    try { allowed = JSON.parse(allowedRaw || '[]') || []; } catch (e) { allowed = []; }
+    var seesAll = allowed.indexOf('*') !== -1;
+    if (key && !seesAll && allowed.indexOf(key) === -1) {
+        document.getElementById('projectTitle').textContent = '접근 권한 없음';
+        document.getElementById('projectDesc').textContent = '귀하의 계정으로는 이 워크스트림에 접근할 수 없습니다.';
+        document.getElementById('documentSections').innerHTML = '';
+        document.getElementById('emptyState').style.display = 'none';
+        return;
+    }
+
+    renderStream(key, subFolderId, subFolderName);
+})();
+
+function requestMaterial(e) {
+    e.preventDefault();
+    var email = sessionStorage.getItem('eqx_partner_email') || '';
+    var title = document.getElementById('projectTitle').textContent || '';
+    var subject = encodeURIComponent('추가 자료 요청 — ' + title);
+    var body = encodeURIComponent('파트너: ' + email + '\n워크스트림: ' + title + '\n\n요청 자료 (설명):\n\n');
+    window.location.href = 'mailto:info@axiosequity.com?subject=' + subject + '&body=' + body;
+}
+</script>
+
+<div class="disclaimer-bar"><div class="disclaimer-bar-inner">
+    <strong>제한 구역.</strong> 본 페이지의 정보는 기밀이며 권한이 부여된 수신자에게만 제공됩니다.
+</div></div>
+
+<footer class="footer"><div class="footer-inner">
+    <div class="footer-bottom">
+        <div>© 2026 AXIOS EQUITY LLC · 1209 Mountain Road PL NE, STE R · Albuquerque, NM 87110</div>
+        <div class="footer-legal"><a href="disclosures.html">공시</a><a href="disclosures.html#privacy">개인정보</a></div>
+    </div>
+</div></footer>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ window.AXIOS_CONFIG = {
        If left as 'PASTE_API_KEY_HERE', the portal falls back to a Drive
        iframe (files open in a new tab on Drive instead of in the portal viewer).
        ============================================ */
-    googleApiKey: 'AIzaSyDbYf4FDn6rlPhPVBepFjYFYz-lbO19MYo',
+    googleApiKey: 'AIzaSyAmhAP2G1x3zookq43h35jjjL4qSM5Up4g',
 
     /* ==========  PARTNER ACCESS CODES  ==========
        Each partner / counterparty gets a UNIQUE access code that grants
