@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Investor Portal Access — AXIOS EQUITY</title>
+    <meta name="description" content="Request access to the AXIOS EQUITY Investor Portal — institutional investors only. Access is granted by invitation after due diligence and verification.">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
+        <ul class="nav-links">
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="investor-login.html" class="nav-cta">Portal Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="portal-shell">
+    <div class="portal-card portal-card--wide">
+        <div class="portal-eyebrow">Investor Portal · Access Request</div>
+        <h1 class="portal-title">Request access to the <em>Investor Portal</em>.</h1>
+        <p class="portal-lede">
+            Access is granted by invitation following due diligence and verification of investor qualification. Submit the form below; a member of AXIOS EQUITY Investor Relations will respond within five business days. Self-registration is not available.
+        </p>
+
+        <form class="portal-form" id="investorRequestForm" autocomplete="off">
+            <div class="portal-field">
+                <label for="ir-name">Full Name</label>
+                <input type="text" id="ir-name" name="name" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-title">Title</label>
+                <input type="text" id="ir-title" name="title" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-firm">Firm / Family Office</label>
+                <input type="text" id="ir-firm" name="firm" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-email">Business Email</label>
+                <input type="email" id="ir-email" name="email" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-jurisdiction">Jurisdiction of Domicile</label>
+                <input type="text" id="ir-jurisdiction" name="jurisdiction" placeholder="e.g., Delaware, Singapore, Switzerland" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-aum">Assets Under Management (Range)</label>
+                <select id="ir-aum" name="aum" required>
+                    <option value="">Select range</option>
+                    <option>Under $50M</option>
+                    <option>$50M – $250M</option>
+                    <option>$250M – $1B</option>
+                    <option>$1B – $5B</option>
+                    <option>Above $5B</option>
+                    <option>Family Office / Personal Capital</option>
+                </select>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-qualification">Investor Qualification</label>
+                <select id="ir-qualification" name="qualification" required>
+                    <option value="">Select qualification</option>
+                    <option>Qualified Institutional Buyer (QIB)</option>
+                    <option>Accredited Investor</option>
+                    <option>Qualified Purchaser</option>
+                    <option>Non-US Professional Investor</option>
+                    <option>Other (specify in note below)</option>
+                </select>
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-projects">Projects of Interest (optional)</label>
+                <input type="text" id="ir-projects" name="projects" placeholder="e.g., LFP battery localization, Drone defense, Hydrogen">
+            </div>
+
+            <div class="portal-field">
+                <label for="ir-note">Brief Note / Introduction</label>
+                <textarea id="ir-note" name="note" placeholder="How were you referred to AXIOS EQUITY? Specific commercialization themes of interest?"></textarea>
+            </div>
+
+            <div class="portal-fine">
+                By submitting this form you acknowledge that no investment, advisory, or fiduciary relationship is created. Information you provide will be used solely to evaluate the request and will be held in confidence. AXIOS EQUITY may decline any request at its sole discretion.
+            </div>
+
+            <div class="portal-actions">
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+                <a class="btn btn-secondary" href="investors.html">Back to Investor Relations</a>
+            </div>
+            <p class="portal-error" id="ir-error">Please complete all required fields.</p>
+        </form>
+    </div>
+</main>
+
+<script>
+(function () {
+    var form = document.getElementById('investorRequestForm');
+    var errorEl = document.getElementById('ir-error');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var body = 'New Investor Portal access request submitted via axiosequity.com:\n\n';
+        body += 'Name:           ' + (data.get('name') || '') + '\n';
+        body += 'Title:          ' + (data.get('title') || '') + '\n';
+        body += 'Firm:           ' + (data.get('firm') || '') + '\n';
+        body += 'Email:          ' + (data.get('email') || '') + '\n';
+        body += 'Jurisdiction:   ' + (data.get('jurisdiction') || '') + '\n';
+        body += 'AUM Range:      ' + (data.get('aum') || '') + '\n';
+        body += 'Qualification:  ' + (data.get('qualification') || '') + '\n';
+        body += 'Projects:       ' + (data.get('projects') || '—') + '\n';
+        body += '\nNote:\n' + (data.get('note') || '—') + '\n';
+        var subject = encodeURIComponent('Investor Portal Access Request — ' + (data.get('firm') || 'Unknown'));
+        window.location.href = 'mailto:info@axiosequity.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+    });
+})();
+</script>
+
+</body>
+</html>

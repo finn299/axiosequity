@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Portal — AXIOS EQUITY</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dataroom-config.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
+        <ul class="nav-links">
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="partner-request.html" class="nav-cta">Request Access</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="portal-shell">
+    <div class="portal-card">
+        <div class="portal-eyebrow">Partner Portal</div>
+        <h1 class="portal-title">Restricted access.</h1>
+        <p class="portal-lede">
+            Enter your access credentials. Credentials are issued by AXIOS EQUITY Partnerships after verification. If you have not received credentials, please <a href="partner-request.html" style="color: var(--text); text-decoration: underline;">request access</a>.
+        </p>
+
+        <form class="portal-form" id="partnerLoginForm" autocomplete="off">
+            <div class="portal-field">
+                <label for="pl-email">Email on Record</label>
+                <input type="email" id="pl-email" name="email" required>
+            </div>
+            <div class="portal-field">
+                <label for="pl-pass">Access Code</label>
+                <input type="password" id="pl-pass" name="pass" required>
+            </div>
+
+            <div class="portal-actions">
+                <button type="submit" class="btn btn-primary">Continue</button>
+                <a class="btn btn-secondary" href="partner-request.html">Request Access →</a>
+            </div>
+            <p class="portal-error" id="pl-error">Invalid credentials. Please contact AXIOS EQUITY Partnerships.</p>
+        </form>
+
+        <div class="portal-divider"></div>
+        <p class="portal-fine">
+            Access to the Partner Portal is granted by invitation only and is subject to confidentiality terms. By logging in you acknowledge that you will be required to accept additional confidentiality conditions before viewing portal content.
+        </p>
+    </div>
+</main>
+
+<script>
+/*
+ * SCOPED ACCESS GATE — client-side only.
+ * Access codes are configured in dataroom-config.js → partnerAccess.
+ * Each code grants visibility to a specific list of workstream keys.
+ * Real security comes from Google Drive folder sharing settings.
+ */
+(function () {
+    var form = document.getElementById('partnerLoginForm');
+    var error = document.getElementById('pl-error');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = (document.getElementById('pl-email').value || '').trim().toLowerCase();
+        var pass = (document.getElementById('pl-pass').value || '').trim();
+
+        if (!email || !pass) {
+            error.classList.add('is-visible');
+            return;
+        }
+
+        var accessMap = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.partnerAccess) || {};
+        var grant = accessMap[pass];
+
+        if (grant && grant.workstreams && grant.workstreams.length) {
+            sessionStorage.setItem('eqx_partner_auth', '1');
+            sessionStorage.setItem('eqx_partner_email', email);
+            sessionStorage.setItem('eqx_partner_company', grant.company || '');
+            sessionStorage.setItem('eqx_partner_workstreams', JSON.stringify(grant.workstreams));
+            sessionStorage.removeItem('eqx_partner_disclaimer');
+            window.location.href = 'partner-disclaimer.html';
+        } else {
+            error.classList.add('is-visible');
+        }
+    });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Room — AXIOS EQUITY Partner Portal</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dataroom-config.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
+        <ul class="nav-links">
+            <li><a href="partner-portal.html">← Portal</a></li>
+            <li><a href="#" onclick="signOut();return false;" class="nav-cta">Sign out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="portal-dashboard">
+    <div class="container" style="max-width: 1080px;">
+        <div class="portal-header">
+            <p class="portal-greeting" id="sessionLine">Partner Portal · Workstream Data Room</p>
+            <h1 id="streamTitle" class="display-md" style="font-family: var(--serif); font-weight: 500; font-size: 44px; letter-spacing: -0.02em; margin-bottom: 24px;">Workstream data room</h1>
+            <p class="lede" id="streamDesc" style="max-width: 760px;">
+                Confidential workstream materials. All access is logged. Do not download, screenshot, or redistribute. Click a document name to open the controlled-access viewer.
+            </p>
+        </div>
+
+        <div id="documentSections">
+            <!-- Featured documents rendered by JS -->
+        </div>
+
+        <div id="emptyState" style="display:none; margin-top: 56px;">
+            <p class="portal-fine">
+                No documents are currently published in this workstream. Please contact <a href="mailto:info@axiosequity.com" style="color: var(--text);">info@axiosequity.com</a> to request access to specific materials.
+            </p>
+        </div>
+
+        <div style="margin-top: 96px; padding-top: 56px; border-top: 1px solid var(--border);">
+            <h2 style="font-family: var(--serif); font-size: 22px; font-weight: 500; margin-bottom: 20px;">Need additional materials?</h2>
+            <p class="portal-fine" style="margin-bottom: 24px;">
+                Workstream-specific deliverables, technical deep-dives, or one-on-one calls with the relevant AXIOS EQUITY lead can be arranged. Submissions are reviewed and routed.
+            </p>
+            <a class="btn btn-primary" href="#" onclick="requestMaterial(event)">Request additional materials →</a>
+        </div>
+
+        <div style="margin-top: 96px;">
+            <p class="portal-fine">
+                <strong>Reminder:</strong> Materials accessed via this data room are confidential and provided solely under the acknowledgments accepted on entry. Unauthorized reproduction, redistribution, or use for purposes other than the agreed engagement is a breach.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+/* ============================================
+   PARTNER DATA ROOM — Renderer
+   All workstream data is in dataroom-config.js (single source of truth).
+   Use admin.html → Project & Workstream Manager to edit.
+   ============================================ */
+
+var WORKSTREAMS = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.workstreams) ? window.AXIOS_CONFIG.workstreams : {};
+
+// Map description field
+Object.keys(WORKSTREAMS).forEach(function(k) {
+    if (WORKSTREAMS[k].description && !WORKSTREAMS[k].desc) {
+        WORKSTREAMS[k].desc = WORKSTREAMS[k].description;
+    }
+});
+
+function signOut() {
+    sessionStorage.removeItem('eqx_partner_auth');
+    sessionStorage.removeItem('eqx_partner_email');
+    sessionStorage.removeItem('eqx_partner_disclaimer');
+    window.location.href = 'partner-login.html';
+}
+
+function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+}
+
+function buildDocCard(doc, streamKey, streamTitle) {
+    var safeName = escapeHtml(doc.name);
+    var safeType = escapeHtml(doc.type || 'PDF');
+    var safeMeta = escapeHtml(doc.meta || '');
+    var actionHtml;
+    if (doc.access === 'view' && doc.fileId && doc.fileId !== 'PASTE_FILE_ID_HERE') {
+        var viewerUrl = 'viewer.html?file=' + encodeURIComponent(doc.fileId)
+            + '&title=' + encodeURIComponent(doc.name)
+            + '&room=' + encodeURIComponent(streamTitle)
+            + '&back=' + encodeURIComponent('partner-dataroom.html?stream=' + streamKey);
+        actionHtml = '<a href="' + viewerUrl + '">View →</a>';
+    } else if (doc.access === 'view' && (!doc.fileId || doc.fileId === 'PASTE_FILE_ID_HERE')) {
+        actionHtml = '<a href="#" onclick="alert(\'File ID not yet configured. Please contact AXIOS EQUITY.\');return false;">View →</a>';
+    } else {
+        actionHtml = '<a href="#" onclick="requestDoc(event, \'' + safeName.replace(/'/g, "\\'") + '\')">Request access →</a>';
+    }
+    return '<div class="dataroom-doc">' +
+        '<div class="dataroom-doc-name">' + safeName + '</div>' +
+        '<div class="dataroom-doc-type">' + safeType + '</div>' +
+        '<div class="dataroom-doc-meta">' + safeMeta + '</div>' +
+        '<div>' + actionHtml + '</div>' +
+        '</div>';
+}
+
+function getDriveFileType(mime) {
+    var map = {
+        'application/vnd.google-apps.folder': 'Folder',
+        'application/vnd.google-apps.document': 'Google Doc',
+        'application/vnd.google-apps.spreadsheet': 'Google Sheet',
+        'application/vnd.google-apps.presentation': 'Google Slides',
+        'application/pdf': 'PDF',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'Word',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'Excel',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'PowerPoint',
+        'application/msword': 'Word',
+        'application/vnd.ms-excel': 'Excel',
+        'application/vnd.ms-powerpoint': 'PowerPoint',
+        'text/plain': 'Text'
+    };
+    if (map[mime]) return map[mime];
+    if (!mime) return 'File';
+    if (mime.indexOf('image/') === 0) return 'Image';
+    if (mime.indexOf('video/') === 0) return 'Video';
+    if (mime.indexOf('audio/') === 0) return 'Audio';
+    return 'File';
+}
+
+function buildFolderPlaceholder() {
+    return '<div id="folderContentsContainer"></div>';
+}
+
+function buildFolderFallbackEmbed(folderId, streamTitle) {
+    var safeId = encodeURIComponent(folderId);
+    var openInDrive = 'https://drive.google.com/drive/folders/' + safeId;
+    return '<div class="dataroom-section" style="margin-top: 56px;">' +
+        '<h2 class="dataroom-section-title">Browse all materials</h2>' +
+        '<p class="portal-fine" style="margin-bottom: 20px;">' +
+        '<strong>Note:</strong> Files in the browser below open in a new Google Drive tab. ' +
+        'To open files in the portal viewer instead, configure a Google API Key in <code>dataroom-config.js</code>.' +
+        '</p>' +
+        '<div style="border:1px solid var(--border); border-radius:8px; overflow:hidden; background:#fff;">' +
+        '<iframe src="https://drive.google.com/embeddedfolderview?id=' + safeId + '#list" ' +
+        'style="width:100%; height:640px; border:0; display:block;" ' +
+        'title="Drive folder for ' + escapeHtml(streamTitle) + '" ' +
+        'allow="autoplay"></iframe>' +
+        '</div>' +
+        '<p class="portal-fine" style="margin-top: 16px;">' +
+        'If the folder above does not load, ' +
+        '<a href="' + openInDrive + '" target="_blank" rel="noopener" style="color: var(--text);">open it in a new tab →</a>' +
+        '</p>' +
+        '</div>';
+}
+
+function loadFolderContents(folderId, streamTitle, streamKey, folderName) {
+    var container = document.getElementById('folderContentsContainer');
+    if (!container) return;
+
+    var apiKey = (window.AXIOS_CONFIG && window.AXIOS_CONFIG.googleApiKey) || '';
+    var hasApiKey = apiKey && apiKey !== 'PASTE_API_KEY_HERE';
+
+    if (!hasApiKey) {
+        container.innerHTML = buildFolderFallbackEmbed(folderId, streamTitle);
+        return;
+    }
+
+    var isSubfolder = !!folderName;
+    var sectionTitle = isSubfolder ? folderName : 'All materials';
+    var streamRootUrl = 'partner-dataroom.html?stream=' + encodeURIComponent(streamKey);
+
+    var loadingHeader = '';
+    if (isSubfolder) {
+        loadingHeader = '<p class="portal-fine" style="margin-bottom: 12px;">' +
+            '<a href="' + streamRootUrl + '" style="color: var(--text);">← Back to ' + escapeHtml(streamTitle) + '</a>' +
+            '</p>';
+    }
+    container.innerHTML = '<div class="dataroom-section" style="margin-top: 56px;">' +
+        loadingHeader +
+        '<h2 class="dataroom-section-title">' + escapeHtml(sectionTitle) + '</h2>' +
+        '<p class="portal-fine">Loading folder contents...</p>' +
+        '</div>';
+
+    var query = "'" + folderId + "' in parents and trashed = false";
+    var url = 'https://www.googleapis.com/drive/v3/files?' +
+        'q=' + encodeURIComponent(query) +
+        '&fields=' + encodeURIComponent('files(id,name,mimeType,modifiedTime)') +
+        '&orderBy=folder,name' +
+        '&pageSize=200' +
+        '&key=' + encodeURIComponent(apiKey);
+
+    fetch(url)
+        .then(function (r) {
+            if (!r.ok) {
+                return r.json().then(function (errJson) {
+                    var msg = (errJson && errJson.error && errJson.error.message) ? errJson.error.message : ('HTTP ' + r.status);
+                    throw new Error(msg);
+                });
+            }
+            return r.json();
+        })
+        .then(function (data) {
+            var files = (data && data.files) ? data.files : [];
+            var html = '<div class="dataroom-section" style="margin-top: 56px;">';
+
+            if (isSubfolder) {
+                html += '<p class="portal-fine" style="margin-bottom: 12px;">' +
+                    '<a href="' + streamRootUrl + '" style="color: var(--text);">← Back to ' + escapeHtml(streamTitle) + '</a>' +
+                    '</p>';
+            }
+            html += '<h2 class="dataroom-section-title">' + escapeHtml(sectionTitle) + '</h2>';
+            html += '<p class="portal-fine" style="margin-bottom: 20px;">Live from the Drive folder. Click any file to open it in the portal viewer.</p>';
+
+            if (!files.length) {
+                html += '<p class="portal-fine">No files in this folder yet.</p>';
+                html += '</div>';
+                container.innerHTML = html;
+                return;
+            }
+
+            var currentPageUrl = isSubfolder
+                ? 'partner-dataroom.html?stream=' + encodeURIComponent(streamKey) +
+                  '&folder=' + encodeURIComponent(folderId) +
+                  '&folderName=' + encodeURIComponent(folderName)
+                : streamRootUrl;
+
+            files.forEach(function (f) {
+                var type = getDriveFileType(f.mimeType);
+                var isFolder = f.mimeType === 'application/vnd.google-apps.folder';
+                var modifiedDate = '';
+                if (f.modifiedTime) {
+                    try {
+                        modifiedDate = new Date(f.modifiedTime).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
+                    } catch (e) { modifiedDate = ''; }
+                }
+                var actionHtml;
+                if (isFolder) {
+                    var subfolderUrl = 'partner-dataroom.html?stream=' + encodeURIComponent(streamKey) +
+                        '&folder=' + encodeURIComponent(f.id) +
+                        '&folderName=' + encodeURIComponent(f.name);
+                    actionHtml = '<a href="' + subfolderUrl + '">Open folder →</a>';
+                } else {
+                    var viewerUrl = 'viewer.html?file=' + encodeURIComponent(f.id) +
+                        '&title=' + encodeURIComponent(f.name) +
+                        '&room=' + encodeURIComponent(streamTitle) +
+                        '&back=' + encodeURIComponent(currentPageUrl);
+                    actionHtml = '<a href="' + viewerUrl + '">View →</a>';
+                }
+                html += '<div class="dataroom-doc">' +
+                    '<div class="dataroom-doc-name">' + escapeHtml(f.name) + '</div>' +
+                    '<div class="dataroom-doc-type">' + escapeHtml(type) + '</div>' +
+                    '<div class="dataroom-doc-meta">' + escapeHtml(modifiedDate) + '</div>' +
+                    '<div>' + actionHtml + '</div>' +
+                    '</div>';
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        })
+        .catch(function (err) {
+            container.innerHTML = '<div class="dataroom-section" style="margin-top: 56px;">' +
+                '<h2 class="dataroom-section-title">' + escapeHtml(sectionTitle) + '</h2>' +
+                '<p class="portal-fine">Could not load folder contents: ' + escapeHtml(err.message || 'unknown error') + '.</p>' +
+                '<p class="portal-fine">Common causes:</p>' +
+                '<ul class="portal-fine" style="margin-left:20px;">' +
+                '<li>The Drive folder is not shared as "Anyone with the link · Viewer"</li>' +
+                '<li>The Google API key in <code>dataroom-config.js</code> is invalid or restricted to a different domain</li>' +
+                '<li>The Google Drive API is not enabled in your Cloud Console project</li>' +
+                '</ul>' +
+                '</div>';
+        });
+}
+
+function renderStream(streamKey, subFolderId, subFolderName) {
+    var p = WORKSTREAMS[streamKey];
+    var titleEl = document.getElementById('streamTitle');
+    var descEl = document.getElementById('streamDesc');
+    var sectionsEl = document.getElementById('documentSections');
+    var emptyEl = document.getElementById('emptyState');
+
+    if (!p) {
+        titleEl.textContent = 'Generic Workstream';
+        descEl.textContent = 'No specific workstream selected. Return to the portal to choose a workstream, or contact Partnerships to request a custom workstream.';
+        sectionsEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+    }
+
+    titleEl.textContent = p.title;
+    descEl.textContent = p.desc;
+    document.title = p.title + ' — AXIOS EQUITY Partner Portal';
+
+    var hasDocs = p.documents && p.documents.length > 0;
+    var hasFolder = p.driveFolderId && p.driveFolderId !== 'PASTE_FOLDER_ID_HERE';
+    var inSubfolder = !!(subFolderId);
+
+    if (!hasDocs && !hasFolder) {
+        sectionsEl.innerHTML = '';
+        emptyEl.style.display = 'block';
+        return;
+    }
+
+    var html = '';
+
+    // 1) Featured / curated documents — only at workstream root
+    if (hasDocs && !inSubfolder) {
+        var sectionMap = {};
+        var sectionOrder = [];
+        p.documents.forEach(function (doc) {
+            var s = doc.section || 'Featured documents';
+            if (!sectionMap[s]) {
+                sectionMap[s] = [];
+                sectionOrder.push(s);
+            }
+            sectionMap[s].push(doc);
+        });
+
+        sectionOrder.forEach(function (s) {
+            html += '<div class="dataroom-section">';
+            html += '<h2 class="dataroom-section-title">' + escapeHtml(s) + '</h2>';
+            sectionMap[s].forEach(function (doc) {
+                html += buildDocCard(doc, streamKey, p.title);
+            });
+            html += '</div>';
+        });
+    }
+
+    // 2) Live folder browser placeholder (filled by loadFolderContents)
+    if (hasFolder) {
+        html += buildFolderPlaceholder();
+    }
+
+    sectionsEl.innerHTML = html;
+    emptyEl.style.display = 'none';
+
+    if (hasFolder) {
+        var folderToLoad = inSubfolder ? subFolderId : p.driveFolderId;
+        var folderNameForTitle = inSubfolder ? subFolderName : '';
+        loadFolderContents(folderToLoad, p.title, streamKey, folderNameForTitle);
+    }
+}
+
+(function () {
+    if (sessionStorage.getItem('eqx_partner_auth') !== '1') {
+        window.location.href = 'partner-login.html';
+        return;
+    }
+    if (!sessionStorage.getItem('eqx_partner_disclaimer')) {
+        window.location.href = 'partner-disclaimer.html';
+        return;
+    }
+
+    var email = sessionStorage.getItem('eqx_partner_email');
+    if (email) {
+        document.getElementById('sessionLine').textContent = 'Signed in as ' + email + ' · Workstream Data Room';
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var key = (params.get('stream') || '').toLowerCase();
+    var subFolderId = params.get('folder') || '';
+    var subFolderName = params.get('folderName') || '';
+
+    // Per-partner access check: only show streams the logged-in code allows.
+    var allowedRaw = sessionStorage.getItem('eqx_partner_workstreams');
+    var allowed = [];
+    try { allowed = JSON.parse(allowedRaw || '[]') || []; } catch (e) { allowed = []; }
+    var seesAll = allowed.indexOf('*') !== -1;
+    if (key && !seesAll && allowed.indexOf(key) === -1) {
+        document.getElementById('streamTitle').textContent = 'Access not granted';
+        document.getElementById('streamDesc').textContent = 'Your account does not have access to this workstream. Return to the portal to see materials available to you, or contact info@axiosequity.com.';
+        document.getElementById('documentSections').innerHTML = '';
+        document.getElementById('emptyState').style.display = 'none';
+        return;
+    }
+
+    renderStream(key, subFolderId, subFolderName);
+})();
+
+function requestDoc(e, name) {
+    e.preventDefault();
+    var email = sessionStorage.getItem('eqx_partner_email') || '';
+    var title = document.getElementById('streamTitle').textContent || '';
+    var subject = encodeURIComponent('Document Access Request — ' + title);
+    var body = encodeURIComponent(
+        'Partner: ' + email + '\nWorkstream: ' + title + '\nDocument: ' + name + '\n\nPlease send a controlled access link to the above document.'
+    );
+    window.location.href = 'mailto:info@axiosequity.com?subject=' + subject + '&body=' + body;
+}
+
+function requestMaterial(e) {
+    e.preventDefault();
+    var email = sessionStorage.getItem('eqx_partner_email') || '';
+    var title = document.getElementById('streamTitle').textContent || '';
+    var subject = encodeURIComponent('Additional Materials Request — ' + title);
+    var body = encodeURIComponent(
+        'Partner: ' + email + '\nWorkstream: ' + title + '\n\nRequested additional materials (describe):\n\n'
+    );
+    window.location.href = 'mailto:info@axiosequity.com?subject=' + subject + '&body=' + body;
+}
+</script>
+
+</body>
+</html>

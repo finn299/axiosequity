@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Partner Portal Access — AXIOS EQUITY</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
+        <ul class="nav-links">
+            <li><a href="partnerships.html">Partnerships</a></li>
+            <li><a href="partner-login.html" class="nav-cta">Portal Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="portal-shell">
+    <div class="portal-card portal-card--wide">
+        <div class="portal-eyebrow">Partner Portal · Access Request</div>
+        <h1 class="portal-title">Request access to the <em>Partner Portal</em>.</h1>
+        <p class="portal-lede">
+            Partner Portal access is granted by invitation to technology owners, operating partners, distributors, and strategic counterparties. Submit the form below; a member of the AXIOS EQUITY partnerships team will respond within five business days. Self-registration is not available.
+        </p>
+
+        <form class="portal-form" id="partnerRequestForm" autocomplete="off">
+            <div class="portal-field">
+                <label for="pr-name">Full Name</label>
+                <input type="text" id="pr-name" name="name" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-title">Title</label>
+                <input type="text" id="pr-title" name="title" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-org">Organization</label>
+                <input type="text" id="pr-org" name="org" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-email">Business Email</label>
+                <input type="email" id="pr-email" name="email" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-jurisdiction">Headquarters / Jurisdiction</label>
+                <input type="text" id="pr-jurisdiction" name="jurisdiction" required>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-type">Partnership Type</label>
+                <select id="pr-type" name="type" required>
+                    <option value="">Select type</option>
+                    <option>Technology Owner / Licensor</option>
+                    <option>Operating Partner / Joint Venture</option>
+                    <option>Manufacturing / Supply Partner</option>
+                    <option>Distribution / Channel Partner</option>
+                    <option>Strategic Counterparty</option>
+                    <option>Advisory / Consultant</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-sector">Primary Sector of Interest</label>
+                <select id="pr-sector" name="sector" required>
+                    <option value="">Select sector</option>
+                    <option>Advanced Materials</option>
+                    <option>Robotics</option>
+                    <option>Energy</option>
+                    <option>Artificial Intelligence</option>
+                    <option>Fintech</option>
+                    <option>Smart Manufacturing</option>
+                    <option>Multiple Sectors</option>
+                </select>
+            </div>
+
+            <div class="portal-field">
+                <label for="pr-note">Brief Note</label>
+                <textarea id="pr-note" name="note" placeholder="What technology, capability, or partnership opportunity would you like to discuss with AXIOS EQUITY?" required></textarea>
+            </div>
+
+            <div class="portal-fine">
+                By submitting this form you acknowledge that no partnership relationship is created until a written engagement is executed. Information provided will be used solely to evaluate the request and held in confidence. AXIOS EQUITY may decline any request at its sole discretion.
+            </div>
+
+            <div class="portal-actions">
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+                <a class="btn btn-secondary" href="partnerships.html">Back to Partnerships</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+(function () {
+    var form = document.getElementById('partnerRequestForm');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var d = new FormData(form);
+        var body = 'New Partner Portal access request submitted via axiosequity.com:\n\n';
+        body += 'Name:         ' + (d.get('name') || '') + '\n';
+        body += 'Title:        ' + (d.get('title') || '') + '\n';
+        body += 'Organization: ' + (d.get('org') || '') + '\n';
+        body += 'Email:        ' + (d.get('email') || '') + '\n';
+        body += 'Jurisdiction: ' + (d.get('jurisdiction') || '') + '\n';
+        body += 'Partner Type: ' + (d.get('type') || '') + '\n';
+        body += 'Sector:       ' + (d.get('sector') || '') + '\n';
+        body += '\nNote:\n' + (d.get('note') || '—') + '\n';
+        var subject = encodeURIComponent('Partner Portal Access Request — ' + (d.get('org') || 'Unknown'));
+        window.location.href = 'mailto:info@axiosequity.com?subject=' + subject + '&body=' + encodeURIComponent(body);
+    });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidentiality &amp; Disclaimer — AXIOS EQUITY Investor Portal</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,300;9..144,1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="index.html" class="logo"><span class="logo-mark"></span>AXIOS EQUITY</a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="signOut();return false;">Sign out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="portal-shell">
+    <div class="portal-card portal-card--wide">
+        <div class="portal-eyebrow">Confidentiality · Required Acknowledgments</div>
+        <h1 class="portal-title">Before entering the <em>Investor Portal</em>.</h1>
+        <p class="portal-lede">
+            The materials on the following pages are confidential, non-public, and provided solely to verified investors for evaluation purposes. Please review and acknowledge each of the following conditions. All boxes must be checked to continue.
+        </p>
+
+        <div class="disclaimer-checkall" style="margin: 24px 0 12px; padding: 14px 18px; background: rgba(184, 149, 106, 0.08); border: 1px solid rgba(184, 149, 106, 0.3); border-radius: 6px; display: flex; align-items: center; gap: 12px;">
+            <input type="checkbox" id="dcAll" style="width: 18px; height: 18px; cursor: pointer; margin: 0;">
+            <label for="dcAll" style="cursor: pointer; font-weight: 500; font-size: 15px; color: var(--text); margin: 0;">
+                Acknowledge all 7 conditions
+                <span style="font-weight: 400; color: var(--text-muted); font-size: 13px; margin-left: 6px;">— check this box to acknowledge every item below at once</span>
+            </label>
+        </div>
+
+        <ul class="disclaimer-list">
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d1" data-required="1">
+                <label for="d1" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">1 · Confidentiality</span>
+                    I will treat all information accessed through the Investor Portal as strictly confidential. I will not reproduce, distribute, forward, screenshot, or otherwise disclose any portal content to any person outside my firm, except as expressly authorized in writing by AXIOS EQUITY LLC.
+                </label>
+            </li>
+
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d2" data-required="1">
+                <label for="d2" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">2 · No Offer, No Solicitation</span>
+                    I understand that the materials on this portal do not constitute an offer to sell, a solicitation of an offer to buy, or a recommendation with respect to any security, fund, partnership interest, or instrument. Any offering will be made only by formal offering documents to qualified investors in accordance with applicable law.
+                </label>
+            </li>
+
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d3" data-required="1">
+                <label for="d3" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">3 · No Investment Advice</span>
+                    Materials provided are informational and reflect AXIOS EQUITY's views at the date stated. They are not investment, tax, legal, accounting, or fiduciary advice. I will obtain independent professional advice before acting on any information.
+                </label>
+            </li>
+
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d4" data-required="1">
+                <label for="d4" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">4 · Forward-Looking Statements</span>
+                    I understand that projections, expectations, and forward-looking statements involve risk and uncertainty, and actual outcomes may differ materially. Past performance — actual or illustrative — is not indicative of future results.
+                </label>
+            </li>
+
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d5" data-required="1">
+                <label for="d5" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">5 · Investor Qualification</span>
+                    I represent and warrant that I am a qualified institutional buyer, accredited investor, qualified purchaser, or equivalent professional investor under applicable law, and that I am authorized by the firm or family office I represent to access these materials on its behalf.
+                </label>
+            </li>
+
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d6" data-required="1">
+                <label for="d6" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">6 · Logging &amp; Tracking</span>
+                    I acknowledge that access to the Investor Portal may be logged for security and compliance purposes, including timestamps, IP address, and pages viewed. AXIOS EQUITY may revoke access at any time at its sole discretion.
+                </label>
+            </li>
+
+            <li class="disclaimer-item">
+                <input type="checkbox" class="dc" id="d7" data-required="1">
+                <label for="d7" class="disclaimer-item-body">
+                    <span class="disclaimer-item-title">7 · Governing Law</span>
+                    These acknowledgments are governed by the internal laws of the State of Delaware, USA, without regard to its choice-of-law principles, and I submit to the exclusive jurisdiction of the state and federal courts located in Delaware for any dispute arising hereunder.
+                </label>
+            </li>
+        </ul>
+
+        <div class="portal-actions">
+            <button type="button" class="btn btn-primary" id="dcContinue" aria-disabled="true" disabled>I Acknowledge — Continue</button>
+            <a class="btn btn-secondary" href="#" onclick="signOut();return false;">Decline &amp; Sign out</a>
+        </div>
+
+        <div class="portal-divider"></div>
+        <p class="portal-fine">
+            By clicking "I Acknowledge — Continue", I confirm that I have read each of the above conditions and accept them on my own behalf and on behalf of any firm I represent. This acknowledgment is timestamped and may be relied upon by AXIOS EQUITY LLC.
+        </p>
+    </div>
+</main>
+
+<script>
+function signOut() {
+    sessionStorage.removeItem('eqx_investor_auth');
+    sessionStorage.removeItem('eqx_investor_email');
+    sessionStorage.removeItem('eqx_investor_disclaimer');
+    window.location.href = 'investor-login.html';
+}
+
+(function () {
+    // Gate: require login
+    if (sessionStorage.getItem('eqx_investor_auth') !== '1') {
+        window.location.href = 'investor-login.html';
+        return;
+    }
+
+    var boxes = document.querySelectorAll('.dc');
+    var btn = document.getElementById('dcContinue');
+    var checkAll = document.getElementById('dcAll');
+
+    function refresh() {
+        var allChecked = Array.prototype.every.call(boxes, function (b) { return b.checked; });
+        if (allChecked) {
+            btn.removeAttribute('disabled');
+            btn.removeAttribute('aria-disabled');
+        } else {
+            btn.setAttribute('disabled', 'disabled');
+            btn.setAttribute('aria-disabled', 'true');
+        }
+        // Sync the master checkbox state
+        if (checkAll) checkAll.checked = allChecked;
+    }
+
+    boxes.forEach(function (b) { b.addEventListener('change', refresh); });
+
+    // "Acknowledge all" master checkbox toggles every individual box
+    if (checkAll) {
+        checkAll.addEventListener('change', function () {
+            var state = checkAll.checked;
+            boxes.forEach(function (b) { b.checked = state; });
+            refresh();
+        });
+    }
+
+    btn.addEventListener('click', function () {
+        if (btn.hasAttribute('disabled')) return;
+        sessionStorage.setItem('eqx_investor_disclaimer', new Date().toISOString());
+        window.location.href = 'investor-portal.html';
+    });
+})();
+</script>
+
+</body>
+</html>

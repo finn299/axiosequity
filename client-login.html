@@ -111,34 +111,31 @@
     </aside>
 
     <div class="login-card">
-        <div style="display:inline-block;padding:6px 12px;background:var(--cream-100);border:1px solid var(--rule);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;font-weight:500;">Coming Soon · Preview</div>
-        <h1>Sign in</h1>
-        <p class="small">The AXIOS EQUITY client portal is in build. Authorised clients will receive credentials directly from their relationship team once the portal is live. This page is a preview; no sign-in functionality is enabled.</p>
+        <h1>Choose your portal</h1>
+        <p class="small">Authorised clients are issued an access code by their AXIOS EQUITY relationship team. Select the portal that matches your engagement and enter your code on the next screen.</p>
 
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('The portal is not yet live. Please contact your relationship team or info@axiosequity.com.');">
-            <div class="field">
-                <label for="login-user">Client ID or Email</label>
-                <input id="login-user" type="text" autocomplete="username" disabled placeholder="Portal not yet active">
-            </div>
-            <div class="field">
-                <label for="login-pass">Password</label>
-                <input id="login-pass" type="password" autocomplete="current-password" disabled placeholder="—">
-            </div>
-            <div class="field">
-                <label for="login-area">Portal</label>
-                <select id="login-area" disabled>
-                    <option>Wealth &amp; Family Office</option>
-                    <option>Institutional Asset Management</option>
-                    <option>Investor Data Room</option>
-                    <option>Partner Data Room</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" type="submit" disabled style="opacity:0.6;cursor:not-allowed;">Sign in (Coming soon)</button>
-        </form>
+        <div style="display:grid;gap:14px;margin-top:24px;">
+            <a href="investor-login.html" style="display:flex;flex-direction:column;padding:22px 24px;border:1px solid var(--rule);background:#fff;text-decoration:none;transition:border-color .2s,background .2s;">
+                <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Investor Portal</div>
+                <div style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin-bottom:4px;">Investor Data Room &rarr;</div>
+                <div style="font-size:13px;color:var(--ink-500);line-height:1.5;">For qualified investors evaluating projects sponsored by AXIOS EQUITY. Access to project-level documents, financials, technical reports, and management materials.</div>
+            </a>
+
+            <a href="partner-login.html" style="display:flex;flex-direction:column;padding:22px 24px;border:1px solid var(--rule);background:#fff;text-decoration:none;transition:border-color .2s,background .2s;">
+                <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Partner Portal</div>
+                <div style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin-bottom:4px;">Partner Data Room &rarr;</div>
+                <div style="font-size:13px;color:var(--ink-500);line-height:1.5;">For operating partners, portfolio companies, and counterparties. Workstream-specific documents, reporting, and shared materials.</div>
+            </a>
+
+            <a href="admin.html" style="display:flex;flex-direction:column;padding:14px 18px;border:1px dashed var(--ink-200);background:transparent;text-decoration:none;">
+                <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-400);font-weight:500;">Internal &middot; Admin</div>
+                <div style="font-size:13px;color:var(--ink-500);margin-top:4px;">Data room administration (AXIOS EQUITY staff only)</div>
+            </a>
+        </div>
 
         <div style="margin-top:28px;font-size:13px;color:var(--ink-500);">
-            <p>The portal is reserved for authorised clients only. For early-access registration, please <a href="contact.html" style="color:var(--navy-900);border-bottom:1px solid var(--accent);">contact us</a>.</p>
-            <p style="margin-top:14px;font-size:12px;color:var(--ink-400);">For security reasons, AXIOS EQUITY will never email you a password. If in doubt, contact your relationship team directly.</p>
+            <p>Don't have an access code yet? <a href="contact.html" style="color:var(--navy-900);border-bottom:1px solid var(--accent);">Request access</a> via your relationship partner.</p>
+            <p style="margin-top:14px;font-size:12px;color:var(--ink-400);">For security reasons, AXIOS EQUITY will never email you a password. Access codes are delivered by your relationship team directly. If in doubt, contact us before logging in.</p>
         </div>
     </div>
 </div>
