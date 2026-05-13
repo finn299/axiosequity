@@ -98,52 +98,157 @@
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span class="bar"></span></button><button class="nav-search" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11L14 14"/></svg></button>
 </div></nav>
 
-<div class="login-shell">
-    <aside class="login-art">
-        <div>
-            <div class="eyebrow" style="color:var(--accent-2);">A Private Portal</div>
-            <h2>Your wealth, your partnership, in one place.</h2>
-        </div>
-        <div>
-            <p>Authorised clients of AXIOS EQUITY access portfolio reporting, family office statements, fund documentation, partner data rooms, and direct messaging with their relationship team — all from a single, secure environment.</p>
-            <p style="margin-top:24px;color:rgba(255,255,255,0.55);font-size:13px;">Access is restricted to clients and authorised representatives. Unauthorised access is monitored.</p>
-        </div>
-    </aside>
+<!-- HERO -->
+<section class="page-hero" style="background-image:linear-gradient(180deg,rgba(11,29,51,0.72) 0%,rgba(11,29,51,0.88) 100%),url('imgs/partnerships.jpg');background-size:cover;background-position:center;padding:80px 32px 60px;">
+    <div class="page-hero-inner">
+        <div class="crumbs"><a href="index.html">Home</a><span>/</span>Client Login</div>
+        <h1 class="page-title" style="font-size:clamp(38px,5vw,60px);">Welcome to the <em>AXIOS EQUITY portals.</em></h1>
+        <p class="page-lede" style="max-width:680px;">Private portals for verified investors, operating partners, and authorised counterparties. Access is invitation-only and protected by two-factor verification.</p>
+    </div>
+</section>
 
-    <div class="login-card">
-        <h1>Choose your portal</h1>
-        <p class="small">Authorised clients are issued an access code by their AXIOS EQUITY relationship team. Select the portal that matches your engagement and enter your code on the next screen.</p>
-
-        <div style="display:grid;gap:14px;margin-top:24px;">
-            <a href="investor-login.html" style="display:flex;flex-direction:column;padding:22px 24px;border:1px solid var(--rule);background:#fff;text-decoration:none;transition:border-color .2s,background .2s;">
-                <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Investor Portal</div>
-                <div style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin-bottom:4px;">Investor Data Room &rarr;</div>
-                <div style="font-size:13px;color:var(--ink-500);line-height:1.5;">For qualified investors evaluating projects sponsored by AXIOS EQUITY. Access to project-level documents, financials, technical reports, and management materials.</div>
-            </a>
-
-            <a href="partner-login.html" style="display:flex;flex-direction:column;padding:22px 24px;border:1px solid var(--rule);background:#fff;text-decoration:none;transition:border-color .2s,background .2s;">
-                <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Partner Portal</div>
-                <div style="font-family:var(--serif);font-size:22px;color:var(--navy-900);margin-bottom:4px;">Partner Data Room &rarr;</div>
-                <div style="font-size:13px;color:var(--ink-500);line-height:1.5;">For operating partners, portfolio companies, and counterparties. Workstream-specific documents, reporting, and shared materials.</div>
-            </a>
-
-            <a href="admin.html" style="display:flex;flex-direction:column;padding:14px 18px;border:1px dashed var(--ink-200);background:transparent;text-decoration:none;">
-                <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-400);font-weight:500;">Internal &middot; Admin</div>
-                <div style="font-size:13px;color:var(--ink-500);margin-top:4px;">Data room administration (AXIOS EQUITY staff only)</div>
-            </a>
+<!-- HOW IT WORKS -->
+<section class="section section-cream" style="padding:56px 32px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">How Portal Access Works</div>
+                <h2 class="section-title" style="font-size:34px;max-width:24ch;">A simple two-step <em>verification.</em></h2>
+            </div>
+            <p class="section-lede">Each portal is gated by two independent layers — first an email-verified login through Cloudflare, then a portal-specific access code. Both must succeed.</p>
         </div>
 
-        <div style="margin-top:24px;padding:18px 20px;background:var(--cream-100);border:1px solid var(--rule);border-left:3px solid var(--accent);">
-            <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Not registered yet?</div>
-            <p style="font-size:13px;color:var(--navy-900);margin:0 0 10px;line-height:1.6;"><strong>If you do not yet have access</strong>, please submit a formal request. Our team will verify your eligibility and issue credentials within 2–3 business days.</p>
-            <a href="request-access.html" style="display:inline-block;font-size:12px;color:var(--navy-900);font-weight:500;border-bottom:1px solid var(--accent);text-decoration:none;letter-spacing:0.04em;">Request Access →</a>
-        </div>
-
-        <div style="margin-top:18px;font-size:12px;color:var(--ink-400);line-height:1.6;">
-            <p style="margin:0;">For security reasons, AXIOS EQUITY will never email you a password. Access is verified by Cloudflare via one-time PIN sent to your registered email. If you experience trouble signing in, contact <a href="mailto:info@axiosequity.com" style="color:var(--navy-900);">info@axiosequity.com</a>.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:36px;">
+            <div style="padding:28px 26px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">01 / Email Verification</div>
+                <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:0 0 10px;font-weight:500;">Confirm your identity</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">When you enter a portal URL, Cloudflare Access sends a one-time 6-digit PIN to your registered email. You enter the PIN to prove you own the email address.</p>
+            </div>
+            <div style="padding:28px 26px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">02 / Access Code</div>
+                <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:0 0 10px;font-weight:500;">Enter your portal code</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">After email verification, you enter an alphanumeric access code issued by your AXIOS EQUITY relationship partner. This determines which projects or workstreams you can view.</p>
+            </div>
+            <div style="padding:28px 26px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:12px;letter-spacing:0.2em;color:var(--accent);margin-bottom:14px;">03 / Acknowledgment</div>
+                <h3 style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin:0 0 10px;font-weight:500;">Accept confidentiality terms</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0;">On first entry, you acknowledge the confidentiality conditions that apply to the materials you will view. This is required by law and stored as a timestamped record.</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+<!-- CHOOSE PATH -->
+<section class="section section-white" style="padding:64px 32px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">Choose Your Path</div>
+                <h2 class="section-title" style="font-size:34px;max-width:24ch;">Which describes <em>your situation?</em></h2>
+            </div>
+            <p class="section-lede">Select the path that applies to you. If you are unsure, contact your AXIOS EQUITY relationship partner or our Investor Relations team.</p>
+        </div>
+
+        <!-- Two-column path selector -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:28px;margin-top:40px;">
+
+            <!-- LEFT: I have access -->
+            <div style="border:1px solid var(--rule);background:#fff;padding:36px 32px;">
+                <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:500;">For Authorised Users</div>
+                <h3 style="font-family:var(--serif);font-size:26px;color:var(--navy-900);margin:0 0 14px;font-weight:500;">I have an access code.</h3>
+                <p style="font-size:14px;color:var(--ink-500);line-height:1.65;margin:0 0 24px;">Select the portal that matches your engagement. You will be prompted for your email (Cloudflare PIN), then your access code.</p>
+
+                <div style="display:grid;gap:12px;">
+                    <a href="investor-login.html" style="display:flex;flex-direction:column;padding:20px 22px;border:1px solid var(--rule);background:var(--cream-50);text-decoration:none;transition:border-color .2s,background .2s;">
+                        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Investor Portal</div>
+                        <div style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin-bottom:4px;">Investor Data Room &rarr;</div>
+                        <div style="font-size:13px;color:var(--ink-500);line-height:1.5;">Project-level documents, financials, technical reports, and management materials for qualified investors.</div>
+                    </a>
+
+                    <a href="partner-login.html" style="display:flex;flex-direction:column;padding:20px 22px;border:1px solid var(--rule);background:var(--cream-50);text-decoration:none;transition:border-color .2s,background .2s;">
+                        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;font-weight:500;">Partner Portal</div>
+                        <div style="font-family:var(--serif);font-size:20px;color:var(--navy-900);margin-bottom:4px;">Partner Data Room &rarr;</div>
+                        <div style="font-size:13px;color:var(--ink-500);line-height:1.5;">Workstream-specific documents, reporting, and shared materials for operating partners and counterparties.</div>
+                    </a>
+
+                    <a href="admin.html" style="display:flex;flex-direction:column;padding:14px 18px;border:1px dashed var(--ink-200);background:transparent;text-decoration:none;">
+                        <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-400);font-weight:500;">Internal &middot; Admin</div>
+                        <div style="font-size:13px;color:var(--ink-500);margin-top:4px;">Data room administration (AXIOS EQUITY staff only)</div>
+                    </a>
+                </div>
+
+                <p style="margin-top:20px;font-size:12px;color:var(--ink-400);line-height:1.6;">Lost your access code? Contact <a href="mailto:info@axiosequity.com" style="color:var(--navy-900);border-bottom:1px solid var(--accent);">info@axiosequity.com</a> from your registered email address.</p>
+            </div>
+
+            <!-- RIGHT: I need access -->
+            <div style="border:1px solid var(--accent);background:var(--cream-100);padding:36px 32px;position:relative;">
+                <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:500;">For New Users</div>
+                <h3 style="font-family:var(--serif);font-size:26px;color:var(--navy-900);margin:0 0 14px;font-weight:500;">I need to request access.</h3>
+                <p style="font-size:14px;color:var(--ink-700);line-height:1.65;margin:0 0 20px;">If you have not yet been issued credentials, please submit a request. Our team will verify your eligibility and issue access within 2–3 business days.</p>
+
+                <div style="background:#fff;border:1px solid var(--rule);padding:18px 20px;margin-bottom:20px;">
+                    <div style="font-size:12px;color:var(--navy-900);font-weight:500;margin-bottom:8px;">Who can request access?</div>
+                    <ul style="font-size:12px;color:var(--ink-700);line-height:1.7;padding-left:18px;margin:0;">
+                        <li>Qualified institutional buyers / qualified purchasers</li>
+                        <li>Accredited investors under U.S. securities law</li>
+                        <li>Family offices and authorised representatives</li>
+                        <li>Operating partners and portfolio companies under an active engagement</li>
+                        <li>Counterparties to an active transaction</li>
+                    </ul>
+                </div>
+
+                <a href="request-access.html" class="btn btn-primary" style="display:inline-block;width:100%;text-align:center;">Request Access →</a>
+
+                <p style="margin-top:18px;font-size:12px;color:var(--ink-500);line-height:1.6;">Or email <a href="mailto:info@axiosequity.com?subject=Portal%20Access%20Inquiry" style="color:var(--navy-900);border-bottom:1px solid var(--accent);">info@axiosequity.com</a> directly.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECURITY -->
+<section class="section section-cream" style="padding:64px 32px;">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <div class="eyebrow">Security &amp; Privacy</div>
+                <h2 class="section-title" style="font-size:30px;max-width:28ch;">How we protect <em>your access.</em></h2>
+            </div>
+            <p class="section-lede">Portal security is enforced at multiple independent layers. Each layer is industry-standard and audit-logged.</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:32px;">
+            <div style="padding:22px 24px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:8px;">Layer 1</div>
+                <div style="font-family:var(--serif);font-size:17px;color:var(--navy-900);margin-bottom:6px;font-weight:500;">Cloudflare Access</div>
+                <div style="font-size:12px;color:var(--ink-500);line-height:1.6;">Email-verified PIN authentication. Every login attempt is logged with timestamp, IP, and location.</div>
+            </div>
+            <div style="padding:22px 24px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:8px;">Layer 2</div>
+                <div style="font-family:var(--serif);font-size:17px;color:var(--navy-900);margin-bottom:6px;font-weight:500;">Access Code</div>
+                <div style="font-size:12px;color:var(--ink-500);line-height:1.6;">Portal-specific code issued by your AXIOS EQUITY contact. Determines scope of visibility.</div>
+            </div>
+            <div style="padding:22px 24px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:8px;">Layer 3</div>
+                <div style="font-family:var(--serif);font-size:17px;color:var(--navy-900);margin-bottom:6px;font-weight:500;">Confidentiality</div>
+                <div style="font-size:12px;color:var(--ink-500);line-height:1.6;">Per-session acknowledgment of confidentiality terms. Materials cannot be downloaded.</div>
+            </div>
+            <div style="padding:22px 24px;background:#fff;border:1px solid var(--rule);">
+                <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--accent);margin-bottom:8px;">Layer 4</div>
+                <div style="font-family:var(--serif);font-size:17px;color:var(--navy-900);margin-bottom:6px;font-weight:500;">Restricted Drive</div>
+                <div style="font-size:12px;color:var(--ink-500);line-height:1.6;">Underlying files live on enterprise Google Drive, shared only with our service account.</div>
+            </div>
+        </div>
+
+        <div style="margin-top:36px;padding:20px 28px;background:var(--navy-900);color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+            <div>
+                <div style="font-family:var(--serif);font-size:18px;margin-bottom:4px;">AXIOS EQUITY will never email you a password.</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;">Access is verified by one-time PIN sent to your registered email at each session.</div>
+            </div>
+            <a href="mailto:info@axiosequity.com" class="btn btn-accent" style="white-space:nowrap;">Security Questions →</a>
+        </div>
+    </div>
+</section>
 
 <div class="disclaimer-bar"><div class="disclaimer-bar-inner">
     <strong>Important notice.</strong> AXIOS EQUITY LLC is a privately held investment platform.
