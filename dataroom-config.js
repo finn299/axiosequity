@@ -44,6 +44,10 @@ window.AXIOS_CONFIG = {
         'IEP-PT-2026': {
             company: 'IEP',
             workstreams: ['iep']
+        },
+        'MS-2026': {
+            company: 'Msquare Global Co., Ltd',
+            workstreams: ['newcastle-claim', 'iep']
         }
         // Add per-partner codes as needed, e.g.:
         // 'NEW-PARTNER-PT-2026': { company: 'New Partner Co', workstreams: ['workstream-key'] }
