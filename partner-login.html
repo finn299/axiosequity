@@ -51,7 +51,10 @@
             </div>
             <div class="field">
                 <label for="pl-pass">Access Code</label>
-                <input type="password" id="pl-pass" name="pass" required autocomplete="off" placeholder="e.g. YTONG-MGMT-2026">
+                <div style="position:relative;">
+                    <input type="password" id="pl-pass" name="pass" required autocomplete="off" placeholder="e.g. YTONG-MGMT-2026" style="padding-right:64px;">
+                    <button type="button" id="pl-pass-toggle" onclick="toggleAccessCode('pl-pass','pl-pass-toggle')" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--ink-500);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:4px 8px;font-family:var(--mono),monospace;">Show</button>
+                </div>
             </div>
 
             <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;">
@@ -79,6 +82,19 @@
 </div></footer>
 
 <script>
+function toggleAccessCode(inputId, btnId) {
+    var input = document.getElementById(inputId);
+    var btn = document.getElementById(btnId);
+    if (!input || !btn) return;
+    if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+    } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+    }
+}
+
 /* ===== AUTO-LOGIN from localStorage =====
    90-day persistence. Once user logs in and accepts disclaimer,
    they go straight to partner-portal.html on next visit. */

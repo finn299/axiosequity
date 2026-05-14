@@ -543,7 +543,10 @@ body.admin-body {
         <form id="adminLoginForm" autocomplete="off">
             <div class="adm-field">
                 <label for="ad-pass">Admin Code</label>
-                <input type="password" id="ad-pass" required>
+                <div style="position:relative;">
+                    <input type="password" id="ad-pass" required style="padding-right:64px;">
+                    <button type="button" id="ad-pass-toggle" onclick="toggleAdmField('ad-pass','ad-pass-toggle')" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--admin-ink-muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:4px 8px;font-family:'JetBrains Mono',monospace;">Show</button>
+                </div>
             </div>
             <div style="display:flex;gap:10px;margin-top:18px;">
                 <button type="submit" class="adm-btn">Enter Admin</button>
@@ -801,7 +804,10 @@ body.admin-body {
                     <div class="adm-field-row">
                         <div class="adm-field">
                             <label>Current Admin Code <span style="color:var(--admin-danger);">*</span></label>
-                            <input type="password" id="rotateCurrentCode" required placeholder="Enter current code to verify" style="font-family:'JetBrains Mono',monospace;">
+                            <div style="position:relative;">
+                                <input type="password" id="rotateCurrentCode" required placeholder="Enter current code to verify" style="font-family:'JetBrains Mono',monospace;padding-right:64px;">
+                                <button type="button" id="rotateCurrentCode-toggle" onclick="toggleAdmField('rotateCurrentCode','rotateCurrentCode-toggle')" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--admin-ink-muted);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;padding:4px 8px;font-family:'JetBrains Mono',monospace;">Show</button>
+                            </div>
                         </div>
                         <div class="adm-field">
                             <label>New Admin Code <span style="color:var(--admin-danger);">*</span></label>
@@ -952,6 +958,19 @@ body.admin-body {
    ============================================ */
 
 var ADMIN_CODE = 'AXIOS EQUITY-ADMIN-2026';
+
+function toggleAdmField(inputId, btnId) {
+    var input = document.getElementById(inputId);
+    var btn = document.getElementById(btnId);
+    if (!input || !btn) return;
+    if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+    } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+    }
+}
 var DRAFT_KEY = 'eqx_admin_draft_v1';
 
 // Working state - deep clone of live config, modified by user
